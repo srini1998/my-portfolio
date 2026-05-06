@@ -1,11 +1,12 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Experience } from "@/components/Experience";
+import { Skills } from "@/components/Skills";
 import { LegacyProjects } from "@/components/LegacyProjects";
 import { Roadmap } from "@/components/Roadmap";
-import { Skills } from "@/components/Skills";
+import { Experience } from "@/components/Experience";
+import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 export default function Home() {
   return (
@@ -13,12 +14,12 @@ export default function Home() {
       <Nav />
       <main className="mx-auto max-w-5xl px-6">
         <Hero />
-        <About />
-        <Experience />
-        <LegacyProjects />
-        <Roadmap />
-        <Skills />
-        <Contact />
+        <AnimatedSection><Skills /></AnimatedSection>
+        <AnimatedSection><LegacyProjects /></AnimatedSection>
+        <AnimatedSection><Roadmap /></AnimatedSection>
+        <AnimatedSection><Experience /></AnimatedSection>
+        <AnimatedSection><About /></AnimatedSection>
+        <AnimatedSection><Contact /></AnimatedSection>
       </main>
     </>
   );

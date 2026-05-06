@@ -1,36 +1,39 @@
 export function About() {
   return (
     <section id="about" className="py-20">
-      <h2 className="mb-10 text-3xl font-bold text-gray-50">About</h2>
-      <div className="grid gap-8 md:grid-cols-2">
-        <div className="rounded-xl border border-gray-800 bg-gray-900 p-6">
-          <div className="mb-3 flex items-center gap-3">
-            <span className="text-2xl">🎓</span>
-            <h3 className="text-lg font-semibold text-gray-100">
-              Stevens Institute of Technology
-            </h3>
+      <h2
+        className="sector-line mb-10 text-3xl font-bold uppercase tracking-wider text-white"
+        style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+      >
+        Education
+      </h2>
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-racing/50">
+          <div className="mb-1 flex items-center justify-between">
+            <h3 className="font-semibold text-white">Stevens Institute of Technology</h3>
+            <span className="font-mono text-xs text-silver-200">2024 – 2026</span>
           </div>
-          <p className="mb-1 font-mono text-sm text-violet-400">
+          <p className="mb-1 font-mono text-xs uppercase tracking-widest text-racing">
             MS Computer Science · Graduated Jan 2026
           </p>
-          <p className="mb-1 text-sm text-gray-500">Sep 2024 – Jan 2026 · Hoboken, NJ</p>
-          <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+          <p className="mb-1 font-mono text-xs text-silver-200">Hoboken, NJ</p>
+          <p className="mt-4 text-sm leading-relaxed text-silver-100">
             Advanced coursework in Artificial Intelligence, Machine Learning, Deep Learning,
             and Database Systems. Contributing to the NDIF research framework under Prof. Hao Wang,
             focusing on empirical analysis of large-scale LLM traces. Bridging theory with
             scalable engineering across model robustness, NLP pipelines, and database systems.
           </p>
         </div>
-        <div className="rounded-xl border border-gray-800 bg-gray-900 p-6">
-          <div className="mb-3 flex items-center gap-3">
-            <span className="text-2xl">🏛️</span>
-            <h3 className="text-lg font-semibold text-gray-100">Gitam University</h3>
+        <div className="rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-racing/50">
+          <div className="mb-1 flex items-center justify-between">
+            <h3 className="font-semibold text-white">Gitam University</h3>
+            <span className="font-mono text-xs text-silver-200">2016 – 2020</span>
           </div>
-          <p className="mb-1 font-mono text-sm text-violet-400">
+          <p className="mb-1 font-mono text-xs uppercase tracking-widest text-racing">
             B.Tech Computer Science
           </p>
-          <p className="mb-1 text-sm text-gray-500">Jun 2016 – Jun 2020 · Visakhapatnam, India</p>
-          <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+          <p className="mb-1 font-mono text-xs text-silver-200">Visakhapatnam, India</p>
+          <p className="mt-4 text-sm leading-relaxed text-silver-100">
             Strong foundation in data structures, OOP, and database systems. Final-year project:
             music recommendation using RNNs on the KKBOX dataset. Secured 2nd place in a
             24-hour state-level coding challenge. IEEE Student Branch member and Code Hackathon

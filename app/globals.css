@@ -2,23 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  background-color: #0f0f0f;
+  color: #e0e0e0;  /* silver-200 — 10:1 on carbon-900 */
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Racing red scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #141414; }
+::-webkit-scrollbar-thumb { background: #e60000; border-radius: 2px; }
+
+/* Section divider line */
+.sector-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-::-webkit-scrollbar-track {
-  @apply bg-gray-900;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-violet-700 rounded-full;
+.sector-line::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 1.5rem;
+  background: #e60000;
+  border-radius: 1px;
 }

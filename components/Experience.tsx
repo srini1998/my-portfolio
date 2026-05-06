@@ -3,34 +3,27 @@ import { experiences, type Experience as ExperienceType } from "@/lib/data";
 function TimelineItem({ exp }: { exp: ExperienceType }) {
   return (
     <div className="relative pl-8">
-      {/* Timeline dot */}
       <span
-        className={`absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 ${
+        className={`absolute left-0 top-2 h-3 w-3 rounded-full border-2 ${
           exp.active
-            ? "border-violet-400 bg-violet-400 shadow-[0_0_8px_2px_rgba(167,139,250,0.5)]"
-            : "border-gray-600 bg-gray-800"
+            ? "border-racing bg-racing shadow-[0_0_10px_2px_rgba(230,0,0,0.5)]"
+            : "border-asphalt-500 bg-asphalt-800"
         }`}
       />
-      {/* Vertical line */}
-      <span className="absolute left-[5px] top-4 h-full w-px bg-gray-800" />
+      <span className="absolute left-[5px] top-4 h-full w-px bg-asphalt-600" />
 
-      <div className="mb-10 rounded-xl border border-gray-800 bg-gray-900 p-6">
-        <div className="mb-1 flex flex-wrap items-center gap-3">
-          <h3 className="font-semibold text-gray-100">{exp.role}</h3>
-          {exp.active && (
-            <span className="rounded-full bg-violet-900/60 px-2.5 py-0.5 text-xs font-medium text-violet-300">
-              Active
-            </span>
-          )}
+      <div className="mb-8 rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-asphalt-500">
+        <div className="mb-1">
+          <h3 className="font-semibold text-white">{exp.role}</h3>
         </div>
-        <p className="mb-0.5 font-medium text-violet-400">{exp.company}</p>
-        <p className="mb-4 font-mono text-xs text-gray-500">
+        <p className="font-mono text-xs uppercase tracking-widest text-racing">{exp.company}</p>
+        <p className="mb-4 mt-0.5 font-mono text-xs text-silver-200">
           {exp.period} · {exp.location}
         </p>
-        <ul className="space-y-1.5">
+        <ul className="space-y-2">
           {exp.bullets.map((b, i) => (
-            <li key={i} className="flex gap-2 text-sm text-gray-400">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500" />
+            <li key={i} className="flex gap-3 text-sm text-silver-100">
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-racing" />
               {b}
             </li>
           ))}
@@ -43,7 +36,12 @@ function TimelineItem({ exp }: { exp: ExperienceType }) {
 export function Experience() {
   return (
     <section id="experience" className="py-20">
-      <h2 className="mb-10 text-3xl font-bold text-gray-50">Experience</h2>
+      <h2
+        className="sector-line mb-10 text-3xl font-bold uppercase tracking-wider text-white"
+        style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+      >
+        Experience
+      </h2>
       <div>
         {experiences.map((exp) => (
           <TimelineItem key={`${exp.company}-${exp.period}`} exp={exp} />

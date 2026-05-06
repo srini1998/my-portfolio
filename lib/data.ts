@@ -10,6 +10,7 @@ export type Experience = {
 export type Project = {
   title: string;
   description: string;
+  bullets?: string[];
   tags: string[];
   github?: string;
   demo?: string;
@@ -62,15 +63,37 @@ export const experiences: Experience[] = [
 export const legacyProjects: Project[] = [
   {
     title: "Crisis Information Graph",
-    description:
-      "Classified crisis-related tweets and extracted entities (locations, people, organizations) from the MDM dataset. Compared CNN, BERT, and traditional ML for classification and NER, then built a web app to visualize extracted data for emergency response scenarios.",
+    description: "NLP pipeline to classify crisis tweets and extract structured entities for emergency response visualization.",
+    bullets: [
+      "Classified crisis-related tweets from the MDM dataset using CNN, BERT, and traditional ML baselines.",
+      "Performed Named Entity Recognition (NER) to extract locations, people, and organizations.",
+      "Benchmarked BERT against CNN and TF-IDF classifiers across accuracy, F1, and inference speed.",
+      "Built a Flask web app to visualize extracted entity graphs for real-time emergency response use.",
+    ],
     tags: ["BERT", "CNN", "NLP", "NER", "Python", "Flask"],
     status: "live",
   },
   {
+    title: "Securing Image Classifiers from Adversarial Attacks",
+    description: "Adversarial robustness study on ResNet-18 trained on CIFAR-100, with a full adversarial training defense pipeline.",
+    bullets: [
+      "Studied PGD (Projected Gradient Descent) adversarial attacks on a ResNet-18 / CIFAR-100 baseline.",
+      "Implemented adversarial training loop using PyTorch and Torchattacks library.",
+      "Measured accuracy degradation under attack vs. defended model across multiple epsilon budgets.",
+      "Achieved measurable defense improvement without significant clean-accuracy regression.",
+    ],
+    tags: ["PyTorch", "ResNet-18", "CIFAR-100", "Adversarial ML", "Torchattacks"],
+    status: "live",
+  },
+  {
     title: "Ad-Hoc OLAP Query Engine",
-    description:
-      "Custom query processing engine supporting Multi-Feature (MF) and Extended Multi-Feature (EMF) queries over PostgreSQL. Generates standalone Python programs from extended relational algebra inputs, dynamically building an in-memory mf-structure to compute aggregates without relying on built-in DBMS aggregation.",
+    description: "Custom multi-pass query engine supporting MF/EMF queries over PostgreSQL, bypassing built-in aggregation entirely.",
+    bullets: [
+      "Designed a processing engine for Multi-Feature (MF) and Extended Multi-Feature (EMF) OLAP queries.",
+      "Engine generates standalone Python programs from extended relational algebra, building in-memory mf-structures.",
+      "Supported grouping variables, SUCH THAT predicate filtering, and complex HAVING conditions.",
+      "Demonstrated live dynamic query modification with both interactive and file-based interfaces.",
+    ],
     tags: ["PostgreSQL", "Python", "OLAP", "Query Optimization", "DBMS"],
     status: "live",
   },
@@ -78,20 +101,11 @@ export const legacyProjects: Project[] = [
 
 export const roadmapProjects: Project[] = [
   {
-    title: "Auto-Apply Job Agent",
-    description:
-      "An autonomous agent that reads job postings, tailors applications, and submits them — powered by LangGraph orchestration and Claude for reasoning and generation.",
-    tags: ["LangGraph", "Claude", "Python", "Agents", "NLP"],
-    status: "soon",
-    comingSoonLabel: "Q3 2025",
-  },
-  {
     title: "Real-Time Crisis Intelligence Agent",
     description:
       "Extends the Crisis Information Graph into a live RAG pipeline — ingests streaming social data, retrieves context, and generates structured situation reports via Claude.",
     tags: ["RAG", "Claude", "Vector DB", "Streaming", "NLP"],
     status: "soon",
-    comingSoonLabel: "Q3 2025",
   },
   {
     title: "Hybrid Financial Analyst",
@@ -99,7 +113,6 @@ export const roadmapProjects: Project[] = [
       "Combines LSTM time-series forecasting with an LLM reasoning layer to analyze market signals and generate human-readable investment insights.",
     tags: ["LSTM", "LLM", "PyTorch", "Finance", "Claude"],
     status: "soon",
-    comingSoonLabel: "Q4 2025",
   },
   {
     title: "AR Gaming Dungeon Master",
@@ -107,7 +120,27 @@ export const roadmapProjects: Project[] = [
       "An augmented-reality D&D Dungeon Master using A-Frame for the AR layer and Claude for dynamic narrative generation and NPC dialogue.",
     tags: ["A-Frame", "Claude", "AR", "WebXR", "JavaScript"],
     status: "soon",
-    comingSoonLabel: "Q1 2026",
+  },
+  {
+    title: "RL Racing Strategy Optimizer",
+    description:
+      "Reinforcement learning agent trained to optimize pit-stop timing, tyre strategy, and overtaking decisions across a simulated F1 race season.",
+    tags: ["Reinforcement Learning", "PyTorch", "OpenAI Gym", "Python", "Simulation"],
+    status: "soon",
+  },
+  {
+    title: "Distributed RL Traffic Optimizer (Jersey City Edition)",
+    description:
+      "A multi-agent reinforcement learning system designed to optimize traffic signal timings in a simulated urban grid. Built using Ray RLLib and OpenAI Gym to reduce congestion and carbon emissions in high-density areas.",
+    tags: ["Ray RLLib", "OpenAI Gym", "Reinforcement Learning", "Python", "Simulation"],
+    status: "soon",
+  },
+  {
+    title: "Cloud-Native MLOps Pipeline",
+    description:
+      "An end-to-end automated deployment system on AWS. Features automated model retraining triggered by S3 data uploads, CI/CD testing via GitHub Actions, and production-grade deployment to SageMaker.",
+    tags: ["AWS", "SageMaker", "GitHub Actions", "CI/CD", "MLOps", "S3"],
+    status: "soon",
   },
 ];
 
@@ -118,11 +151,11 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "AI / ML Frameworks",
-    items: ["PyTorch", "TensorFlow", "BERT", "Hugging Face", "LangGraph", "scikit-learn"],
+    items: ["PyTorch", "TensorFlow", "BERT", "Hugging Face", "LangGraph", "scikit-learn", "Reinforcement Learning"],
   },
   {
     category: "Backend & Tools",
-    items: ["Java EE", "PostgreSQL", "Git", "Postman", "JIRA", "Selenium", "BDD-Cucumber"],
+    items: ["Java EE", "PostgreSQL", "Git", "AWS", "CI/CD", "Postman", "JIRA", "Selenium", "BDD-Cucumber"],
   },
   {
     category: "Concepts",
