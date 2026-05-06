@@ -108,24 +108,10 @@ export const roadmapProjects: Project[] = [
     status: "soon",
   },
   {
-    title: "Hybrid Financial Analyst",
+    title: "Cloud-Native MLOps Pipeline",
     description:
-      "Combines LSTM time-series forecasting with an LLM reasoning layer to analyze market signals and generate human-readable investment insights.",
-    tags: ["LSTM", "LLM", "PyTorch", "Finance", "Claude"],
-    status: "soon",
-  },
-  {
-    title: "AR Gaming Dungeon Master",
-    description:
-      "An augmented-reality D&D Dungeon Master using A-Frame for the AR layer and Claude for dynamic narrative generation and NPC dialogue.",
-    tags: ["A-Frame", "Claude", "AR", "WebXR", "JavaScript"],
-    status: "soon",
-  },
-  {
-    title: "RL Racing Strategy Optimizer",
-    description:
-      "Reinforcement learning agent trained to optimize pit-stop timing, tyre strategy, and overtaking decisions across a simulated F1 race season.",
-    tags: ["Reinforcement Learning", "PyTorch", "OpenAI Gym", "Python", "Simulation"],
+      "An end-to-end automated deployment system on AWS. Features automated model retraining triggered by S3 data uploads, CI/CD testing via GitHub Actions, and production-grade deployment to SageMaker.",
+    tags: ["AWS", "SageMaker", "GitHub Actions", "CI/CD", "MLOps", "S3"],
     status: "soon",
   },
   {
@@ -136,10 +122,24 @@ export const roadmapProjects: Project[] = [
     status: "soon",
   },
   {
-    title: "Cloud-Native MLOps Pipeline",
+    title: "Hybrid Financial Analyst",
     description:
-      "An end-to-end automated deployment system on AWS. Features automated model retraining triggered by S3 data uploads, CI/CD testing via GitHub Actions, and production-grade deployment to SageMaker.",
-    tags: ["AWS", "SageMaker", "GitHub Actions", "CI/CD", "MLOps", "S3"],
+      "Combines LSTM time-series forecasting with an LLM reasoning layer to analyze market signals and generate human-readable investment insights.",
+    tags: ["LSTM", "LLM", "PyTorch", "Finance", "Claude"],
+    status: "soon",
+  },
+  {
+    title: "RL Racing Strategy Optimizer",
+    description:
+      "Reinforcement learning agent trained to optimize pit-stop timing, tyre strategy, and overtaking decisions across a simulated F1 race season.",
+    tags: ["Reinforcement Learning", "PyTorch", "OpenAI Gym", "Python", "Simulation"],
+    status: "soon",
+  },
+  {
+    title: "AR Gaming Dungeon Master",
+    description:
+      "An augmented-reality D&D Dungeon Master using A-Frame for the AR layer and Claude for dynamic narrative generation and NPC dialogue.",
+    tags: ["A-Frame", "Claude", "AR", "WebXR", "JavaScript"],
     status: "soon",
   },
 ];

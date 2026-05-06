@@ -16,7 +16,7 @@ export function Roadmap() {
       </div>
 
       {/* 1 col mobile → 2 col md+ */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
         {roadmapProjects.map((project) => (
           <div
             key={project.title}
