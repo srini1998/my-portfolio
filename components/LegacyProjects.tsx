@@ -1,4 +1,5 @@
 import { legacyProjects } from "@/lib/data";
+import { ScrambleText } from "@/components/ScrambleText";
 
 export function LegacyProjects() {
   return (
@@ -8,7 +9,7 @@ export function LegacyProjects() {
           className="sector-line text-2xl font-bold uppercase tracking-wider text-white md:text-3xl"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          Technical Deep-Dives
+          <ScrambleText text="Technical Deep-Dives" />
         </h2>
         <p className="mt-2 font-mono text-xs uppercase tracking-widest text-silver-200">
           Completed research &amp; engineering projects

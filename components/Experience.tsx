@@ -1,4 +1,5 @@
 import { experiences, type Experience as ExperienceType } from "@/lib/data";
+import { ScrambleText } from "@/components/ScrambleText";
 
 function TimelineItem({ exp }: { exp: ExperienceType }) {
   return (
@@ -40,7 +41,7 @@ export function Experience() {
         className="sector-line mb-10 text-3xl font-bold uppercase tracking-wider text-white"
         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
       >
-        Experience
+        <ScrambleText text="Experience" />
       </h2>
       <div>
         {experiences.map((exp) => (

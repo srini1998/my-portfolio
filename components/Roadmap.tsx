@@ -1,4 +1,6 @@
 import { roadmapProjects } from "@/lib/data";
+import { TiltCard } from "@/components/TiltCard";
+import { ScrambleText } from "@/components/ScrambleText";
 
 export function Roadmap() {
   return (
@@ -8,19 +10,18 @@ export function Roadmap() {
           className="sector-line text-2xl font-bold uppercase tracking-wider text-white md:text-3xl"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          2026 Roadmap
+          <ScrambleText text="2026 Roadmap" />
         </h2>
         <p className="mt-2 font-mono text-xs uppercase tracking-widest text-silver-200">
           Agentic AI projects in active development
         </p>
       </div>
 
-      {/* 1 col mobile → 2 col md+ */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
         {roadmapProjects.map((project) => (
-          <div
+          <TiltCard
             key={project.title}
-            className="relative flex flex-col rounded border border-racing/20 bg-carbon-800 p-5 transition-colors hover:border-racing/50 md:p-6"
+            className="relative flex h-full flex-col rounded border border-racing/20 bg-carbon-800 p-5 transition-colors hover:border-racing/50 md:p-6"
           >
             <h3
               className="mb-2 text-base font-bold uppercase tracking-wide text-white md:text-lg"
@@ -31,7 +32,6 @@ export function Roadmap() {
             <p className="mb-4 flex-1 text-sm leading-relaxed text-silver-100">
               {project.description}
             </p>
-            {/* Tags — larger py for thumb tap */}
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span
@@ -42,7 +42,7 @@ export function Roadmap() {
                 </span>
               ))}
             </div>
-          </div>
+          </TiltCard>
         ))}
       </div>
     </section>

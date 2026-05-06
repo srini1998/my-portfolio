@@ -1,4 +1,5 @@
 import { contact } from "@/lib/data";
+import { ScrambleText } from "@/components/ScrambleText";
 
 export function Contact() {
   return (
@@ -7,7 +8,7 @@ export function Contact() {
         className="sector-line mb-4 text-3xl font-bold uppercase tracking-wider text-white"
         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
       >
-        Get in Touch
+        <ScrambleText text="Get in Touch" />
       </h2>
       <p className="mb-10 max-w-lg text-sm leading-relaxed text-silver-100">
         MS CS graduate (Stevens, Jan 2026) with 4 years of industry experience at Accenture.

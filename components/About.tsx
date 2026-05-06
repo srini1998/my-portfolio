@@ -1,3 +1,5 @@
+import { ScrambleText } from "@/components/ScrambleText";
+
 export function About() {
   return (
     <section id="about" className="py-16 md:py-20">
@@ -5,7 +7,7 @@ export function About() {
         className="sector-line mb-8 text-2xl font-bold uppercase tracking-wider text-white md:mb-10 md:text-3xl"
         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
       >
-        Education
+        <ScrambleText text="Education" />
       </h2>
       {/* 1 col mobile → 2 col md+ */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">

@@ -20,6 +20,11 @@ body {
 ::-webkit-scrollbar-track { background: #141414; }
 ::-webkit-scrollbar-thumb { background: #e60000; border-radius: 2px; }
 
+/* Hide native cursor on pointer-fine devices — custom cursor takes over */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
 /* Section divider line */
 .sector-line {
   display: flex;

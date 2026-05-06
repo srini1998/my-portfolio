@@ -1,4 +1,5 @@
 import { skills } from "@/lib/data";
+import { ScrambleText } from "@/components/ScrambleText";
 
 export function Skills() {
   return (
@@ -7,10 +8,9 @@ export function Skills() {
         className="sector-line mb-8 text-2xl font-bold uppercase tracking-wider text-white md:mb-10 md:text-3xl"
         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
       >
-        Technical Stack
+        <ScrambleText text="Technical Stack" />
       </h2>
 
-      {/* Outer grid: 1 col mobile → 2 col sm+ */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
         {skills.map((group) => (
           <div
@@ -21,7 +21,6 @@ export function Skills() {
               {group.category}
             </h3>
 
-            {/* Tag grid — auto-fill fills container width cleanly */}
             <div
               className="grid gap-2"
               style={{ gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))" }}
@@ -29,6 +28,7 @@ export function Skills() {
               {group.items.map((item) => (
                 <span
                   key={item}
+                  data-cursor="expand"
                   className="
                     flex cursor-default items-center justify-center rounded
                     border border-silver-300/40 bg-carbon-800
