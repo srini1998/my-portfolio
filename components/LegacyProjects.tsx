@@ -2,10 +2,10 @@ import { legacyProjects } from "@/lib/data";
 
 export function LegacyProjects() {
   return (
-    <section id="projects" className="py-20">
-      <div className="mb-10">
+    <section id="projects" className="py-16 md:py-20">
+      <div className="mb-8 md:mb-10">
         <h2
-          className="sector-line text-3xl font-bold uppercase tracking-wider text-white"
+          className="sector-line text-2xl font-bold uppercase tracking-wider text-white md:text-3xl"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
           Technical Deep-Dives
@@ -15,46 +15,46 @@ export function LegacyProjects() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5 md:gap-6">
         {legacyProjects.map((project) => (
           <div
             key={project.title}
-            className="rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-racing/50"
+            className="rounded border border-asphalt-600 bg-asphalt-800 p-5 transition-colors hover:border-racing/50 md:p-6"
           >
-            {/* Header */}
-            <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
-              <div>
+            {/* Header — stacks on mobile, side-by-side on sm+ */}
+            <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+              <div className="flex-1">
                 <h3
-                  className="text-xl font-bold uppercase tracking-wide text-white"
+                  className="text-lg font-bold uppercase tracking-wide text-white md:text-xl"
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
                 >
                   {project.title}
                 </h3>
-                <p className="mt-1 text-sm text-silver-100">{project.description}</p>
+                <p className="mt-1 text-sm leading-relaxed text-silver-100">{project.description}</p>
               </div>
-              <span className="shrink-0 rounded border border-emerald-700/50 bg-emerald-900/20 px-2.5 py-0.5 font-mono text-xs uppercase tracking-widest text-emerald-400">
+              <span className="shrink-0 self-start rounded border border-emerald-700/50 bg-emerald-900/20 px-2.5 py-1 font-mono text-xs uppercase tracking-widest text-emerald-400">
                 Completed
               </span>
             </div>
 
             {/* Bullet deep-dive */}
             {project.bullets && project.bullets.length > 0 && (
-              <ul className="mb-5 space-y-2 border-t border-asphalt-600 pt-4">
+              <ul className="mb-5 space-y-2.5 border-t border-asphalt-600 pt-4">
                 {project.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-silver-100">
-                    <span className="mt-[7px] h-px w-5 shrink-0 bg-racing" />
+                  <li key={i} className="flex gap-3 text-sm leading-relaxed text-silver-100">
+                    <span className="mt-[9px] h-px w-5 shrink-0 bg-racing" />
                     {b}
                   </li>
                 ))}
               </ul>
             )}
 
-            {/* Tags */}
+            {/* Tags — larger py for thumb tap */}
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded border border-asphalt-500 bg-carbon-800 px-2.5 py-1 font-mono text-xs text-silver-100"
+                  className="rounded border border-asphalt-500 bg-carbon-800 px-3 py-2 font-mono text-xs text-silver-100"
                 >
                   {tag}
                 </span>

@@ -3,18 +3,20 @@ import { contact } from "@/lib/data";
 export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-asphalt-600 bg-carbon-900/90 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
         <span className="font-mono text-xs font-medium tracking-widest text-silver-300 uppercase">
           VENIGALLA<span className="text-racing ml-1">.</span>DEV
         </span>
-        <ul className="flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-silver-400">
+
+        {/* Desktop links — hidden below md */}
+        <ul className="hidden md:flex items-center gap-5 font-mono text-xs uppercase tracking-widest text-silver-400">
           {[
-            { label: "Skills",    href: "#skills"      },
-            { label: "Projects",  href: "#projects"    },
-            { label: "Roadmap",   href: "#roadmap"     },
-            { label: "Experience",href: "#experience"  },
-            { label: "Education", href: "#about"       },
-            { label: "Contact",   href: "#contact"     },
+            { label: "Skills",     href: "#skills"      },
+            { label: "Projects",   href: "#projects"    },
+            { label: "Roadmap",    href: "#roadmap"     },
+            { label: "Experience", href: "#experience"  },
+            { label: "Education",  href: "#about"       },
+            { label: "Contact",    href: "#contact"     },
           ].map(({ label, href }) => (
             <li key={label}>
               <a href={href} className="transition-colors hover:text-racing">
@@ -33,6 +35,16 @@ export function Nav() {
             </a>
           </li>
         </ul>
+
+        {/* Mobile — LinkedIn button only */}
+        <a
+          href={contact.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="md:hidden rounded border border-racing px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-racing transition-colors hover:bg-racing hover:text-white"
+        >
+          LinkedIn
+        </a>
       </nav>
     </header>
   );

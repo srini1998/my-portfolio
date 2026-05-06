@@ -2,7 +2,7 @@ import { contact } from "@/lib/data";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden py-24 text-center">
+    <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-4 py-20 text-center sm:px-6">
       {/* Carbon grid background */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -16,15 +16,18 @@ export function Hero() {
       <p className="relative mb-4 font-mono text-xs uppercase tracking-[0.2em] text-silver-200">
         MS Computer Science · Stevens Institute of Technology
       </p>
+
+      {/* Responsive name — scales from 2.5rem on phones to 4.5rem on desktop */}
       <h1
-        className="relative mb-4 text-6xl font-bold uppercase tracking-tight text-white sm:text-7xl"
+        className="relative mb-4 text-4xl font-bold uppercase tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
       >
         Krishna Sai Srinivas
         <br />
         <span className="text-racing">Venigalla</span>
       </h1>
-      <p className="relative mb-3 font-mono text-sm uppercase tracking-widest text-silver-100">
+
+      <p className="relative mb-3 font-mono text-xs uppercase tracking-widest text-silver-100 sm:text-sm">
         AI / ML Engineer &nbsp;·&nbsp; LLM Researcher &nbsp;·&nbsp; Backend Specialist
       </p>
       <p className="relative mb-10 max-w-xl text-sm leading-relaxed text-silver-200">
@@ -32,7 +35,8 @@ export function Hero() {
         large-scale LLM traces at Stevens
       </p>
 
-      <div className="relative flex flex-wrap justify-center gap-4">
+      {/* CTA buttons — full-width on mobile, auto on sm+ */}
+      <div className="relative flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
         <a
           href="#skills"
           className="rounded border border-racing bg-racing px-6 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-racing-dark"
@@ -55,22 +59,22 @@ export function Hero() {
         </a>
       </div>
 
-      {/* Dashboard stat strip */}
-      <div className="relative mt-16 w-full border-t border-asphalt-600 pt-10">
+      {/* Dashboard stat strip — stays 3 cols but pads tighter on mobile */}
+      <div className="relative mt-14 w-full border-t border-asphalt-600 pt-8 sm:mt-16 sm:pt-10">
         <div className="grid grid-cols-3 divide-x divide-asphalt-600">
           {[
             { value: "4 YRS",    label: "Industry Experience" },
             { value: "STEVENS",  label: "MS Computer Science"  },
-            { value: "JAN 2026", label: "Graduated"  },
+            { value: "JAN 2026", label: "Graduated"            },
           ].map(({ value, label }) => (
-            <div key={label} className="px-8 text-center">
+            <div key={label} className="px-3 text-center sm:px-8">
               <p
-                className="text-3xl font-bold uppercase text-racing"
+                className="text-xl font-bold uppercase text-racing sm:text-3xl"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
               >
                 {value}
               </p>
-              <p className="mt-1 font-mono text-xs uppercase tracking-widest text-silver-200">
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-silver-200 sm:text-xs">
                 {label}
               </p>
             </div>

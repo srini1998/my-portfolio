@@ -1,15 +1,16 @@
 export function About() {
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-16 md:py-20">
       <h2
-        className="sector-line mb-10 text-3xl font-bold uppercase tracking-wider text-white"
+        className="sector-line mb-8 text-2xl font-bold uppercase tracking-wider text-white md:mb-10 md:text-3xl"
         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
       >
         Education
       </h2>
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-racing/50">
-          <div className="mb-1 flex items-center justify-between">
+      {/* 1 col mobile → 2 col md+ */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+        <div className="rounded border border-asphalt-600 bg-asphalt-800 p-5 transition-colors hover:border-racing/50 md:p-6">
+          <div className="mb-1 flex flex-wrap items-start justify-between gap-2">
             <h3 className="font-semibold text-white">Stevens Institute of Technology</h3>
             <span className="font-mono text-xs text-silver-200">2024 – 2026</span>
           </div>
@@ -24,8 +25,8 @@ export function About() {
             scalable engineering across model robustness, NLP pipelines, and database systems.
           </p>
         </div>
-        <div className="rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-racing/50">
-          <div className="mb-1 flex items-center justify-between">
+        <div className="rounded border border-asphalt-600 bg-asphalt-800 p-5 transition-colors hover:border-racing/50 md:p-6">
+          <div className="mb-1 flex flex-wrap items-start justify-between gap-2">
             <h3 className="font-semibold text-white">Gitam University</h3>
             <span className="font-mono text-xs text-silver-200">2016 – 2020</span>
           </div>
