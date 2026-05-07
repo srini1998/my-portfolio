@@ -115,7 +115,7 @@ export const roadmapProjects: Project[] = [
     status: "soon",
   },
   {
-    title: "Distributed RL Traffic Optimizer (Jersey City Edition)",
+    title: "Distributed RL Traffic Optimizer (New York Edition)",
     description:
       "A multi-agent reinforcement learning system designed to optimize traffic signal timings in a simulated urban grid. Built using Ray RLLib and OpenAI Gym to reduce congestion and carbon emissions in high-density areas.",
     tags: ["Ray RLLib", "OpenAI Gym", "Reinforcement Learning", "Python", "Simulation"],
