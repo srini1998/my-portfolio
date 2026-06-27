@@ -62,13 +62,63 @@ export const experiences: Experience[] = [
 
 export const legacyProjects: Project[] = [
   {
-    title: "CI Pipeline Optimizer",
-    description: "Analyzes GitHub Actions pipelines to surface slow jobs, flaky tests, and parallelization wins. Supports live GitHub API data and generates ASCII Gantt timelines with critical-path analysis.",
+    title: "LLM Code Review Assistant",
+    description: "AI PR reviewer powered by Claude that integrates as a GitHub Actions step. Catches bugs, security flaws, and code smells in AI-generated diffs — directly addressing the code validation bottleneck.",
     bullets: [
-      "Topological sort + dynamic programming to compute critical path across job dependency graphs.",
-      "Flakiness score: 1 − |failure_rate − 0.5| × 2 — detects erratic pass/fail patterns accurately.",
-      "GitHub API integration (stdlib urllib, no extra deps) — fetch live run history without local files.",
-      "ASCII Gantt timeline and caching/sharding recommendations; 42 tests, all passing.",
+      "Claude Sonnet analyzes git diffs for bugs, security vulnerabilities, and code smells with severity scoring.",
+      "GitHub Actions workflow posts/updates a single structured comment per PR — no duplicate spam.",
+      "Quality gate fails CI on critical issues; configurable --fail-on severity flag for pipeline integration.",
+      "JSON, markdown, and terminal output formats; 14 tests all passing.",
+    ],
+    tags: ["Claude API", "LLM", "Python", "GitHub Actions", "FastAPI"],
+    github: "https://github.com/srini1998/llm-code-review-assistant",
+    demo: "https://llm-code-review.onrender.com/sample",
+    status: "live",
+  },
+  {
+    title: "LLM Inference Trace Analyzer",
+    description: "Latency bottleneck detector for LLM inference traces from the NDIF framework. Surfaces per-layer timing anomalies, memory hotspots, and throughput regressions across model runs.",
+    bullets: [
+      "Parses NDIF trace format to extract per-layer timing, memory, and throughput metrics.",
+      "Top-k slowest operation ranking with anomalous spike detection across multi-run trace sets.",
+      "Built during Stevens Institute research under Prof. Hao Wang; 12 tests passing.",
+    ],
+    tags: ["Python", "LLM Inference", "Performance Analysis", "FastAPI", "Research"],
+    github: "https://github.com/srini1998/llm-trace-analyzer",
+    status: "live",
+  },
+  {
+    title: "RAG Q&A Pipeline",
+    description: "Production retrieval-augmented generation system with dual embedding backends — dense sentence-transformer vectors for semantic search and TF-IDF as a zero-dependency CI fallback.",
+    bullets: [
+      "Dense retrieval via all-MiniLM-L6-v2 (384-dim); normalized dot-product = cosine similarity.",
+      "Auto-detects sentence-transformers availability; graceful TF-IDF fallback keeps CI green without PyTorch.",
+      "Chunk-level source attribution and answer generation via Claude API; 18 tests passing.",
+    ],
+    tags: ["RAG", "Claude API", "Sentence Transformers", "Python", "FastAPI"],
+    github: "https://github.com/srini1998/rag-pipeline",
+    status: "live",
+  },
+  {
+    title: "Music Recommender Engine",
+    description: "Collaborative filtering recommender using matrix factorization (SVD) over implicit user-item interaction matrices, with cosine similarity fallback for cold-start scenarios.",
+    bullets: [
+      "SVD latent factor model with configurable rank; learns user and item embeddings jointly.",
+      "Cosine similarity item-based fallback activates automatically for new users with no history.",
+      "REST API with /recommend, /similar, and /stats endpoints; 13 tests passing.",
+    ],
+    tags: ["Python", "NumPy", "SVD", "Collaborative Filtering", "FastAPI"],
+    github: "https://github.com/srini1998/music-recommender-engine",
+    status: "live",
+  },
+  {
+    title: "CI Pipeline Optimizer",
+    description: "Analyzes GitHub Actions pipelines to surface slow jobs, flaky tests, and parallelization wins. Fetches live run data directly from the GitHub API and generates ASCII Gantt timelines.",
+    bullets: [
+      "Topological sort + dynamic programming to compute true critical path across job dependency graphs.",
+      "Flakiness score: 1 − |failure_rate − 0.5| × 2 — identifies jobs with unpredictable pass/fail patterns.",
+      "GitHub API integration (stdlib urllib, zero extra deps) — works without local JSON files.",
+      "ASCII Gantt timeline, caching/sharding recommendations; 42 tests all passing.",
     ],
     tags: ["Python", "FastAPI", "GitHub Actions", "CI/CD", "Graph Algorithms"],
     github: "https://github.com/srini1998/ci-pipeline-optimizer",
@@ -76,41 +126,12 @@ export const legacyProjects: Project[] = [
     status: "live",
   },
   {
-    title: "LLM Code Review Assistant",
-    description: "AI-powered PR reviewer that integrates as a GitHub Actions step. Posts structured review comments to pull requests with severity scoring, category tagging, and a quality gate that blocks merges on critical issues.",
-    bullets: [
-      "Claude claude-sonnet-4-6 reviews git diffs for bugs, security vulnerabilities, and code smells.",
-      "GitHub Actions workflow posts/updates a single bot comment per PR — no duplicate spam.",
-      "Quality gate: fails CI if critical issues > 0; warns if high-severity count exceeds threshold.",
-      "Outputs terminal, markdown, and JSON formats with --fail-on severity flag for pipeline integration.",
-    ],
-    tags: ["Claude API", "Python", "FastAPI", "GitHub Actions", "LLM"],
-    github: "https://github.com/srini1998/llm-code-review-assistant",
-    demo: "https://llm-code-review.onrender.com/sample",
-    status: "live",
-  },
-  {
-    title: "Redis Rate Limiter",
-    description: "Production-grade distributed rate limiter with four algorithms implemented as atomic Lua scripts in Redis — eliminating race conditions under concurrent load.",
-    bullets: [
-      "Four algorithms: Token Bucket, Fixed Window, Leaky Bucket, and Sliding Window (ZSET-based).",
-      "All operations are single Lua scripts executed atomically — no TOCTOU race conditions.",
-      "Sliding window uses microsecond-precision UIDs as ZADD members to avoid timestamp collisions.",
-      "22 tests covering allow/deny/retry-after/reset across all four algorithms with fakeredis.",
-    ],
-    tags: ["Redis", "Lua", "Python", "FastAPI", "Distributed Systems"],
-    github: "https://github.com/srini1998/redis-rate-limiter",
-    demo: "https://redis-rate-limiter.onrender.com/check_sample",
-    status: "live",
-  },
-  {
     title: "Distributed API Gateway",
-    description: "Weighted round-robin load balancer with circuit breaker, rate limiting, and live HTTP proxying. Routes requests to real backends with automatic failure isolation and recovery.",
+    description: "Weighted round-robin load balancer with circuit breaker, rate limiting, and live HTTP proxying. Handles backend failures automatically via CLOSED → OPEN → HALF_OPEN recovery.",
     bullets: [
-      "Circuit breaker: CLOSED → OPEN → HALF_OPEN with configurable failure threshold and recovery probe.",
-      "Weighted round-robin with per-backend health tracking and latency recording.",
+      "Circuit breaker with configurable failure threshold and recovery probe interval.",
       "Live HTTP proxy to real backends via httpx with hop-by-hop header stripping.",
-      "30 tests including async proxy tests using httpx.MockTransport for transport-level injection.",
+      "30 tests including async proxy tests using httpx.MockTransport for network-level injection.",
     ],
     tags: ["Python", "FastAPI", "httpx", "Circuit Breaker", "Load Balancing"],
     github: "https://github.com/srini1998/api-gateway",
@@ -118,52 +139,28 @@ export const legacyProjects: Project[] = [
     status: "live",
   },
   {
-    title: "RAG Q&A Pipeline",
-    description: "Full retrieval-augmented generation system with dual embedding backends — dense sentence-transformer vectors for production and TF-IDF sparse vectors as a zero-dependency fallback.",
+    title: "Redis Rate Limiter",
+    description: "Production-grade distributed rate limiter with four algorithms as atomic Lua scripts — eliminating TOCTOU race conditions entirely.",
     bullets: [
-      "Dense retrieval via sentence-transformers all-MiniLM-L6-v2 (384-dim, normalized dot-product cosine).",
-      "TF-IDF fallback activates automatically when sentence-transformers is not installed.",
-      "Chunk-level retrieval with source attribution; answer generation via Claude API.",
-      "18 tests passing across both embedding backends with no PyTorch required in CI.",
+      "Token Bucket, Fixed Window, Leaky Bucket, and Sliding Window (ZSET-based) algorithms.",
+      "All ops are single atomic Lua scripts; sliding window uses µs-precision UIDs to avoid collisions.",
+      "22 tests covering allow/deny/retry-after/reset across all algorithms with fakeredis.",
     ],
-    tags: ["Python", "FastAPI", "RAG", "Claude API", "Sentence Transformers", "TF-IDF"],
-    github: "https://github.com/srini1998/rag-pipeline",
+    tags: ["Redis", "Lua", "Python", "FastAPI", "Distributed Systems"],
+    github: "https://github.com/srini1998/redis-rate-limiter",
+    demo: "https://redis-rate-limiter.onrender.com/check_sample",
     status: "live",
   },
   {
-    title: "Music Recommender Engine",
-    description: "Collaborative filtering recommendation engine using matrix factorization (SVD) over implicit user-item interaction matrices, with cosine similarity for item-based fallback.",
+    title: "Real-Time OLAP Dashboard",
+    description: "Streaming event pipeline with sliding window analytics. Ingests time-series events and computes rolling P95/P99 percentiles, group-by aggregations, and multi-window metrics in real time.",
     bullets: [
-      "SVD-based latent factor model with configurable rank for user/item embeddings.",
-      "Cosine similarity item-based fallback for cold-start scenarios without user history.",
-      "REST API with /recommend, /similar, and /stats endpoints; 13 tests all passing.",
-    ],
-    tags: ["Python", "FastAPI", "NumPy", "SVD", "Collaborative Filtering"],
-    github: "https://github.com/srini1998/music-recommender-engine",
-    status: "live",
-  },
-  {
-    title: "OLAP Analytics Dashboard",
-    description: "Streaming event pipeline with real-time window function analytics. Ingests time-series events and computes rolling aggregations, percentiles, and group-by metrics on a sliding time window.",
-    bullets: [
-      "In-memory sliding window engine with configurable window sizes and step intervals.",
-      "Supports COUNT, SUM, AVG, MIN, MAX, and P95/P99 percentile aggregations per window.",
+      "In-memory sliding window engine with configurable size and step intervals.",
+      "COUNT, SUM, AVG, MIN, MAX, P95/P99 percentile aggregations per window.",
       "REST API for event ingestion and live metric queries; 14 tests passing.",
     ],
     tags: ["Python", "FastAPI", "Streaming", "OLAP", "Window Functions"],
     github: "https://github.com/srini1998/olap-analytics-dashboard",
-    status: "live",
-  },
-  {
-    title: "LLM Inference Trace Analyzer",
-    description: "Bottleneck detection tool for NDIF LLM inference traces. Parses raw trace logs, identifies latency hotspots by layer and operation type, and generates structured performance reports.",
-    bullets: [
-      "Parses NDIF trace format to extract per-layer timing, memory, and throughput metrics.",
-      "Identifies top-k slowest operations and flags anomalous latency spikes across trace runs.",
-      "Built for Stevens Institute NDIF research project under Prof. Hao Wang; 12 tests passing.",
-    ],
-    tags: ["Python", "FastAPI", "LLM", "Performance Analysis", "Research"],
-    github: "https://github.com/srini1998/llm-trace-analyzer",
     status: "live",
   },
   {
@@ -206,66 +203,57 @@ export const legacyProjects: Project[] = [
 
 export const roadmapProjects: Project[] = [
   {
-    title: "Real-Time Crisis Intelligence Agent",
+    title: "LLM Evaluation Harness",
     description:
-      "Extends the Crisis Information Graph into a live RAG pipeline — ingests streaming social data, retrieves context, and generates structured situation reports via Claude.",
-    tags: ["RAG", "Claude", "Vector DB", "Streaming", "NLP"],
+      "Automated evaluation framework for LLM outputs — measures faithfulness, relevance, and groundedness against ground-truth using LLM-as-judge. Integrates with CI/CD to catch model regressions on every commit.",
+    tags: ["LLM Eval", "Claude", "Python", "FastAPI", "CI/CD"],
     status: "soon",
   },
   {
     title: "Cloud-Native MLOps Pipeline",
     description:
-      "An end-to-end automated deployment system on AWS. Features automated model retraining triggered by S3 data uploads, CI/CD testing via GitHub Actions, and production-grade deployment to SageMaker.",
-    tags: ["AWS", "SageMaker", "GitHub Actions", "CI/CD", "MLOps", "S3"],
+      "End-to-end automated ML deployment on AWS — model retraining triggered by S3 data uploads, evaluation gates in GitHub Actions, and production deployment to SageMaker with rollback support.",
+    tags: ["AWS", "SageMaker", "GitHub Actions", "MLOps", "Python"],
     status: "soon",
   },
   {
-    title: "Distributed RL Traffic Optimizer (New York Edition)",
+    title: "Multi-Agent Code Generation System",
     description:
-      "A multi-agent reinforcement learning system designed to optimize traffic signal timings in a simulated urban grid. Built using Ray RLLib and OpenAI Gym to reduce congestion and carbon emissions in high-density areas.",
-    tags: ["Ray RLLib", "OpenAI Gym", "Reinforcement Learning", "Python", "Simulation"],
+      "Agentic pipeline where a Planner LLM decomposes features into tasks, a Coder LLM implements them, and a Reviewer LLM validates output before merge — closing the AI code generation → validation loop.",
+    tags: ["Claude", "LangGraph", "Multi-Agent", "Python", "GitHub Actions"],
     status: "soon",
   },
   {
-    title: "Hybrid Financial Analyst",
+    title: "Real-Time Crisis Intelligence Agent",
     description:
-      "Combines LSTM time-series forecasting with an LLM reasoning layer to analyze market signals and generate human-readable investment insights.",
-    tags: ["LSTM", "LLM", "PyTorch", "Finance", "Claude"],
+      "Extends the Crisis Information Graph into a live agentic RAG pipeline — ingests streaming social data, retrieves context from a vector store, and generates structured situation reports via Claude.",
+    tags: ["RAG", "Claude", "Vector DB", "Streaming", "NLP"],
     status: "soon",
   },
 ];
 
 export const skills: SkillGroup[] = [
   {
+    category: "AI / ML",
+    items: ["Claude API", "LLM Evaluation", "RAG", "Sentence Transformers", "PyTorch", "BERT", "Hugging Face", "LangGraph", "scikit-learn", "SVD / Collaborative Filtering"],
+  },
+  {
     category: "Languages",
-    items: ["Python", "Java", "SQL", "JavaScript", "TypeScript", "HTML", "CSS"],
+    items: ["Python", "Java", "SQL", "JavaScript", "TypeScript"],
   },
   {
-    category: "AI / ML Frameworks",
-    items: ["PyTorch", "TensorFlow", "BERT", "Hugging Face", "LangGraph", "scikit-learn", "Reinforcement Learning"],
-  },
-  {
-    category: "Backend & Tools",
-    items: ["Java EE", "PostgreSQL", "Git", "AWS", "CI/CD", "Postman", "JIRA", "Selenium", "BDD-Cucumber"],
+    category: "Infrastructure & Backend",
+    items: ["FastAPI", "Redis", "PostgreSQL", "GitHub Actions", "Docker", "AWS", "CI/CD", "Java EE"],
   },
   {
     category: "Concepts",
-    items: [
-      "Machine Learning",
-      "Deep Learning",
-      "NLP",
-      "Computer Vision",
-      "RAG",
-      "LLM Evaluation",
-      "OLAP / Query Optimization",
-      "Agile / SDLC",
-    ],
+    items: ["LLM Inference Optimization", "Distributed Systems", "Rate Limiting", "Circuit Breaker", "NLP", "Computer Vision", "OLAP"],
   },
 ];
 
 export const contact = {
   email: "sriniusvenigalla@gmail.com",
   linkedin: "https://linkedin.com/in/srinivas-venigalla-skywalker",
-  github: "https://github.com/KrishSrini",
+  github: "https://github.com/srini1998",
   location: "Jersey City, NJ",
 };

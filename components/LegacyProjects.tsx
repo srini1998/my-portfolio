@@ -9,10 +9,10 @@ export function LegacyProjects() {
           className="sector-line text-2xl font-bold uppercase tracking-wider text-white md:text-3xl"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          <ScrambleText text="Technical Deep-Dives" />
+          <ScrambleText text="AI, ML & Systems Projects" />
         </h2>
         <p className="mt-2 font-mono text-xs uppercase tracking-widest text-silver-200">
-          Completed research &amp; engineering projects
+          Production AI systems · Infrastructure · Research
         </p>
       </div>
 

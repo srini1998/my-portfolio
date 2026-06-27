@@ -10,10 +10,10 @@ export function Roadmap() {
           className="sector-line text-2xl font-bold uppercase tracking-wider text-white md:text-3xl"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          <ScrambleText text="2026 Roadmap" />
+          <ScrambleText text="Next: AI Research Agenda" />
         </h2>
         <p className="mt-2 font-mono text-xs uppercase tracking-widest text-silver-200">
-          Agentic AI projects in active development
+          LLM evaluation · Multi-agent systems · MLOps
         </p>
       </div>
 
