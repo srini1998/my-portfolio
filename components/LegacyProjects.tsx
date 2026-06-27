@@ -62,16 +62,28 @@ export function LegacyProjects() {
               ))}
             </div>
 
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-racing hover:underline"
-              >
-                GitHub →
-              </a>
-            )}
+            <div className="mt-4 flex flex-wrap gap-4">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block font-mono text-xs uppercase tracking-widest text-racing hover:underline"
+                >
+                  GitHub →
+                </a>
+              )}
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block font-mono text-xs uppercase tracking-widest text-emerald-400 hover:underline"
+                >
+                  Live Demo →
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>
