@@ -72,7 +72,7 @@ export const legacyProjects: Project[] = [
     ],
     tags: ["Claude API", "LLM", "Python", "GitHub Actions", "FastAPI"],
     github: "https://github.com/srini1998/llm-code-review-assistant",
-    demo: "https://llm-code-review.onrender.com/sample",
+    demo: "https://llm-code-review-jsd6.onrender.com/sample",
     status: "live",
   },
   {
@@ -135,7 +135,7 @@ export const legacyProjects: Project[] = [
     ],
     tags: ["Python", "FastAPI", "httpx", "Circuit Breaker", "Load Balancing"],
     github: "https://github.com/srini1998/api-gateway",
-    demo: "https://api-gateway-demo.onrender.com/simulate",
+    demo: "https://api-gateway-demo-bjhm.onrender.com/simulate",
     status: "live",
   },
   {
@@ -148,7 +148,7 @@ export const legacyProjects: Project[] = [
     ],
     tags: ["Redis", "Lua", "Python", "FastAPI", "Distributed Systems"],
     github: "https://github.com/srini1998/redis-rate-limiter",
-    demo: "https://redis-rate-limiter.onrender.com/check_sample",
+    demo: "https://redis-rate-limiter-bnnp.onrender.com/check_sample",
     status: "live",
   },
   {
