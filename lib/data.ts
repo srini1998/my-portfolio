@@ -76,42 +76,6 @@ export const legacyProjects: Project[] = [
     status: "live",
   },
   {
-    title: "LLM Inference Trace Analyzer",
-    description: "Latency bottleneck detector for LLM inference traces from the NDIF framework. Surfaces per-layer timing anomalies, memory hotspots, and throughput regressions across model runs.",
-    bullets: [
-      "Parses NDIF trace format to extract per-layer timing, memory, and throughput metrics.",
-      "Top-k slowest operation ranking with anomalous spike detection across multi-run trace sets.",
-      "Built during Stevens Institute research under Prof. Hao Wang; 12 tests passing.",
-    ],
-    tags: ["Python", "LLM Inference", "Performance Analysis", "FastAPI", "Research"],
-    github: "https://github.com/srini1998/llm-trace-analyzer",
-    status: "live",
-  },
-  {
-    title: "RAG Q&A Pipeline",
-    description: "Production retrieval-augmented generation system with dual embedding backends — dense sentence-transformer vectors for semantic search and TF-IDF as a zero-dependency CI fallback.",
-    bullets: [
-      "Dense retrieval via all-MiniLM-L6-v2 (384-dim); normalized dot-product = cosine similarity.",
-      "Auto-detects sentence-transformers availability; graceful TF-IDF fallback keeps CI green without PyTorch.",
-      "Chunk-level source attribution and answer generation via Claude API; 18 tests passing.",
-    ],
-    tags: ["RAG", "Claude API", "Sentence Transformers", "Python", "FastAPI"],
-    github: "https://github.com/srini1998/rag-pipeline",
-    status: "live",
-  },
-  {
-    title: "Music Recommender Engine",
-    description: "Collaborative filtering recommender using matrix factorization (SVD) over implicit user-item interaction matrices, with cosine similarity fallback for cold-start scenarios.",
-    bullets: [
-      "SVD latent factor model with configurable rank; learns user and item embeddings jointly.",
-      "Cosine similarity item-based fallback activates automatically for new users with no history.",
-      "REST API with /recommend, /similar, and /stats endpoints; 13 tests passing.",
-    ],
-    tags: ["Python", "NumPy", "SVD", "Collaborative Filtering", "FastAPI"],
-    github: "https://github.com/srini1998/music-recommender-engine",
-    status: "live",
-  },
-  {
     title: "CI Pipeline Optimizer",
     description: "Analyzes GitHub Actions pipelines to surface slow jobs, flaky tests, and parallelization wins. Fetches live run data directly from the GitHub API and generates ASCII Gantt timelines.",
     bullets: [
@@ -149,6 +113,30 @@ export const legacyProjects: Project[] = [
     tags: ["Redis", "Lua", "Python", "FastAPI", "Distributed Systems"],
     github: "https://github.com/srini1998/redis-rate-limiter",
     demo: "https://redis-rate-limiter-bnnp.onrender.com/check_sample",
+    status: "live",
+  },
+  {
+    title: "RAG Q&A Pipeline",
+    description: "Production retrieval-augmented generation system with dual embedding backends — dense sentence-transformer vectors for semantic search and TF-IDF as a zero-dependency CI fallback.",
+    bullets: [
+      "Dense retrieval via all-MiniLM-L6-v2 (384-dim); normalized dot-product = cosine similarity.",
+      "Auto-detects sentence-transformers availability; graceful TF-IDF fallback keeps CI green without PyTorch.",
+      "Chunk-level source attribution and answer generation via Claude API; 18 tests passing.",
+    ],
+    tags: ["RAG", "Claude API", "Sentence Transformers", "Python", "FastAPI"],
+    github: "https://github.com/srini1998/rag-pipeline",
+    status: "live",
+  },
+  {
+    title: "Music Recommender Engine",
+    description: "Collaborative filtering recommender using matrix factorization (SVD) over implicit user-item interaction matrices, with cosine similarity fallback for cold-start scenarios.",
+    bullets: [
+      "SVD latent factor model with configurable rank; learns user and item embeddings jointly.",
+      "Cosine similarity item-based fallback activates automatically for new users with no history.",
+      "REST API with /recommend, /similar, and /stats endpoints; 13 tests passing.",
+    ],
+    tags: ["Python", "NumPy", "SVD", "Collaborative Filtering", "FastAPI"],
+    github: "https://github.com/srini1998/music-recommender-engine",
     status: "live",
   },
   {
