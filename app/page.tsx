@@ -26,8 +26,8 @@ const sections = [
     id: "contact",
     content: (
       <div className="flex min-h-full flex-col justify-center">
-        <Partners />
         <Contact />
+        <Partners />
         <Footer />
       </div>
     ),
