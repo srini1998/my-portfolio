@@ -11,16 +11,16 @@ const config: Config = {
     extend: {
       colors: {
         carbon: {
-          950: "#080808",
-          900: "#0f0f0f",
-          800: "#141414",
+          950: "#0d0e10",
+          900: "#17181c",
+          800: "#1e2024",
         },
         asphalt: {
-          800: "#1c1c1c",
-          700: "#242424",
-          600: "#2e2e2e",
-          500: "#3a3a3a",
-          400: "#4a4a4a",
+          800: "#232529",
+          700: "#2b2d32",
+          600: "#35373d",
+          500: "#42444b",
+          400: "#52545c",
         },
         silver: {
           100: "#f5f5f5",  // near-white emphasis
@@ -30,15 +30,15 @@ const config: Config = {
           500: "#606060",  // dividers / whispers
         },
         racing: {
-          DEFAULT: "#e60000",
-          light: "#ff1a1a",
-          dark: "#b30000",
-          muted: "#cc000033",
+          DEFAULT: "#ffffff",
+          light: "#f5f5f5",
+          dark: "#141414",
+          muted: "#ffffff26",
         },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Barlow Condensed", "Inter", "sans-serif"],
+        display: ["Outfit", "Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       backgroundImage: {
@@ -47,6 +47,44 @@ const config: Config = {
       },
       backgroundSize: {
         grid: "40px 40px",
+      },
+      boxShadow: {
+        "glow-sm": "0 0 12px rgba(255,255,255,0.25)",
+        glow: "0 0 24px rgba(255,255,255,0.3)",
+        "glow-lg": "0 0 60px rgba(255,255,255,0.25)",
+        "glow-dark-sm": "0 0 12px rgba(20,20,20,0.15)",
+        "glow-dark": "0 0 28px rgba(20,20,20,0.22)",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.4" },
+        },
+        drift: {
+          "0%": { backgroundPosition: "0px 0px" },
+          "100%": { backgroundPosition: "280px 280px" },
+        },
+        ember: {
+          "0%": { transform: "translateY(0) translateX(0) scale(0.4)", opacity: "0" },
+          "8%": { opacity: "1" },
+          "70%": { opacity: "0.85" },
+          "100%": { transform: "translateY(-105vh) translateX(var(--drift, 20px)) scale(1)", opacity: "0" },
+        },
+        "ember-glow": {
+          "0%, 100%": { opacity: "0.7", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.08)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 22s linear infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        drift: "drift 26s linear infinite",
+        ember: "ember linear infinite",
+        "ember-glow": "ember-glow 5s ease-in-out infinite",
       },
     },
   },

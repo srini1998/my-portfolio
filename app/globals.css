@@ -2,23 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0f0f0f;
+  background-color: #17181c;  /* soft charcoal — not flat black */
+  background-image: radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255, 255, 255, 0.05), transparent 60%);
   color: #e0e0e0;  /* silver-200 — 10:1 on carbon-900 */
   font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Racing red scrollbar */
+/* Film-grain texture — sits above the wallpaper (z-0) but below page
+   content (z-10), so opaque light sections paint over it as normal. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #141414; }
-::-webkit-scrollbar-thumb { background: #e60000; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #1e2024; }
+::-webkit-scrollbar-thumb { background: #f5f5f5; border-radius: 2px; }
 
 /* Hide native cursor on pointer-fine devices — custom cursor takes over */
 @media (pointer: fine) {
@@ -36,6 +49,39 @@ body {
   display: block;
   width: 3px;
   height: 1.5rem;
-  background: #e60000;
+  background: #f5f5f5;
   border-radius: 1px;
+}
+
+/* Hero glow — soft white bloom above the fold */
+.hero-glow {
+  background: radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255, 255, 255, 0.12), transparent 70%);
+}
+
+/* Inverted (light) section — for the black ↔ white alternation */
+.section-light {
+  background-color: #f5f5f5;
+  color: #0f0f0f;
+}
+.section-light .sector-line::before {
+  background: #141414;
+}
+
+/* Faint horizontal scanlines — broadcast-monitor texture */
+.hud-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Pause CSS/Framer motion for users who've asked for it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-drift {
+    animation: none !important;
+  }
 }

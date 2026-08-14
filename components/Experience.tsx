@@ -1,30 +1,34 @@
 import { experiences, type Experience as ExperienceType } from "@/lib/data";
-import { ScrambleText } from "@/components/ScrambleText";
+import { SectionHeader } from "@/components/SectionHeader";
 
-function TimelineItem({ exp }: { exp: ExperienceType }) {
+function TimelineItem({ exp, index }: { exp: ExperienceType; index: number }) {
   return (
-    <div className="relative pl-8">
-      <span
-        className={`absolute left-0 top-2 h-3 w-3 rounded-full border-2 ${
-          exp.active
-            ? "border-racing bg-racing shadow-[0_0_10px_2px_rgba(230,0,0,0.5)]"
-            : "border-asphalt-500 bg-asphalt-800"
-        }`}
-      />
-      <span className="absolute left-[5px] top-4 h-full w-px bg-asphalt-600" />
-
-      <div className="mb-8 rounded border border-asphalt-600 bg-asphalt-800 p-6 transition-colors hover:border-asphalt-500">
-        <div className="mb-1">
-          <h3 className="font-semibold text-white">{exp.role}</h3>
-        </div>
-        <p className="font-mono text-xs uppercase tracking-widest text-racing">{exp.company}</p>
-        <p className="mb-4 mt-0.5 font-mono text-xs text-silver-200">
-          {exp.period} · {exp.location}
+    <div className="group -mx-5 grid grid-cols-1 gap-3 border-t border-asphalt-600 px-5 py-8 transition-colors duration-300 hover:bg-asphalt-800/30 sm:-mx-8 sm:grid-cols-12 sm:gap-6 sm:px-8 md:py-10 lg:-mx-16 lg:px-16">
+      <div className="sm:col-span-3">
+        <span className="font-mono text-5xl font-bold text-asphalt-500 transition-colors duration-300 group-hover:text-white md:text-6xl">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <p className="mt-2 font-mono text-xs uppercase tracking-widest text-silver-300">
+          {exp.period}
         </p>
-        <ul className="space-y-2">
+        <p className="font-mono text-xs uppercase tracking-widest text-silver-400">
+          {exp.location}
+        </p>
+        {exp.active && (
+          <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-racing/50 bg-racing/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-racing">
+            <span className="h-1.5 w-1.5 rounded-full bg-racing" />
+            Current
+          </span>
+        )}
+      </div>
+
+      <div className="sm:col-span-9">
+        <h3 className="font-display text-2xl font-bold text-white md:text-3xl">{exp.role}</h3>
+        <p className="mt-1 font-mono text-sm uppercase tracking-widest text-racing">{exp.company}</p>
+        <ul className="mt-5 space-y-3">
           {exp.bullets.map((b, i) => (
-            <li key={i} className="flex gap-3 text-sm text-silver-100">
-              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-racing" />
+            <li key={i} className="flex gap-3 text-sm leading-relaxed text-silver-100 md:text-base">
+              <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-racing" />
               {b}
             </li>
           ))}
@@ -36,17 +40,14 @@ function TimelineItem({ exp }: { exp: ExperienceType }) {
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20">
-      <h2
-        className="sector-line mb-10 text-3xl font-bold uppercase tracking-wider text-white"
-        style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-      >
-        <ScrambleText text="Experience" />
-      </h2>
-      <div>
-        {experiences.map((exp) => (
-          <TimelineItem key={`${exp.company}-${exp.period}`} exp={exp} />
-        ))}
+    <section className="relative flex min-h-full flex-col justify-center py-16 md:py-24">
+      <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
+        <SectionHeader index={4} title="Experience" />
+        <div className="border-b border-asphalt-600">
+          {experiences.map((exp, i) => (
+            <TimelineItem key={`${exp.company}-${exp.period}`} exp={exp} index={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

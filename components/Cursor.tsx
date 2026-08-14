@@ -8,6 +8,7 @@ export function Cursor() {
   const [isTouch, setIsTouch] = useState(false);
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
@@ -29,7 +30,9 @@ export function Cursor() {
     };
 
     const onOver = (e: MouseEvent) => {
-      setExpanded(!!(e.target as Element).closest('[data-cursor="expand"]'));
+      const target = e.target as Element;
+      setExpanded(!!target.closest('[data-cursor="expand"]'));
+      setIsLight(!!target.closest(".section-light"));
     };
 
     const onLeave = () => setVisible(false);
@@ -50,9 +53,12 @@ export function Cursor() {
 
   if (!mounted || isTouch) return null;
 
+  const borderColor = isLight ? "#141414" : "#f5f5f5";
+  const fillColor = isLight ? "rgba(20,20,20,0.12)" : "rgba(255,255,255,0.15)";
+
   return (
     <motion.div
-      className="pointer-events-none fixed z-[999] rounded-full border-2 border-racing"
+      className="pointer-events-none fixed z-[999] rounded-full border-2"
       style={{
         x: sx,
         y: sy,
@@ -63,7 +69,8 @@ export function Cursor() {
       animate={{
         width: expanded ? 44 : 22,
         height: expanded ? 44 : 22,
-        backgroundColor: expanded ? "rgba(230,0,0,0.12)" : "transparent",
+        borderColor,
+        backgroundColor: expanded ? fillColor : "transparent",
         opacity: visible ? 1 : 0,
       }}
       transition={{ duration: 0.15, ease: "easeOut" }}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Cursor } from "@/components/Cursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { MotionProvider } from "@/components/MotionProvider";
 
 export const metadata: Metadata = {
   title: "Krishna Sai Srinivas Venigalla — AI/ML Engineer",
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
-        <ScrollProgress />
-        <Cursor />
-        {children}
+        <MotionProvider>
+          <ScrollProgress />
+          <Cursor />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );
