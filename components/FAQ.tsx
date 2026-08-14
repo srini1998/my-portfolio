@@ -12,7 +12,7 @@ const faqs: AccordionItem[] = [
   },
   {
     q: "Do you have industry experience, or just research?",
-    a: "Both. 4 years as a Software Engineering Analyst at Accenture before starting my MS, plus ongoing NDIF research at Stevens under Prof. Hao Wang.",
+    a: "Both. 4 years as a Software Engineering Analyst at Accenture before starting my MS, plus NDIF research at Stevens under Prof. Hao Wang.",
   },
   {
     q: "What's your tech stack?",

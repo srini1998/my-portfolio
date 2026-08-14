@@ -1,4 +1,5 @@
 import { RevealText } from "@/components/RevealText";
+import { FireParticles } from "@/components/FireParticles";
 
 const facts = [
   { label: "Currently", value: "Completed Masters · Stevens" },
@@ -9,7 +10,8 @@ const facts = [
 export function Pitch() {
   return (
     <section className="section-light relative min-h-full overflow-hidden py-16 md:py-24">
-      <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
+      <FireParticles tone="dark" />
+      <div className="relative mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
         <h2 className="max-w-3xl font-display text-[clamp(2rem,5.5vw,4.25rem)] font-bold leading-[1.02] tracking-tight text-carbon-900">
           <RevealText text="More than what's on paper." />
         </h2>

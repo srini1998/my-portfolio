@@ -1,6 +1,7 @@
 import { skills } from "@/lib/data";
 import { SectionHeader } from "@/components/SectionHeader";
 import { RevealTile } from "@/components/RevealTile";
+import { FireParticles } from "@/components/FireParticles";
 
 function slug(category: string) {
   return category.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
@@ -8,8 +9,9 @@ function slug(category: string) {
 
 export function Skills() {
   return (
-    <section className="section-light relative flex min-h-full flex-col justify-center py-16 md:py-24">
-      <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
+    <section className="section-light relative flex min-h-full flex-col justify-center overflow-hidden py-16 md:py-24">
+      <FireParticles tone="dark" />
+      <div className="relative mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeader index={1} title="Technical Stack" invert />
           <span className="mb-8 font-mono text-xs uppercase tracking-widest text-carbon-900/50 md:mb-10">

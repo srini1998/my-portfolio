@@ -1,10 +1,12 @@
 import { SectionHeader } from "@/components/SectionHeader";
 import { RevealTile } from "@/components/RevealTile";
+import { FireParticles } from "@/components/FireParticles";
 
 export function About() {
   return (
-    <section className="section-light relative flex min-h-full flex-col justify-center py-16 md:py-24">
-      <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
+    <section className="section-light relative flex min-h-full flex-col justify-center overflow-hidden py-16 md:py-24">
+      <FireParticles tone="dark" />
+      <div className="relative mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
         <SectionHeader index={5} title="Education" invert />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           <RevealTile>
