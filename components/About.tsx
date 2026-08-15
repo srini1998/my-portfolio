@@ -18,7 +18,7 @@ export function About() {
               <p className="mb-1 font-mono text-xs uppercase tracking-widest text-racing-dark">
                 MS Computer Science
               </p>
-              <p className="mb-1 font-mono text-xs text-carbon-900/60">Hoboken, NJ</p>
+              <p className="mb-1 font-mono text-xs text-carbon-900/60">Hoboken, NJ, USA</p>
               <p className="mt-4 text-sm leading-relaxed text-carbon-900/80">
                 Advanced coursework in Artificial Intelligence, Machine Learning, Deep Learning,
                 and Database Systems. Contributing to the NDIF research framework under Prof. Hao Wang,

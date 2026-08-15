@@ -28,7 +28,7 @@ export const experiences: Experience[] = [
     role: "Research Assistant",
     company: "Stevens Institute of Technology",
     period: "May 2025 – Aug 2025",
-    location: "Hoboken, NJ",
+    location: "Hoboken, NJ, USA",
     active: true,
     bullets: [
       "Working under Prof. Hao Wang on the NDIF research project — empirical analysis of large-scale LLM model traces.",
