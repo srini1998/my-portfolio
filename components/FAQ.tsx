@@ -8,7 +8,7 @@ const faqs: AccordionItem[] = [
   },
   {
     q: "Are you open to relocation?",
-    a: "Yes — based in Jersey City, NJ and open to relocating for the right role.",
+    a: "Yes — based in Jersey City, NJ, USA and open to relocating for the right role.",
   },
   {
     q: "Do you have industry experience, or just research?",

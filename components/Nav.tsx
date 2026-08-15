@@ -11,7 +11,7 @@ const statusItems = [
   "4+ YRS PRODUCTION ENGINEERING",
   "MS CS · STEVENS INSTITUTE OF TECHNOLOGY",
   "AI / ML · LLM RESEARCH · BACKEND SYSTEMS",
-  "JERSEY CITY, NJ",
+  "JERSEY CITY, NJ, USA",
 ];
 
 const links = [

@@ -227,7 +227,7 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "Languages",
-    items: ["Python", "Java", "SQL", "JavaScript", "TypeScript"],
+    items: ["Python", "Java", "C", "C++", "SQL", "JavaScript"],
   },
   {
     category: "Infrastructure & Backend",
@@ -243,5 +243,5 @@ export const contact = {
   email: "sriniusvenigalla@gmail.com",
   linkedin: "https://linkedin.com/in/srinivas-venigalla-skywalker",
   github: "https://github.com/srini1998",
-  location: "Jersey City, NJ",
+  location: "Jersey City, NJ, USA",
 };
