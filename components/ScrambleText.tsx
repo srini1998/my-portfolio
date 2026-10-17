@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { useInView } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 const POOL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·—#@";
 
@@ -16,7 +16,7 @@ function scramble(text: string) {
 export function ScrambleText({ text }: { text: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: false, margin: "-60px" });
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const [display, setDisplay] = useState(text);

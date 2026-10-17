@@ -1,7 +1,7 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 interface MarqueeProps {
   items: string[];
@@ -10,7 +10,7 @@ interface MarqueeProps {
 }
 
 export function Marquee({ items, className, tone = "dark" }: MarqueeProps) {
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const textTone = tone === "light" ? "text-carbon-900/70" : "text-silver-400";

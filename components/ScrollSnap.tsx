@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { motion } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 interface Slide {
   id: string;
@@ -34,7 +34,7 @@ export function ScrollSnap({ sections }: ScrollSnapProps) {
   const lastWheelTime = useRef(0);
   const touchStartY = useRef<number | null>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const active = isDesktop && !reduced;

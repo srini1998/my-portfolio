@@ -51,16 +51,16 @@ export function Hero() {
               AI / ML Engineer &nbsp;·&nbsp; LLM Researcher &nbsp;·&nbsp; Backend Specialist
             </p>
             <p className="mb-10 max-w-xl text-sm leading-relaxed text-silver-200">
-              4 years building production systems at Accenture · Currently researching
-              large-scale LLM traces at Stevens
+              4 years of backend engineering at Accenture · Research experience
+              analyzing large-scale LLM traces at Stevens
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
               <MagneticButton
-                href="#skills"
+                href="#projects"
                 className="rounded-full bg-white px-7 py-3 text-center font-semibold text-carbon-900 shadow-glow-sm transition-transform hover:scale-[1.03]"
               >
-                View Record
+                Explore projects
               </MagneticButton>
               <MagneticButton
                 href={contact.linkedin}

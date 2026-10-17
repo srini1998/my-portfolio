@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 const WARM_COLORS = ["#ffffff", "#f5f5f5", "#eeeeee", "#ffffff", "#fafafa"];
 const DARK_COLORS = ["#141414", "#1e1e1e", "#2b2b2b", "#0d0d0d", "#3a3a3a"];
@@ -37,7 +37,7 @@ interface FireParticlesProps {
 // drops the warm color/glow blooms (which only read well on a dark
 // backdrop) for plain dark sparks suited to light sections.
 export function FireParticles({ tone = "warm" }: FireParticlesProps) {
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const [embers, setEmbers] = useState<Ember[]>([]);

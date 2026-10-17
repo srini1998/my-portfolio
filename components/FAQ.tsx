@@ -20,7 +20,7 @@ const faqs: AccordionItem[] = [
   },
   {
     q: "Can I see your code?",
-    a: "Every project on this site links to a public GitHub repo, and most have a live demo you can try directly.",
+    a: "Project pages distinguish public source, private repositories, local verification and hosted experiences. Each case study states what was actually checked and what remains unverified.",
   },
   {
     q: "How do I get in touch?",

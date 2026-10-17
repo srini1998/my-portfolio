@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { legacyProjects } from "@/lib/data";
 import { SectionHeader } from "@/components/SectionHeader";
 import { RevealText } from "@/components/RevealText";
@@ -8,8 +9,8 @@ export function LegacyProjects() {
       <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
         <SectionHeader
           index={2}
-          title="AI, ML & Systems Projects"
-          subtitle="Production AI systems · Infrastructure · Research"
+          title="Projects you can inspect"
+          subtitle="Practical workflows · Actual checks · Explicit limitations"
         />
 
         <div className="border-b border-t border-asphalt-600">
@@ -40,7 +41,7 @@ export function LegacyProjects() {
                       rel="noopener noreferrer"
                       className="font-mono text-xs uppercase tracking-widest text-emerald-400 hover:underline"
                     >
-                      Live Demo →
+                      Hosted experience →
                     </a>
                   )}
                 </div>
@@ -52,10 +53,12 @@ export function LegacyProjects() {
                     <RevealText text={project.title} />
                   </h3>
                   <span className="shrink-0 rounded-full border border-emerald-700/50 bg-emerald-900/20 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-emerald-400">
-                    ● Shipped
+                    {project.status === "local" ? "Verified local scope" : project.status === "archive" ? "Research archive" : project.status === "soon" ? "Implementation pending" : "Published"}
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-silver-100 md:text-base">{project.description}</p>
+                {project.access && <p className="mt-3 text-xs text-silver-300">{project.access}</p>}
+                <Link className="mt-4 inline-block font-mono text-xs text-racing underline underline-offset-4" href={"/projects/" + project.title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}>Use case, evidence and limitations →</Link>
 
                 {project.bullets && project.bullets.length > 0 && (
                   <ul className="mt-4 space-y-2">

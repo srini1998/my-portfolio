@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { motion, useInView } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 interface RevealTextProps {
   text: string;
@@ -21,7 +21,7 @@ const wordVariants = {
 export function RevealText({ text, className, startIndex = 0, stagger = 0.06 }: RevealTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: false, margin: "-40px" });
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const words = text.split(" ");

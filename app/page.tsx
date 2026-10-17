@@ -11,7 +11,7 @@ import { Partners } from "@/components/Partners";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ParallaxGrid } from "@/components/ParallaxGrid";
-import { ScrollSnap } from "@/components/ScrollSnap";
+
 
 const sections = [
   { id: "hero", content: <Hero /> },
@@ -46,7 +46,7 @@ export default function Home() {
           becomes a full-page scroll-snap sequence (see ScrollSnap); on
           mobile/reduced-motion it falls back to plain normal-flow scroll. */}
       <main className="relative z-10">
-        <ScrollSnap sections={sections} />
+        {sections.map(section => <div key={section.id} id={section.id} className="scroll-mt-24">{section.content}</div>)}
       </main>
     </>
   );

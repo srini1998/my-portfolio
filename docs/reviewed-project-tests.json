@@ -1,0 +1,45 @@
+{
+  "verified_at": "2026-10-17T22:45:02.251170+00:00",
+  "results": [
+    {
+      "project": "api_gateway",
+      "exit_code": 0,
+      "summary": "32 passed in 0.09s"
+    },
+    {
+      "project": "ci_optimizer",
+      "exit_code": 0,
+      "summary": "43 passed in 0.09s"
+    },
+    {
+      "project": "llm_code_review",
+      "exit_code": 0,
+      "summary": "16 passed in 0.01s"
+    },
+    {
+      "project": "llm_trace_analyzer",
+      "exit_code": 0,
+      "summary": "14 passed, 184 warnings in 0.02s"
+    },
+    {
+      "project": "music_recommender",
+      "exit_code": 0,
+      "summary": "14 passed in 0.08s"
+    },
+    {
+      "project": "olap_dashboard",
+      "exit_code": 0,
+      "summary": "16 passed, 24 warnings in 0.03s"
+    },
+    {
+      "project": "rag_pipeline",
+      "exit_code": 0,
+      "summary": "24 passed in 0.04s"
+    },
+    {
+      "project": "redis_rate_limiter",
+      "exit_code": 0,
+      "summary": "25 passed in 0.08s"
+    }
+  ]
+}

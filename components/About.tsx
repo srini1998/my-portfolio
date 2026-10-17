@@ -21,7 +21,7 @@ export function About() {
               <p className="mb-1 font-mono text-xs text-carbon-900/60">Hoboken, NJ, USA</p>
               <p className="mt-4 text-sm leading-relaxed text-carbon-900/80">
                 Advanced coursework in Artificial Intelligence, Machine Learning, Deep Learning,
-                and Database Systems. Contributing to the NDIF research framework under Prof. Hao Wang,
+                and Database Systems. Research experience with the NDIF framework under Prof. Hao Wang,
                 focusing on empirical analysis of large-scale LLM traces. Bridging theory with
                 scalable engineering across model robustness, NLP pipelines, and database systems.
               </p>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Krishna Sai Srinivas Venigalla",
     description: "AI/ML Engineer | MS CS @ Stevens | LLM Researcher",
-    url: "https://krishna.dev",
+    url: "https://my-portfolio-three-omega-46.vercel.app",
     siteName: "Krishna Venigalla Portfolio",
   },
 };

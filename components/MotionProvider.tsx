@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const defaultToggle = { enabled: true, toggle: () => {} };
 const MotionToggleContext = createContext(defaultToggle);
@@ -22,3 +22,6 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     </MotionToggleContext.Provider>
   );
 }
+
+// Match the server on first render, then apply the OS setting after hydration.
+export function useClientReducedMotion(){const [reduced,setReduced]=useState(false);useEffect(()=>{const media=window.matchMedia("(prefers-reduced-motion: reduce)");setReduced(media.matches);const update=()=>setReduced(media.matches);media.addEventListener("change",update);return()=>media.removeEventListener("change",update);},[]);return reduced;}

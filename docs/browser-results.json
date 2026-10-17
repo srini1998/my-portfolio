@@ -1,0 +1,12 @@
+{
+  "verified_at": "2026-10-17T22:47:24.998Z",
+  "project_links": 13,
+  "checks": [
+    "Breakroom/PocketOps/Neon case studies",
+    "explicit local/private scope",
+    "normal scrolling",
+    "direct case URLs",
+    "390px mobile layout"
+  ],
+  "errors": []
+}

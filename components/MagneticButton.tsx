@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion, type HTMLMotionProps } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { motion, useMotionValue, useSpring, type HTMLMotionProps } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 interface MagneticButtonProps extends HTMLMotionProps<"a"> {
   strength?: number;
@@ -12,7 +12,7 @@ interface MagneticButtonProps extends HTMLMotionProps<"a"> {
 // "magnetic" interaction pattern, layered on top of the existing custom cursor.
 export function MagneticButton({ className, children, strength = 22, ...rest }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
 

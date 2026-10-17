@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { motion } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 const variants = {
   hidden: {
@@ -20,7 +20,7 @@ const variants = {
 // overshoot on the ease, distinct from the moody dark-section reveal.
 // Re-triggers every time the tile scrolls back into view.
 export function RevealTile({ children }: { children: React.ReactNode }) {
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
 

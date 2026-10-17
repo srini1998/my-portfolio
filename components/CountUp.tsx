@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { useInView } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 interface CountUpProps {
   value: number;
@@ -14,7 +14,7 @@ interface CountUpProps {
 export function CountUp({ value, prefix = "", suffix = "", duration = 1200 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: false, margin: "-60px" });
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const [display, setDisplay] = useState(reduced ? value : 0);

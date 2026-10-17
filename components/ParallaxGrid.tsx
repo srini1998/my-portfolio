@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 import { FireParticles } from "@/components/FireParticles";
 
 // Fixed, site-wide "live wallpaper" — rising fire embers plus a slow-drifting
@@ -10,7 +10,7 @@ import { FireParticles } from "@/components/FireParticles";
 // sections paint over it as normal.
 export function ParallaxGrid() {
   const [isTouch, setIsTouch] = useState(false);
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   const x = useMotionValue(0);

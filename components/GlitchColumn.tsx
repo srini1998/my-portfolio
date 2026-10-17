@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useReducedMotion } from "framer-motion";
-import { useMotionToggle } from "@/components/MotionProvider";
+
+import { useMotionToggle, useClientReducedMotion } from "@/components/MotionProvider";
 
 const POOL = "01 ABCDEFGHIJKLMNOPQRSTUVWXYZ#@_-{}[]<>|:;.,/*&^%$";
 
@@ -19,7 +19,7 @@ interface GlitchColumnProps {
 // Decorative cipher-text column — mirrors the scrambled vertical noise
 // panels used as pure texture next to the reference site's hero headline.
 export function GlitchColumn({ lines = 16, lineLength = 4, className }: GlitchColumnProps) {
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useClientReducedMotion();
   const { enabled } = useMotionToggle();
   const reduced = prefersReduced || !enabled;
   // SSR-safe placeholder; real randomization only happens client-side post-mount.
