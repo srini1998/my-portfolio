@@ -32,7 +32,7 @@ export function FAQ() {
   return (
     <section className="relative flex min-h-full flex-col justify-center py-16 md:py-24">
       <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
-        <SectionHeader index={6} title="FAQs" />
+        <SectionHeader index={5} title="FAQs" />
         <Accordion items={faqs} />
       </div>
     </section>

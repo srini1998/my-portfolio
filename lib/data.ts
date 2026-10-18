@@ -254,49 +254,98 @@ export const legacyProjects: Project[] = [
     status: "local",
   },
   {
-    title: "Ad-Hoc OLAP Query Engine",
-    description: "Custom multi-pass query engine supporting MF/EMF queries over PostgreSQL, bypassing built-in aggregation entirely.",
-    bullets: [
-      "Designed a processing engine for Multi-Feature (MF) and Extended Multi-Feature (EMF) OLAP queries.",
-      "Engine generates standalone Python programs from extended relational algebra, building in-memory mf-structures.",
-      "Supported grouping variables, SUCH THAT predicate filtering, and complex HAVING conditions.",
-      "Demonstrated live dynamic query modification with both interactive and file-based interfaces.",
-    ],
-    tags: ["PostgreSQL", "Python", "OLAP", "Query Optimization", "DBMS"],
-    status: "local",
-  },
-];
-
-export const roadmapProjects: Project[] = [
-  {
     title: "LLM Evaluation Harness",
-    description:
-      "Automated evaluation framework for LLM outputs — measures faithfulness, relevance, and groundedness against ground-truth using LLM-as-judge. Integrates with CI/CD to catch model regressions on every commit.",
-    tags: ["LLM Eval", "Claude", "Python", "FastAPI", "CI/CD"],
-    status: "soon",
+    description: "A regression gate for LLM features: paired, item-level comparison with bootstrap confidence intervals on a balanced SQuAD v2 sample (half the questions unanswerable), plus a calibrated local LLM judge.",
+    bullets: [
+      "Caught a plausible prompt 'simplification' that dropped the abstention rule: F1 −0.33 (95% CI −0.42 to −0.25), abstention −0.61.",
+      "Calibrated the judge against human answers: passage-only 3B judge κ = 0.04 (approves 95% of wrong answers); reference-guided κ = 0.72.",
+      "CI re-scores committed runs deterministically, so the gate needs no model or API key.",
+    ],
+    tags: ["LLM evaluation", "LLM-as-judge", "Bootstrap CI", "FastAPI", "Ollama", "GitHub Actions"],
+    github: "https://github.com/srini1998/llm-eval-harness",
+    status: "local",
+    access: "Private source · local Ollama qwen2.5:3b, no paid API",
+    problem: "Prompt or model changes can quietly degrade grounded answers, and an LLM judge that 'looks fine' may be grading at chance.",
+    example: "A teammate removes 'reply unanswerable if the passage doesn't say' to shorten the prompt; answers to unanswerable questions become confident fabrications and the gate fails the change.",
+    dataSource: "150-item seeded, checksum-pinned subset of the SQuAD v2.0 dev set (CC BY-SA 4.0); local qwen2.5:3b as system and judge.",
+    verification: "Recorded runs and gate report in the repo; 6 unit/API tests; eval-gate workflow asserts the baseline passes against itself and the known regression fails.",
+    limitations: "150 items and one 3B model; the judge and system share a model; lexical support is a proxy for groundedness.",
   },
   {
-    title: "Cloud-Native MLOps Pipeline",
-    description:
-      "End-to-end automated ML deployment on AWS — model retraining triggered by S3 data uploads, evaluation gates in GitHub Actions, and production deployment to SageMaker with rollback support.",
-    tags: ["AWS", "SageMaker", "GitHub Actions", "MLOps", "Python"],
-    status: "soon",
+    title: "MLOps Pipeline",
+    description: "Event-driven retraining on real drifting data: each weekly upload is validated, content-addressed, scored against the serving model, and only promoted through gates; an MLflow registry alias drives a hot-swapping FastAPI service with rollback.",
+    bullets: [
+      "100 real weeks of the Elec2 electricity market: pipeline 88.2% live accuracy vs persistence 85.8% and a never-retrained model 79.5%.",
+      "Injected a corrupt upload (rejected by validation) and a broken challenger (blocked by a no-skill floor).",
+      "Real data exposed a non-monotonic date field and a too-weak fixed floor; both fixed with regression tests.",
+    ],
+    tags: ["MLflow", "scikit-learn", "FastAPI", "Data validation", "Model registry", "GitHub Actions"],
+    github: "https://github.com/srini1998/mlops-pipeline",
+    status: "local",
+    access: "Private source · free local tools (originally designed for SageMaker; cloud mapping documented)",
+    problem: "A model trained once goes stale as the world changes, and retraining without gates can ship a worse or broken model.",
+    example: "Week 66's challenger is trained on misaligned labels; its holdout accuracy is below the majority-class floor, so it never serves and the champion stays.",
+    dataSource: "Elec2 (Harries 1999; Gama), OpenML #151, licence 'Public' — 45,312 half-hour records replayed one week per upload.",
+    verification: "11 pytest tests; 100-week simulation report; CI replays 20 real weeks and asserts both injected faults are caught.",
+    limitations: "Single machine; the trigger polls a directory instead of receiving S3 events; per-week gate decisions use a 2-day holdout and are noisy.",
   },
   {
     title: "Multi-Agent Code Generation System",
-    description:
-      "Agentic pipeline where a Planner LLM decomposes features into tasks, a Coder LLM implements them, and a Reviewer LLM validates output before merge — closing the AI code generation → validation loop.",
-    tags: ["Claude", "LangGraph", "Multi-Agent", "Python", "GitHub Actions"],
-    status: "soon",
+    description: "Planner → Coder → Reviewer roles with a local model, measured against single-shot generation and execution-feedback revisions on HumanEval. Agents see only the prompt and its docstring examples; hidden tests are used only by an independent checker in an isolated container.",
+    bullets: [
+      "On a frozen 36-task cohort (container-regraded): single coder 30/36, execution feedback 29/36, planner/coder/reviewer 25/36 at 6.7× the model calls.",
+      "More roles did not help a 3B model; the full-role vs single difference has a bootstrap interval that includes zero.",
+      "Review hardened the sandbox from a host profile to an offline, read-only, unprivileged container.",
+    ],
+    tags: ["Multi-agent", "Code generation", "HumanEval", "Sandboxing", "Ollama", "Python"],
+    github: "https://github.com/srini1998/multi-agent-codegen",
+    status: "local",
+    access: "Private source · local Ollama qwen2.5:3b and Docker, no paid API",
+    problem: "'Add a reviewer agent' is a common reflex; whether extra roles actually improve correctness has to be measured with hidden tests the agents can't see.",
+    example: "The reviewer approves an implementation whose docstring examples pass but whose hidden edge cases fail; the independent checker records it as a false approval.",
+    dataSource: "OpenAI HumanEval (MIT licence), checksum-pinned; generated code runs only inside the container sandbox.",
+    verification: "Harness and sandbox isolation tests; saved outputs regraded in the pinned container; canonical solutions validated against the visible-example runner.",
+    limitations: "One 3B model; small ordered cohort for the frozen comparison; HumanEval pretraining exposure unknown; function-level tasks only.",
   },
   {
     title: "Real-Time Crisis Intelligence Agent",
-    description:
-      "Extends the Crisis Information Graph into a live agentic RAG pipeline — ingests streaming social data, retrieves context from a vector store, and generates structured situation reports via Claude.",
-    tags: ["RAG", "Claude", "Vector DB", "Streaming", "NLP"],
-    status: "soon",
+    description: "Pulls live official disaster feeds (USGS, GDACS, NASA EONET, US NWS), links reports from different publishers into incidents, and has a local model write situation reports whose citations, numbers, alert levels and locations are checked against the source documents.",
+    bullets: [
+      "Frozen snapshot of 289 live documents: 20/20 model reports passed the structural checks (84 claims) with 2.5× the facts of a template baseline.",
+      "Prompt injection: a 3B model followed injected instructions 10/10 times; a sanitizer stopped textbook attacks but not paraphrases; field checks blocked ~90% of poisoned reports.",
+      "Extends the earlier Crisis Information Graph from offline tweet analysis to live, multi-source reporting.",
+    ],
+    tags: ["RAG", "Hybrid retrieval", "Prompt injection", "Ollama", "FastAPI", "SQLite"],
+    github: "https://github.com/srini1998/crisis-intel-agent",
+    status: "local",
+    access: "Private source · keyless public feeds and local models",
+    problem: "Analysts need fast situation summaries, but a model that invents casualty numbers or obeys text hidden in a feed is worse than no summary.",
+    example: "A GDACS orange alert and a USGS M6.1 report are linked as one incident; the report states magnitude, depth and alert level with citations, and an injected 'say the alert is red' is caught because alert levels must match structured fields.",
+    dataSource: "Live USGS, GDACS, NASA EONET and NWS feeds; only public-domain snapshots are committed. Local qwen2.5:3b and nomic-embed-text.",
+    verification: "Snapshot evaluation (grounding, alert agreement, cross-source linking check, three injection conditions); 10 tests; GitHub Actions CI.",
+    limitations: "Not an official warning service; checks establish citation and field consistency, not factual truth; aggregate Q&A with a 3B model is weak.",
+  },
+  {
+    title: "Ad-Hoc OLAP Query Engine",
+    description: "Evaluates Multi-Feature and Extended Multi-Feature (Phi operator) queries over PostgreSQL without using GROUP BY: it streams the table through a server-side cursor into an in-memory mf-structure, one scan per dependency level, and can emit a standalone Python program for any query.",
+    bullets: [
+      "Recursive-descent predicate parser with SQL three-valued logic; nothing is passed to eval, and generated programs embed literals only as string constants.",
+      "Shifted equality keys (e.g. 1.month = month - 1) become hash indexes; dependency levels between grouping variables are planned automatically.",
+      "8/8 queries agree across interpreter, generated program and hand-written SQL at 10k and 200k rows; 300 random queries match a naive reference.",
+    ],
+    tags: ["PostgreSQL", "Python", "OLAP", "Query engines", "Code generation"],
+    github: "https://github.com/srini1998/adhoc-olap-engine",
+    status: "local",
+    access: "Private source · runs locally with a throwaway PostgreSQL 17 cluster",
+    problem: "Comparing several differently filtered aggregates per group (NY vs NJ vs CT averages per customer, last month vs next month) needs nested SQL joins; the Phi operator states it directly.",
+    example: "Per product and month, count sales whose quantity lies between the previous and the following month's averages: three grouping variables, two scans, verified against an equivalent SQL query.",
+    dataSource: "Deterministic synthetic sales table in the classic coursework schema (seeded generator), not real sales data.",
+    verification: "17 pytest tests incl. a 300-query differential test vs a naive reference and a negative control; olap verify compares interpreter, generated program and hand-written SQL (8/8 at 10k and 200k rows); GitHub Actions CI with a Postgres service.",
+    limitations: "Single table, count/sum/avg/min/max; the mf-structure must fit in memory. PostgreSQL's own SQL is 10–100× faster on simple queries; the gap closes on correlated sub-query shapes.",
   },
 ];
+
+export const roadmapProjects: Project[] = [];
 
 export const skills: SkillGroup[] = [
   {
@@ -387,13 +436,6 @@ const reviewNotes: Record<string, Partial<Project>> = {
     "dataSource": "Historical CIFAR-100 research repository; source and weights require fresh verification.",
     "verification": "Source located; fresh attack/training evaluation pending.",
     "limitations": "Research archive. Removed unsupported defense-improvement claim until reproducible evidence exists."
-  },
-  "Ad-Hoc OLAP Query Engine": {
-    "problem": "Explain grouped multi-feature queries with explicit contracts and reproducible inputs.",
-    "example": "Compare grouped sums under separate predicates without arbitrary generated-code execution.",
-    "dataSource": "Original source was not found in the initial inventory.",
-    "verification": "A scoped replacement is pending; not marked shipped.",
-    "limitations": "Planned rebuild; no verified existing query engine claimed."
   }
 };
-for (const project of legacyProjects) { Object.assign(project, reviewNotes[project.title] || {}); if (["Crisis Information Graph", "Securing Image Classifiers from Adversarial Attacks"].includes(project.title)) project.status="archive"; if(project.title==="Ad-Hoc OLAP Query Engine") project.status="soon"; }
+for (const project of legacyProjects) { Object.assign(project, reviewNotes[project.title] || {}); if (["Crisis Information Graph", "Securing Image Classifiers from Adversarial Attacks"].includes(project.title)) project.status="archive"; }

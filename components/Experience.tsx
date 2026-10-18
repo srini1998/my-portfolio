@@ -42,7 +42,7 @@ export function Experience() {
   return (
     <section className="relative flex min-h-full flex-col justify-center py-16 md:py-24">
       <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
-        <SectionHeader index={4} title="Experience" />
+        <SectionHeader index={3} title="Experience" />
         <div className="border-b border-asphalt-600">
           {experiences.map((exp, i) => (
             <TimelineItem key={`${exp.company}-${exp.period}`} exp={exp} index={i} />

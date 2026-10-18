@@ -3,7 +3,6 @@ import { Hero } from "@/components/Hero";
 import { Pitch } from "@/components/Pitch";
 import { Skills } from "@/components/Skills";
 import { LegacyProjects } from "@/components/LegacyProjects";
-import { Roadmap } from "@/components/Roadmap";
 import { Experience } from "@/components/Experience";
 import { About } from "@/components/About";
 import { FAQ } from "@/components/FAQ";
@@ -18,7 +17,6 @@ const sections = [
   { id: "pitch", content: <Pitch /> },
   { id: "skills", content: <Skills /> },
   { id: "projects", content: <LegacyProjects /> },
-  { id: "roadmap", content: <Roadmap /> },
   { id: "experience", content: <Experience /> },
   { id: "about", content: <About /> },
   { id: "faqs", content: <FAQ /> },

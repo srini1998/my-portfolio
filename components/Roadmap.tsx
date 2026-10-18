@@ -4,6 +4,7 @@ import { RevealTile } from "@/components/RevealTile";
 import { FireParticles } from "@/components/FireParticles";
 
 export function Roadmap() {
+  if (!roadmapProjects.length) return null;
   return (
     <section className="section-light relative flex min-h-full flex-col justify-center overflow-hidden py-16 md:py-24">
       <FireParticles tone="dark" />

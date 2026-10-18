@@ -7,7 +7,7 @@ export function About() {
     <section className="section-light relative flex min-h-full flex-col justify-center overflow-hidden py-16 md:py-24">
       <FireParticles tone="dark" />
       <div className="relative mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-16">
-        <SectionHeader index={5} title="Education" invert />
+        <SectionHeader index={4} title="Education" invert />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           <RevealTile>
             <div className="rounded-3xl border border-carbon-900/10 bg-white/70 p-5 transition-colors hover:border-racing-dark/40 hover:shadow-glow-dark-sm md:p-6">
