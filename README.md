@@ -2,7 +2,7 @@
 
 [Open the portfolio](https://my-portfolio-three-omega-46.vercel.app)
 
-An English-only, black-and-white portfolio inspired by Foldfolio: a scroll-controlled folding phone, oversized type, original technical artwork and actual working-product screenshots. Work, About and Contact. Eighteen projects are ordered by implemented engineering scope and difficulty, with source links and case pages explaining the problem, an example, the data, the checks and the limitations.
+An English-only, black-and-white portfolio inspired by Foldfolio: a persistent phone frame with scroll-driven opening, content and closing, oversized type, original technical artwork and actual working-product screenshots. Home, Work, Archive, About and Contact live in a floating device dock. Five featured projects lead with their description before the screenshot; thirteen more live in interactive glass folders at /archive. All eighteen projects are ordered by implemented engineering scope and difficulty, with source links and case pages explaining the problem, an example, the data, the checks and the limitations.
 
 ## Try the projects
 
@@ -37,6 +37,10 @@ Next16 / React19, native CSS with existing Tailwind tooling, self-hosted Geist f
 
 ## Verification
 
-The folding hero is checked at1440px,390px and320px for opening, closing, working links, fitting text and no overflow, plus reduced-motion and JavaScript-disabled navigation. Production browser checks cover all18case routes,9loaded preview images, filtering, complexity ordering, desktop/390px, English-only and zero page errors. Linked products have separate actual end-to-end checks for their calculations, learning, replay, approvals, queries and live data requests. Historical research archives are labeled explicitly; tests do not establish unrestricted production readiness.
+The complete phone flow is checked in actual Chrome at1440px,390px and320px: persistent framed scrolling, opening/closing/reversing, dock/deep links, appearance modes, hardware finishes, five description-first features, thirteen interactive folders, keyboard/Escape, filters, form validation, reduced-motion and no-JavaScript fallback. All18case routes preserve data, checks and limitations. Browser test: `node ../delivery/check-phone-fold.mjs` from this repository (Playwright runtime in the existing sibling supa1 workspace).
+
+The contact form opens a draft in your email app; the website stores or sends nothing. Optional cloud AI remains disabled and deferred. Linked products retain their independent workflow checks. Historical research archives remain clearly labeled.
+
+[Third-party component attribution](THIRD_PARTY_NOTICES.md): supplied Glassmorphism Folder Cards by Kedhareswer Naidu, MIT. No paid assets or additional dependency were introduced.
 
 [Current interface and execution boundaries](docs/current-interface.md). Earlier phase2 documentation records the prior interface and historical experiments, not the current presentation.
