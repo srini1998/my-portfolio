@@ -14,7 +14,7 @@ Each website puts the task and useful output first. Traces remain secondary. Pub
 
 ## Components
 
-New product sites: Vite8, React19, TypeScript7, Tailwind4 tooling, self-hosted Geist/Geist Mono/Noto Sans JP, GSAP entrance animation respecting reduced motion, Phosphor icons, and MIT ThreeUI Community components imported individually. Each has its own visual identity: CRT coding bench, electricity release desk, answer book, graph-paper comparison tool, and observability checker. The portfolio uses Next14/React18 and a new original seven-chapter folder interface inspired by the user-provided21st.dev reference. No paid template assets are used.
+New product sites: Vite8, React19, TypeScript7, Tailwind4 tooling, self-hosted Geist/Geist Mono/Noto Sans JP, GSAP entrance animation respecting reduced motion, Phosphor icons, and MIT ThreeUI Community components imported individually. Each has its own visual identity: CRT coding bench, electricity release desk, answer book, graph-paper comparison tool, and observability checker. The portfolio uses Next16.4.2/React19 and a new original seven-chapter folder interface inspired by the user-provided21st.dev reference. No paid template assets are used.
 
 Browser AI: pretrained open-weight Gemma3 1B q4 via transformers.js4.3.1 in a Web Worker. No fine-tuning or custom foundation-model training was performed. The public model download is explicit (~860MB) and inference stays on the visitor's device. Actual WebGPU generation was verified for every new product action; WASM is a compatibility path, not a separately benchmarked quality claim. Model text can be wrong and never overrides the deterministic check.
 
@@ -25,3 +25,17 @@ Recorded local studies use Qwen2.5 3B/Ollama and separate pinned local services.
 Seven chapters;18 projects; newest-built ordering starts Signalworks,Fieldbrief,Pair Bench,Current,Answer Key,Crosscut,Breakroom,PocketOps,Neon. English default/Japanese toggle, light/dark, direct case links, filters, reduced motion and390px layout checked in Chrome. Technical case evidence remains in its original English with explicit notice when Japanese is selected. Research archives are labeled unreproduced. No invented testimonials or unmeasured hiring-readiness claims.
 
 This is evidence for an engineering conversation, not proof of a hiring outcome or a promise that Supabase/Grafana will adopt these products. Be prepared to explain tradeoffs, reproduce a failure and modify the code yourself. One focused upstream contribution with a reproducible case study remains a useful next step.
+
+## Framework maintenance
+
+The portfolio’s previous Next14 line still had a critical runtime advisory after patching, so the app was migrated with the official async-request codemod and an intermediate Next15 build before Next16.4.2. Case-route params are asynchronous, lint uses the ESLint9 flat configuration, and saved preferences wait for hydration before storage writes. Framework build/types/lint and browser flows were rechecked. An advisory scan is not a full security audit.
+
+## Check scope
+
+The final production-dependency advisory scan reports0 vulnerabilities; the broader development-tool scan still reports9 (2moderate/7high) in the existing CSS/lint toolchain. No forced major dependency replacement was applied. This is not a clean-all-dependencies or full security-audit claim. The redesigned entrypoint is linted with zero warnings; unused legacy component sources are preserved but not represented as newly audited.
+
+## Independent public-source CI
+
+Breakroom reviewed source snapshot4fd371c passed42/42 checks with0skips in the full disposable-Supabase GitHub workflow: https://github.com/srini1998/breakroom-workbench/actions/runs/39102029017. Additional Auth/isolation/restart/erasure/import/Realtime workflow steps also completed. This differs from the local no-env export suite (41pass/1environment-gated skip). The original private history was preserved; no force-push occurred.
+
+Public optional demos: https://pocketops-lab.vercel.app and https://neon-expedition-lab.vercel.app. The existing Sites audiences were preserved. PocketOps browser mode uses a deterministic registered task router, not a trained coding model; real workspace work requires its local runner. Neon performs real browser Q-learning with explicit same-map evaluation.

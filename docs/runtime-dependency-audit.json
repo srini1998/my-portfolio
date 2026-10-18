@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-18",
+  "scope": "npm audit --omit=dev",
+  "framework": "next16.4.2/react19.3.1",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "limits": "Advisory snapshot only. Development tooling advisories are documented separately; this is not a code or full security audit."
+}

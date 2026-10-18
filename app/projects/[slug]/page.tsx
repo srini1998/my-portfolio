@@ -6,7 +6,10 @@ const all = [...legacyProjects, ...roadmapProjects];
 export function generateStaticParams() {
   return all.map((p) => ({ slug: slugify(p.title) }));
 }
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const params = await props.params;
   const p = all.find((p) => slugify(p.title) === params.slug);
   if (!p) notFound();
   return <ProjectCase project={p} />;

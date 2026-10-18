@@ -94,7 +94,7 @@ export const legacyProjects: Project[] = [
     example:
       "A rental checkout arrives twice: the saved receipt must reduce available stock once. A policy candidate must not let one team read another team’s records.",
     verification:
-      "Historical local suite42 checks; fresh public snapshot41 pass and1 environment-gated integration skip; actual API/Storage/concurrency checks and six desktop/mobile browser flows. The small real-data Realtime model run passed; an earlier full live workload was inconclusive due coordinator delay.",
+      "Public-source GitHub CI42/42 pass with0 skips on disposable Supabase; actual API/Storage/concurrency checks and six desktop/mobile browser flows. The small real-data Realtime model run passed; an earlier full live workload was inconclusive due coordinator delay.",
     limitations:
       "Fresh experiments require the local worker and real services. The public static profile is recorded evidence. No production, compliance or hiring guarantee.",
     dataSource:
