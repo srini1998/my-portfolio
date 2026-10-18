@@ -293,8 +293,8 @@ export const legacyProjects: Project[] = [
     title: "Multi-Agent Code Generation System",
     description: "Planner → Coder → Reviewer roles with a local model, measured against single-shot generation and execution-feedback revisions on HumanEval. Agents see only the prompt and its docstring examples; hidden tests are used only by an independent checker in an isolated container.",
     bullets: [
-      "On a frozen 36-task cohort (container-regraded): single coder 30/36, execution feedback 29/36, planner/coder/reviewer 25/36 at 6.7× the model calls.",
-      "More roles did not help a 3B model; the full-role vs single difference has a bootstrap interval that includes zero.",
+      "All 164 HumanEval tasks, regraded in an isolated container: single coder 65.2%, execution feedback 64.6%, planner/coder/reviewer 54.9%.",
+      "The multi-role loop was measurably worse (−10.4 pts, 95% CI −18.3 to −2.4) at 6.6× the model calls: it fixed 14 tasks and broke 31.",
       "Review hardened the sandbox from a host profile to an offline, read-only, unprivileged container.",
     ],
     tags: ["Multi-agent", "Code generation", "HumanEval", "Sandboxing", "Ollama", "Python"],
@@ -304,8 +304,8 @@ export const legacyProjects: Project[] = [
     problem: "'Add a reviewer agent' is a common reflex; whether extra roles actually improve correctness has to be measured with hidden tests the agents can't see.",
     example: "The reviewer approves an implementation whose docstring examples pass but whose hidden edge cases fail; the independent checker records it as a false approval.",
     dataSource: "OpenAI HumanEval (MIT licence), checksum-pinned; generated code runs only inside the container sandbox.",
-    verification: "Harness and sandbox isolation tests; saved outputs regraded in the pinned container; canonical solutions validated against the visible-example runner.",
-    limitations: "One 3B model; small ordered cohort for the frozen comparison; HumanEval pretraining exposure unknown; function-level tasks only.",
+    verification: "Harness and sandbox isolation tests; all 492 saved solutions regraded in the pinned container (1 changed vs host grading); canonical solutions validated against the visible-example runner.",
+    limitations: "One 3B model at temperature 0; HumanEval pretraining exposure unknown; function-level tasks only; visible docstring examples exist for 76 of 164 prompts.",
   },
   {
     title: "Real-Time Crisis Intelligence Agent",
