@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint components/FolderPortfolio.tsx components/PortfolioLanguage.tsx components/ProjectCase.tsx components/ProjectPreview.tsx components/TechnicalArt.tsx app lib --max-warnings 0",
+    "lint": "eslint components/FoldPhoneHero.tsx components/FolderPortfolio.tsx components/PortfolioLanguage.tsx components/ProjectCase.tsx components/ProjectPreview.tsx components/TechnicalArt.tsx app lib --max-warnings 0",
     "type-check": "next typegen && tsc --noEmit"
   },
   "dependencies": {

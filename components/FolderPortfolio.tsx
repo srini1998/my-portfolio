@@ -4,7 +4,7 @@ import { useState } from "react";
 import { contact, experiences } from "@/lib/data";
 import { rankedProjects, presentation } from "@/lib/project-presentation";
 import { slugify } from "@/lib/project-language";
-import { TechnicalArt } from "./TechnicalArt";
+import { FoldPhoneHero } from "./FoldPhoneHero";
 import { ProjectPreview } from "./ProjectPreview";
 export function FolderPortfolio() {
   const [filter, setFilter] = useState("All");
@@ -29,56 +29,7 @@ export function FolderPortfolio() {
         </nav>
       </header>
       <main>
-        <section className="hero" id="top">
-          <div className="hero-label">
-            <span>AI · BACKEND · DATA SYSTEMS</span>
-            <span>JERSEY CITY, NJ</span>
-          </div>
-          <h1>
-            <span>SRINIVAS</span>
-            <span>VENIGALLA</span>
-          </h1>
-          <div className="device">
-            <div className="device-top">
-              <span>HELLO, WORLD.</span>
-              <span>01 / SV</span>
-            </div>
-            <div className="device-intro">
-              Software engineer.
-              <br />
-              Curious about what’s next.
-            </div>
-            <TechnicalArt kind="model" />
-            <div className="device-notices">
-              <a href="#work">
-                <span className="notice-icon">{"{ }"}</span>
-                <span>
-                  Systems that do real work<small>EXPLORE THE PROJECTS ↗</small>
-                </span>
-              </a>
-              <a href="#about">
-                <span className="notice-icon">↗</span>
-                <span>
-                  From backend to machine learning
-                  <small>MEET THE ENGINEER</small>
-                </span>
-              </a>
-            </div>
-            <a className="unfold" href="#work">
-              Scroll to explore ↓
-            </a>
-          </div>
-          <div className="hero-bottom">
-            <p>
-              I build tools that make complicated
-              <br />
-              systems easier to use and trust.
-            </p>
-            <a href={contact.github} target="_blank" rel="noreferrer">
-              GitHub ↗
-            </a>
-          </div>
-        </section>
+        <FoldPhoneHero />
         <section className="work-section" id="work">
           <div className="section-heading">
             <div>
