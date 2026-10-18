@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Project } from "@/lib/data";
 import { presentation, rankedProjects } from "@/lib/project-presentation";
-import { TechnicalArt } from "./TechnicalArt";
+import { ProjectPreview } from "./ProjectPreview";
 export function ProjectCase({ project: p }: { project: Project }) {
   const v = presentation(p.title);
   return (
@@ -30,7 +30,7 @@ export function ProjectCase({ project: p }: { project: Project }) {
           </div>
         </div>
         <div className="case-art">
-          <TechnicalArt kind={v.visual} />
+          <ProjectPreview title={p.title} />
         </div>
       </section>
       <p className="access-note">

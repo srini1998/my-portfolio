@@ -6,13 +6,14 @@ export const presentations: Record<
   "Breakroom · Supabase reliability suite": {
     name: "Breakroom",
     summary:
-      "Catch permission leaks, duplicate payments and broken imports before your users do.",
+      "Catch permission leaks, duplicate actions and broken imports before your users do.",
     visual: "database",
     category: "Database systems",
   },
   Signalworks: {
     name: "Signalworks",
-    summary: "Find broken monitoring signals before they hide a real outage.",
+    summary:
+      "Explore real gaming player counts and catch the missing fields that can break a dashboard.",
     visual: "signal",
     category: "Observability",
   },
@@ -26,21 +27,21 @@ export const presentations: Record<
   "MLOps Pipeline": {
     name: "Current",
     summary:
-      "Train a prediction model, check it against the one you have, and release it only when it earns its place.",
+      "Train on real football seasons. See whether a new model earns its place in the starting lineup.",
     visual: "model",
     category: "Machine learning",
   },
   "Real-Time Crisis Intelligence Agent": {
     name: "Fieldbrief",
     summary:
-      "See earthquakes, storms and fires on one map, with reports from the agencies tracking them.",
+      "Check earthquakes, storms and fires near your next destination, with the official reports one click away.",
     visual: "globe",
     category: "Live data systems",
   },
   "Ad-Hoc OLAP Query Engine": {
     name: "Crosscut",
     summary:
-      "Turn a dataset into answers—and check the numbers with a second query engine.",
+      "Compare football teams at home and away, then check every number with independent SQL.",
     visual: "data",
     category: "Data engineering",
   },

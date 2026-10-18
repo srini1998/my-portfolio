@@ -96,7 +96,7 @@ export const legacyProjects: Project[] = [
     verification:
       "Public-source GitHub CI42/42 pass with0 skips on disposable Supabase; actual API/Storage/concurrency checks and six desktop/mobile browser flows. The small real-data Realtime model run passed; an earlier full live workload was inconclusive due coordinator delay.",
     limitations:
-      "Fresh experiments require the local worker and real services. The public static profile is recorded evidence. No production, compliance or hiring guarantee.",
+      "Fresh experiments require the local worker and real services. The public static profile is recorded evidence. The public page explores the saved source dataset; it does not execute new database experiments.",
     dataSource:
       "Attributed public snapshots plus clearly labeled fictional teams/accounts/player balances.",
   },
@@ -605,57 +605,140 @@ for (const project of legacyProjects) {
 // Phase 2: live end-user websites, distinct from the underlying local experiment backends.
 const phaseTwo: Record<string, Partial<Project>> = {
   "Real-Time Crisis Intelligence Agent": {
+    tags: ["TypeScript", "React", "MapLibre", "Official feeds", "Python"],
     demo: "https://fieldbrief-xi.vercel.app",
     status: "live",
     access:
-      "Public source · live official feeds · optional on-device Gemma briefing",
+      "Live official feeds \u00b7 immediate source summaries \u00b7 no model download",
+    description:
+      "Search recent hazard reports for a destination and read the agency sources in one place.",
+    problem:
+      "A traveler may need to check earthquakes, fires and weather across several official sites. A fluent summary should not hide where the information came from.",
+    example:
+      "Search for a place such as California. Select a report, read the published alert level and copy a brief with its source links. An empty search explicitly does not mean the destination is safe.",
+    dataSource:
+      "Direct USGS, GDACS, NASA EONET and NWS feeds, each with its own date range. The current public brief uses structured fields and a deterministic template, not a generative model. The Python agent and historical model experiments remain in the source.",
+    verification:
+      "Actual browser retrieval showed 60 visible reports; destination search, no-match behavior, source summary, English-only and mobile checks passed. Six citation/number checks include a counterexample proving those checks do not establish semantic truth.",
+    limitations:
+      "Not an official warning or destination safety service. Agency coverage and feeds can be incomplete or unavailable. Grouping is heuristic; source summaries are not custom-trained AI.",
   },
   "Multi-Agent Code Generation System": {
+    tags: ["Python", "HumanEval", "Pyodide", "Docker", "TypeScript"],
     demo: "https://pairbench.vercel.app",
     status: "live",
     access:
-      "Public source · browser Gemma drafts and real Pyodide exercise checks; recorded Qwen benchmark is separate",
+      "Instant recorded AI drafts \u00b7 real browser Python checks \u00b7 optional cloud generation not connected",
+    description:
+      "Compare actual single-coder and team-generated Python solutions against the same real tests.",
+    problem:
+      "Adding more AI roles can make a coding assistant slower and less accurate. An impressive conversation is weaker evidence than code that passes the same independent checks.",
+    example:
+      "Choose a HumanEval exercise, load a real saved coder or team draft, edit it and run the Python tests. Deliberately break the function to see the checks fail. Nothing executes just because a model proposed it.",
+    dataSource:
+      "164 MIT HumanEval tasks and actual frozen Qwen 2.5 3B drafts. Recorded single/team outputs load immediately. Fresh generation has a separate quota-limited free-cloud adapter, disabled until a provider account is connected; no key or billing is configured.",
+    verification:
+      "Original offline 164-task regrade: single coder 107/164, feedback 106/164, team 90/164, with unequal call budgets disclosed. The current site passed actual Pyodide positive/negative tests, draft loading, edit invalidation and mobile checks. Hosted checks are distinct from the hardened local Docker harness.",
+    limitations:
+      "The drafts are recorded, not new generations. Public tests are inspectable and do not prove production correctness. Browser Python is not a hardened malicious-code sandbox. A team used more model calls, so the saved comparison is not an equal-budget experiment.",
   },
   "MLOps Pipeline": {
+    tags: [
+      "TypeScript",
+      "Logistic regression",
+      "MLflow",
+      "Python",
+      "Chronological evaluation",
+    ],
     demo: "https://current-ml.vercel.app",
     status: "live",
     access:
-      "Public source · actual browser training/gate/promotion replay; historical Elec2, not live market forecasts",
+      "Actual football model training \u00b7 validation and later test \u00b7 original electricity lab available",
+    description:
+      "Train models on earlier football seasons and decide which one earns the next release.",
+    problem:
+      "More training data does not automatically justify replacing a model. Release decisions need a held-out comparison, an explicit threshold and a way back.",
+    example:
+      "Train a challenger on three Premier League seasons and compare it with a model trained on one. The default gate rejects a tiny probability improvement. An exploratory zero-margin setting lets you activate it, reveal a later match result and roll back.",
+    dataSource:
+      "1,520 CC0 OpenFootball Premier League matches, 2021/22\u20132024/25. Four logistic-regression weights use pre-match Elo and last-five-match form. Actual fitting happens in the browser; no LLM is needed. The original Elec2 browser lab remains at /electricity and Python/MLflow experiments remain in the source.",
+    verification:
+      "380 vs 1,140 training matches; 188 later validation and 192 subsequent test matches. Future-label independence, same-date feature isolation, overlap rejection and strict-gate checks pass. Later-test accuracy is 60.94% vs 63.54%; this is an exploratory historical result. Actual browser train/reject/activate/rollback flows pass.",
+    limitations:
+      "Historical replay, not live predictions or betting advice. The small model omits lineups, injuries and odds; probabilities are not calibrated. Default Brier improvement 0.00014 is below the required 0.005, so it correctly stays unreleased. Repeated exploration is not a locked benchmark.",
   },
   "LLM Evaluation Harness": {
+    tags: [
+      "TypeScript",
+      "SQuAD v2",
+      "Reference metrics",
+      "Python",
+      "Prompt evaluation",
+    ],
     demo: "https://answerkey-lab.vercel.app",
     status: "live",
     access:
-      "Public source · paired browser prompt evaluation against human references",
+      "Immediate travel reading challenge \u00b7 recorded answers re-scored \u00b7 optional cloud generation not connected",
+    description:
+      "Check whether an assistant answers from a passage or guesses when the answer is missing.",
+    problem:
+      "A travel or support assistant can sound helpful while inventing a missing detail. A prompt change should be checked against reference answers, including questions that should receive no answer.",
+    example:
+      "Read a passage about a place, enter an answer or NO_ANSWER, and check the human reference. Then replay two real AI prompt variants on the same questions and inspect where they disagree.",
+    dataSource:
+      "33 travel/place questions from the existing SQuAD v2 sample: 15 answerable and 18 unanswerable. All 150 original questions remain available. CC BY-SA 4.0 attribution is retained. Recorded Qwen answers are distinct from optional new cloud runs; no model weights are downloaded.",
+    verification:
+      "All 300 saved answers reproduce backend exact match, token F1 and abstention values exactly. Eight original metric/gate checks pass. Actual browser quiz positive/negative, edit invalidation, paired replay, cohort invalidation and mobile checks pass. The recorded full-150 comparison fell from 0.715 to 0.380 F1.",
+    limitations:
+      "Historical reading passages are not current travel advice. Token overlap is not general truth verification. Tiny fixed cohorts are exploratory. Replaying saved outputs does not evaluate an edited prompt; a new cloud run requires a free provider connection and sends task text to that provider.",
   },
   "Ad-Hoc OLAP Query Engine": {
+    tags: [
+      "TypeScript",
+      "DuckDB-WASM",
+      "Postgres",
+      "Python",
+      "Phi-style queries",
+    ],
     demo: "https://crosscut-data.vercel.app",
     status: "live",
     access:
-      "Public source · bounded browser Phi queries independently checked with DuckDB-WASM",
+      "Real football stats \u00b7 instant bounded queries \u00b7 independent DuckDB SQL check",
+    description:
+      "Compare teams\u2019 goals and points at home and away, then independently check the numbers.",
+    problem:
+      "A plausible-looking table can be wrong because its grouping, filters or counts are wrong. Users need clear units and an independent calculation to check the result.",
+    example:
+      "Ask for average points by team with a home/away split, review the query, then run the equivalent DuckDB SQL. Export the actual results as CSV. Count appearances across all teams and see why that is twice the match count.",
+    dataSource:
+      "1,520 CC0 OpenFootball matches normalized into 3,040 team appearances. The bounded Phi-style engine keeps all/home/away accumulators. Short requests use a clearly labeled rule-based translator, not AI. The original CC0 penguin explorer remains at /penguins.",
+    verification:
+      "Direct source totals for all 20 teams, home/away sums, counts, query validation and injection rejection pass. Two actual browser DuckDB checks agree for team and season queries. Independent checking caught an Arrow HUGEINT transport mismatch; explicit DOUBLE aggregate output fixed that numeric boundary.",
+    limitations:
+      "Supports the listed dimensions, measures and aggregates; it is not a full MF/EMF language or arbitrary SQL interface. Match results do not include player stats, injuries or live odds. The independent SQL check downloads a database runtime, not AI weights.",
   },
 };
 for (const p of legacyProjects) Object.assign(p, phaseTwo[p.title] || {});
 legacyProjects.unshift({
   title: "Signalworks",
   description:
-    "Check a service’s actual Prometheus metric output before a release, and explain the findings in plain language. A separate six-module local lab tests alert timing, routing, missing series, dashboards and log-secret filters against real observability services.",
-  tags: ["Grafana", "Prometheus", "Alloy", "TypeScript", "Browser AI"],
+    "Inspect real Steam gaming counts and catch missing metric fields before a release breaks a dashboard.",
+  tags: ["Grafana", "Prometheus", "TypeScript", "Steam API"],
   github: "https://github.com/srini1998/signalworks",
   demo: "https://signalworks-check.vercel.app",
   status: "live",
   access:
-    "Public source · live browser checker · six-module experiments run locally",
+    "Real Steam snapshot and refresh \u00b7 local text checks \u00b7 six-module observability lab stays local",
   problem:
-    "A green dashboard can hide renamed metrics, missing labels, vanished series or a notification sent to the wrong team.",
+    "A chart can stop showing a game because a release removed its app ID label, even while players are still online. Basic metric structure needs to be checked separately from service health.",
   example:
-    "Paste a metrics exposition, declare the expected name/type/labels and series budget, then see the exact contract drift. Text alone cannot prove alert behavior or measurement units.",
+    "Refresh player counts for Counter-Strike 2, Dota 2 and Apex Legends. Check the expected game/appid fields, then load the deliberate broken-label example and see the checker reject it. Paste service metrics or try the retained PromLabs example.",
   dataSource:
-    "Actual public PromLabs demo telemetry, explicit recorded snapshot/refresh, or the visitor’s pasted metrics. Optional Gemma3 1B explanations run on-device. Controlled local lab uses synthetic fault fixtures.",
+    "Actual public Valve Steam player counts from a fixed three-game allowlist, with recorded and refreshed timestamps and a five-minute cache. Offline players are excluded. Text parsing/checks are deterministic. Optional free-cloud prose is disabled until an account is connected. The local Grafana/Prometheus/Loki/Alloy lab uses controlled faults.",
   verification:
-    "Browser parser/contract12 positive and negative checks, actual public demo refresh, mobile/language flows. Full local lab16 tests and restart recovery4/4; seeded fixed baseline25/27 correct vs local Qwen agent1/12 on different cohorts.",
+    "12 parser/contract checks plus game schema/broken-label/API validation/cache fixtures pass. Actual browser Steam refresh through the real API handler, both metric examples, invalidation and mobile checks pass. Local lab evidence remains separate: 16 tests and 4/4 restart recovery; agent and baseline cohorts differ.",
   limitations:
-    "The static checker does not connect to or modify your Grafana. Exposition is not ingested cardinality; units/timing/delivery need independent measurements. Browser-generated explanations are not factual verification.",
+    "Player counts do not establish game/server health. Text alone does not establish ingestion, alert timing, delivery or units. Upstream failures are visible and are not replaced with zero. This site does not modify a customer Grafana instance. Cloud explanations are unverified and require a free provider connection.",
 });
 const newestOrder = [
   "Signalworks",

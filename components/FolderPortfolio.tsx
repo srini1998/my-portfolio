@@ -5,6 +5,7 @@ import { contact, experiences } from "@/lib/data";
 import { rankedProjects, presentation } from "@/lib/project-presentation";
 import { slugify } from "@/lib/project-language";
 import { TechnicalArt } from "./TechnicalArt";
+import { ProjectPreview } from "./ProjectPreview";
 export function FolderPortfolio() {
   const [filter, setFilter] = useState("All");
   const projects = rankedProjects.filter(
@@ -121,7 +122,7 @@ export function FolderPortfolio() {
                     className="project-art"
                     aria-label={"Explore " + v.name}
                   >
-                    <TechnicalArt kind={v.visual} />
+                    <ProjectPreview title={p.title} />
                     <span className="art-caption">
                       {v.category}
                       <span>↗</span>
