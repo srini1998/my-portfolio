@@ -224,7 +224,7 @@ export const legacyProjects: Project[] = [
     tags: ["PostgreSQL", "Python", "OLAP", "Query engines", "Code generation"],
     github: "https://github.com/srini1998/adhoc-olap-engine",
     status: "local",
-    access: "Private source · runs locally with a throwaway PostgreSQL 17 cluster",
+    access: "Private source · verified on local PostgreSQL 14 and PostgreSQL 17 in CI",
     problem: "Comparing several differently filtered aggregates per group (NY vs NJ vs CT averages per customer, last month vs next month) needs nested SQL joins; the Phi operator states it directly.",
     example: "Per product and month, count sales whose quantity lies between the previous and the following month's averages: three grouping variables, two scans, verified against an equivalent SQL query.",
     dataSource: "Deterministic synthetic sales table in the classic coursework schema (seeded generator), not real sales data.",
