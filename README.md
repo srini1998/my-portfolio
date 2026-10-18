@@ -37,7 +37,7 @@ Next16 / React19, native CSS with existing Tailwind tooling, self-hosted Geist f
 
 ## Verification
 
-The complete phone flow is checked in actual Chrome at1440px,390px and320px: persistent framed scrolling, opening/closing/reversing, dock/deep links, appearance modes, hardware finishes, five description-first features, thirteen interactive folders, keyboard/Escape, filters, form validation, reduced-motion and no-JavaScript fallback. All18case routes preserve data, checks and limitations. Browser test: `node ../delivery/check-phone-fold.mjs` from this repository (Playwright runtime in the existing sibling supa1 workspace).
+The complete phone flow is checked in actual Chrome at1440px,390px and320px: persistent framed scrolling, opening/closing/reversing, dock/deep links, appearance modes, hardware finishes, five description-first features, thirteen interactive folders, keyboard/Escape, filters, form validation, reduced-motion and no-JavaScript fallback. All18case routes preserve data, checks and limitations. Browser test from the parent My-Projects workspace: `node delivery/check-phone-fold.mjs` (Playwright runtime in the existing sibling supa1 workspace).
 
 The contact form opens a draft in your email app; the website stores or sends nothing. Optional cloud AI remains disabled and deferred. Linked products retain their independent workflow checks. Historical research archives remain clearly labeled.
 
