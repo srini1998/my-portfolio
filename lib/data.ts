@@ -84,8 +84,9 @@ export const legacyProjects: Project[] = [
     "Local Ollama"
   ],
   "github": "https://github.com/srini1998/breakroom",
-  "status": "local",
-  "access": "Private source · Vercel publication awaiting authentication",
+  "demo": "https://breakroom-dusky.vercel.app",
+  "status": "live",
+  "access": "Public recorded-evidence site on Vercel · private source",
   "problem": "A feature can work in a happy path while permission changes, retries, concurrent writes or delayed jobs break important guarantees.",
   "example": "A rental checkout arrives twice: the saved receipt must reduce available stock once. A policy candidate must not let one team read another team’s records.",
   "verification": "42 passing tests; actual API/Storage/concurrency checks and six desktop/mobile browser flows. The small real-data Realtime model run passed; an earlier full live workload was inconclusive due coordinator delay.",
