@@ -1,34 +1,26 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Cursor } from "@/components/Cursor";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { MotionProvider } from "@/components/MotionProvider";
-
+import { PortfolioLanguage } from "@/components/PortfolioLanguage";
 export const metadata: Metadata = {
-  title: "Krishna Sai Srinivas Venigalla — AI/ML Engineer",
+  title: "Srinivas Venigalla — AI & Systems Engineering",
   description:
-    "Portfolio of Krishna Sai Srinivas Venigalla — MS CS Stevens Institute of Technology, AI/ML engineer, LLM researcher, and 4-year Accenture backend engineer.",
+    "Useful tools, honest experiments. Try browser AI, data and reliability projects, then inspect the source, verification and limits.",
   openGraph: {
-    title: "Krishna Sai Srinivas Venigalla",
-    description: "AI/ML Engineer | MS CS @ Stevens | LLM Researcher",
+    title: "Srinivas Venigalla — Engineering with receipts",
+    description: "AI / ML · Backend · Reliability",
     url: "https://my-portfolio-three-omega-46.vercel.app",
-    siteName: "Krishna Venigalla Portfolio",
+    siteName: "Srinivas Venigalla Portfolio",
   },
 };
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body>
-        <MotionProvider>
-          <ScrollProgress />
-          <Cursor />
-          {children}
-        </MotionProvider>
+        <PortfolioLanguage>{children}</PortfolioLanguage>
       </body>
     </html>
   );
