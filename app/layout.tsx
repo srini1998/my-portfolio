@@ -4,9 +4,9 @@ import { PortfolioLanguage } from "@/components/PortfolioLanguage";
 export const metadata: Metadata = {
   title: "Srinivas Venigalla — AI & Systems Engineering",
   description:
-    "Useful tools, honest experiments. Try browser AI, data and reliability projects, then inspect the source, verification and limits.",
+    "Software engineer building useful tools with AI, backend systems and data. Explore working demos, source code and engineering case studies.",
   openGraph: {
-    title: "Srinivas Venigalla — Engineering with receipts",
+    title: "Srinivas Venigalla — Software Engineer",
     description: "AI / ML · Backend · Reliability",
     url: "https://my-portfolio-three-omega-46.vercel.app",
     siteName: "Srinivas Venigalla Portfolio",
