@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint components/FolderPortfolio.tsx components/PortfolioLanguage.tsx components/ProjectCase.tsx app lib --max-warnings 0",
     "type-check": "next typegen && tsc --noEmit"

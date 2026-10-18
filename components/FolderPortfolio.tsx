@@ -90,13 +90,11 @@ export function FolderPortfolio() {
           0,
           Math.min(6, active + (e.key === "ArrowRight" ? 1 : -1)),
         );
-        document
-          .getElementById(chapters[n][0])
-          ?.scrollIntoView({
-            behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-              ? "auto"
-              : "smooth",
-          });
+        document.getElementById(chapters[n][0])?.scrollIntoView({
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+        });
       }
     };
     window.addEventListener("keydown", key);
@@ -580,7 +578,9 @@ export function FolderPortfolio() {
         </section>
       </main>
       <div className="folio-end">
-        <span>SV / 2026</span>
+        <a href="/THIRD_PARTY_NOTICES.txt">
+          SV / 2026 · {t("Licenses", "ライセンス")}
+        </a>
         <div>
           <button
             disabled={active === 0}

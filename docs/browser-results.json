@@ -1,12 +1,17 @@
 {
-  "verified_at": "2026-10-17T22:47:24.998Z",
-  "project_links": 13,
+  "at": "2026-10-18T06:01:33.513Z",
+  "sections": 7,
+  "projects": 18,
+  "newest": "Signalworks",
   "checks": [
-    "Breakroom/PocketOps/Neon case studies",
-    "explicit local/private scope",
-    "normal scrolling",
-    "direct case URLs",
-    "390px mobile layout"
+    "all demo/source links",
+    "research filter",
+    "EN/JA",
+    "light/dark",
+    "390px",
+    "9 direct case routes",
+    "reduced motion",
+    "no hydration errors"
   ],
   "errors": []
 }
