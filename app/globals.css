@@ -294,29 +294,8 @@ h3 {
   padding: 18px 28px;
   background: var(--paper);
 }
-.motion-modes {
-  display: flex;
-  gap: 3px;
-  border-radius: 30px;
-  padding: 4px;
-  background: white;
-  box-shadow: 0 8px 28px #00000009;
-}
-.motion-modes button {
-  padding: 8px 14px;
-  border: 0;
-  border-radius: 30px;
-  background: transparent;
-  font-size: 11px;
-}
-.motion-modes button[aria-pressed="true"] {
-  background: var(--ink);
-  color: white;
-}
 .fold-name,
 .fold-visuals,
-.finish-picker,
-.phone-status,
 .phone-dock {
   display: none;
 }
@@ -343,8 +322,6 @@ h3 {
   top: 0;
   height: 100svh;
   overflow: clip;
-  --pointer-x: 0;
-  --pointer-y: 0;
 }
 .portfolio[data-ready] .fold-name {
   position: absolute;
@@ -389,8 +366,8 @@ h3 {
     0 30px 28px -32px #1118;
   overflow: hidden;
   background: var(--paper);
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   pointer-events: none;
 }
 .portfolio[data-ready][data-fold="open"] .phone-display {
@@ -417,20 +394,6 @@ h3 {
 .portfolio[data-ready] .screen-content {
   width: 100%;
   transform: translateY(var(--content-scroll));
-}
-.portfolio[data-ready] .phone-status {
-  display: flex;
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 4;
-  padding: 16px 28px 10px;
-  justify-content: space-between;
-  font:
-    10px "Geist Mono Variable",
-    monospace;
-  color: white;
-  mix-blend-mode: difference;
-  pointer-events: none;
 }
 .portfolio[data-ready] .phone-dock {
   display: flex;
@@ -474,26 +437,10 @@ h3 {
   visibility: hidden;
   pointer-events: none;
 }
-.fold-right,
 .fold-flap {
   position: absolute;
   width: 50%;
   height: 100%;
-}
-.fold-right {
-  right: 0;
-  border: 8px solid #111110;
-  border-left-width: var(--closed-edge);
-  border-radius: var(--closed-corner) 42px 42px var(--closed-corner);
-  background: #e9e9e5;
-  box-shadow: 2px 0 0 2px var(--hardware);
-  overflow: hidden;
-}
-.fold-right .technical-art {
-  width: 160%;
-  height: 100%;
-  max-width: none;
-  margin-left: -30%;
 }
 .fold-flap {
   left: 0;
@@ -501,8 +448,7 @@ h3 {
   transform: rotateY(var(--fold-angle));
   transform-style: preserve-3d;
 }
-.fold-cover,
-.fold-inside {
+.fold-cover {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
@@ -510,29 +456,6 @@ h3 {
   border: 8px solid #111110;
   box-shadow: 0 0 0 3px var(--hardware);
   overflow: hidden;
-}
-.fold-inside {
-  transform: translateZ(0.1px);
-  background: var(--paper);
-  border-right: 0;
-  border-radius: 42px 0 0 42px;
-  padding: 28px 7%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.fold-inside > span {
-  font:
-    9px "Geist Mono Variable",
-    monospace;
-}
-.fold-inside h2 {
-  font-size: clamp(26px, 4.5vw, 68px);
-  line-height: 1.02;
-}
-.fold-inside p {
-  font-size: clamp(12px, 1.4vw, 18px);
-  margin-bottom: 15%;
 }
 .fold-cover {
   transform: rotateY(180deg) translateZ(0.1px);
@@ -680,49 +603,6 @@ h3 {
   margin-top: 20px;
   overflow-wrap: anywhere;
 }
-.portfolio[data-ready] .finish-picker {
-  display: flex;
-  position: absolute;
-  z-index: 8;
-  bottom: 1.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  gap: 7px;
-  padding: 7px;
-  border-radius: 30px;
-  background: white;
-  box-shadow: 0 6px 16px #0000000a;
-}
-.finish-picker button {
-  border: 0;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  box-shadow: inset 0 0 0 1px #00000014;
-}
-.finish-picker button[aria-pressed="true"] {
-  outline: 1px solid var(--ink);
-  outline-offset: 3px;
-}
-.portfolio[data-mode="glow"] .fold-phone:before {
-  content: "";
-  position: absolute;
-  inset: -15px;
-  background: radial-gradient(
-    ellipse at calc(50% + var(--pointer-x) * 30%)
-      calc(50% + var(--pointer-y) * 30%),
-    var(--hardware),
-    transparent 70%
-  );
-  opacity: 0.55;
-  filter: blur(40px);
-  transform: translateZ(-30px);
-}
-.portfolio[data-mode="orbit"] .fold-perspective {
-  transform: rotateX(calc(var(--pointer-y) * -2deg))
-    rotateY(calc(var(--pointer-x) * 3deg));
-  transition: transform 0.5s;
-}
 
 .screen-intro {
   min-height: 84svh;
@@ -753,7 +633,6 @@ h3 {
   flex-wrap: wrap;
 }
 .intro-links a,
-.archive-invitation > a,
 .screen-section-heading > a {
   padding: 14px 22px;
   background: var(--ink);
@@ -785,30 +664,6 @@ h3 {
   position: absolute;
   left: 8%;
   bottom: 8%;
-  font:
-    9px "Geist Mono Variable",
-    monospace;
-}
-.numbers-strip {
-  padding: 60px 5% 50px;
-  background: #171716;
-  color: var(--paper);
-}
-.numbers-strip > div {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.numbers-strip strong {
-  display: block;
-  font-size: clamp(50px, 7vw, 96px);
-  font-weight: 750;
-  line-height: 1;
-  letter-spacing: -0.06em;
-}
-.numbers-strip span {
-  display: block;
-  margin-top: 15px;
   font:
     9px "Geist Mono Variable",
     monospace;
@@ -886,23 +741,10 @@ h3 {
 .featured-image:hover .product-preview img {
   transform: scale(1.025);
 }
-.archive-invitation {
-  background: #e2e3db;
-  padding: 85px 6% 95px;
-}
-.archive-invitation h2,
 .screen-about > h2 {
   font-size: clamp(45px, 7vw, 88px);
   line-height: 0.98;
   margin-bottom: 30px;
-}
-.archive-invitation > p:not(.eyebrow) {
-  font-size: 18px;
-  max-width: 45ch;
-  margin-bottom: 35px;
-}
-.archive-invitation > a {
-  display: inline-block;
 }
 .screen-about {
   padding: 80px 6%;
@@ -1114,10 +956,6 @@ h3 {
   .wordmark span {
     display: none;
   }
-  .motion-modes button {
-    font-size: 10px;
-    padding: 7px 10px;
-  }
   .portfolio[data-ready] .fold-phone {
     top: 9%;
     height: 82%;
@@ -1143,22 +981,6 @@ h3 {
   .fold-cover {
     border-width: 6px;
     border-radius: 31px;
-  }
-  .fold-inside {
-    border-width: 6px;
-    border-radius: 31px 0 0 31px;
-    padding: 20px 9%;
-  }
-  .fold-inside > span {
-    font-size: 6px;
-  }
-  .fold-inside h2 {
-    font-size: 25px;
-  }
-  .fold-right {
-    border-width: 6px;
-    border-left-width: var(--closed-edge);
-    border-radius: var(--closed-corner) 31px 31px var(--closed-corner);
   }
   .cover-home,
   .cover-call {
@@ -1192,10 +1014,6 @@ h3 {
   .unfold {
     font-size: 11px;
     bottom: 25px;
-  }
-  .portfolio[data-ready] .phone-status {
-    font-size: 8px;
-    padding: 14px 18px;
   }
   .portfolio[data-ready] .phone-dock {
     bottom: 13px;
@@ -1231,22 +1049,6 @@ h3 {
   }
   .intro-art > span {
     font-size: 7px;
-  }
-  .numbers-strip {
-    padding: 40px 7%;
-  }
-  .numbers-strip > div {
-    gap: 12px;
-  }
-  .numbers-strip strong {
-    font-size: 44px;
-  }
-  .numbers-strip span {
-    font-size: 7px;
-    line-height: 1.5;
-  }
-  .numbers-strip .eyebrow {
-    font-size: 8px;
   }
   .screen-section-heading {
     display: block;
@@ -1291,15 +1093,12 @@ h3 {
   .product-preview > span {
     font-size: 6px;
   }
-  .archive-invitation,
   .screen-about {
     padding: 60px 7%;
   }
-  .archive-invitation h2,
   .screen-about > h2 {
     font-size: 44px;
   }
-  .archive-invitation > p:not(.eyebrow),
   .about-columns p {
     font-size: 16px;
   }
@@ -1391,9 +1190,6 @@ h3 {
     transition: none !important;
     animation: none !important;
   }
-  .portfolio[data-mode="orbit"] .fold-perspective {
-    transform: none;
-  }
 }
 .portfolio[data-ready] .phone-display,
 .portfolio[data-ready] .phone-viewport {
@@ -1468,5 +1264,55 @@ h3 {
 @media (max-width: 650px) {
   .portfolio[data-ready] .screen-content {
     width: calc(var(--open-width) - 12px);
+  }
+}
+/* The actual page stays behind the cover throughout the fold; no duplicate intro. */
+.portfolio[data-ready] .phone-display {
+  opacity: 1;
+  visibility: visible;
+  clip-path: inset(0 0 0 var(--reveal-left, 0%) round 38px);
+}
+.portfolio[data-ready] .phone-viewport {
+  bottom: 72px;
+}
+.portfolio[data-ready] .phone-dock {
+  bottom: 12px;
+}
+.portfolio[data-ready]:not([data-fold="open"]) .phone-dock {
+  visibility: hidden;
+}
+.screen-intro {
+  min-height: var(--screen-height, 76svh);
+}
+.screen-section-heading h2 {
+  font-size: clamp(34px, 4.7vw, 64px);
+}
+.screen-section-heading {
+  padding-block: 35px;
+}
+.project-archive > h2 {
+  font-size: clamp(38px, 6vw, 80px);
+  line-height: 1;
+  margin-bottom: 25px;
+}
+.project-archive {
+  padding-top: 65px;
+  background: #eeeee9;
+}
+@media (max-width: 650px) {
+  .portfolio[data-ready] .phone-viewport {
+    bottom: 59px;
+  }
+  .portfolio[data-ready] .phone-display {
+    clip-path: inset(0 0 0 var(--reveal-left, 0%) round 25px);
+  }
+  .screen-intro {
+    min-height: var(--screen-height, 73svh);
+  }
+  .screen-section-heading h2 {
+    font-size: 38px;
+  }
+  .project-archive > h2 {
+    font-size: 40px;
   }
 }

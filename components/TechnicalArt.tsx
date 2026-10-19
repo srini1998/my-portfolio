@@ -1,4 +1,6 @@
+import { useId } from "react";
 export function TechnicalArt({ kind = "database" }: { kind?: string }) {
+  const gridId = useId();
   return (
     <svg
       className="technical-art"
@@ -8,7 +10,7 @@ export function TechnicalArt({ kind = "database" }: { kind?: string }) {
     >
       <defs>
         <pattern
-          id={"grid-" + kind}
+          id={gridId}
           width="30"
           height="30"
           patternUnits="userSpaceOnUse"
@@ -16,7 +18,7 @@ export function TechnicalArt({ kind = "database" }: { kind?: string }) {
           <path d="M30 0H0V30" stroke="currentColor" strokeOpacity=".07" />
         </pattern>
       </defs>
-      <rect width="600" height="420" fill={"url(#grid-" + kind + ")"} />
+      <rect width="600" height="420" fill={`url(#${gridId})`} />
       <g stroke="currentColor" strokeWidth="1.5">
         {kind === "database" ? (
           <>

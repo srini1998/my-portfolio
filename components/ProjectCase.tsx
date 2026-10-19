@@ -12,7 +12,7 @@ export function ProjectCase({ project: p }: { project: Project }) {
           <Link className="wordmark" href="/">
             SV<span> / ENGINEER</span>
           </Link>
-          <Link href="/archive">More project folders ↗</Link>
+          <Link href="/#folders">More project folders ↗</Link>
         </header>
         <section className="case-hero">
           <div>

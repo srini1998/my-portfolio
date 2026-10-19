@@ -2,6 +2,7 @@ import Link from "next/link";
 import { contact, experiences } from "@/lib/data";
 import { rankedProjects, presentation } from "@/lib/project-presentation";
 import { slugify } from "@/lib/project-language";
+import { ProjectFolders } from "./ProjectArchive";
 import { ContactForm } from "./ContactForm";
 import { FoldPhoneHero } from "./FoldPhoneHero";
 import { TechnicalArt } from "./TechnicalArt";
@@ -34,31 +35,10 @@ export function FolderPortfolio() {
           <span>BACKEND · AI · DATA SYSTEMS</span>
         </div>
       </section>
-      <section className="numbers-strip" aria-label="The collection in numbers">
-        <p className="eyebrow">A FEW WAYS INTO THE WORK</p>
-        <div>
-          {[
-            [String(rankedProjects.length), "PROJECTS IN THE COLLECTION"],
-            [
-              String(rankedProjects.filter((p) => p.demo).length).padStart(
-                2,
-                "0",
-              ),
-              "INTERACTIVE DEMOS",
-            ],
-            ["05", "FEATURED SYSTEMS"],
-          ].map(([value, label]) => (
-            <p key={label}>
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </p>
-          ))}
-        </div>
-      </section>
       <section className="selected-work" id="work">
         <div className="screen-section-heading">
-          <h2>Selected work.</h2>
-          <Link href="/archive">13 more projects ↗</Link>
+          <h2>Featured projects.</h2>
+          <a href="#folders">13 more projects ↓</a>
         </div>
         <div className="featured-list">
           {rankedProjects.slice(0, 5).map((p, index) => {
@@ -104,19 +84,7 @@ export function FolderPortfolio() {
           })}
         </div>
       </section>
-      <section className="archive-invitation">
-        <p className="eyebrow">THERE’S MORE IN THE FOLDERS</p>
-        <h2>
-          Open a different
-          <br />
-          kind of problem.
-        </h2>
-        <p>
-          Football statistics, game agents, developer tools and research.
-          Thirteen more projects, each with its own story and source.
-        </p>
-        <Link href="/archive">Open the project folders ↗</Link>
-      </section>
+      <ProjectFolders />
       <section className="screen-about" id="about">
         <p className="eyebrow">THE ENGINEER BEHIND THE SYSTEMS</p>
         <h2>

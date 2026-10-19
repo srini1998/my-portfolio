@@ -2,7 +2,7 @@
 
 [Open the portfolio](https://my-portfolio-three-omega-46.vercel.app)
 
-An English-only, black-and-white portfolio inspired by Foldfolio: a persistent phone frame with scroll-driven opening, content and closing, oversized type, original technical artwork and actual working-product screenshots. Home, Work, Archive, About and Contact live in a floating device dock. Five featured projects lead with their description before the screenshot; thirteen more live in interactive glass folders at /archive. All eighteen projects are ordered by implemented engineering scope and difficulty, with source links and case pages explaining the problem, an example, the data, the checks and the limitations.
+An English-only, black-and-white portfolio inspired by Foldfolio: a persistent phone frame with scroll-driven opening, content and closing, oversized type, original technical artwork and actual working-product screenshots. Home, Work, Folders, About and Contact live in a floating device dock. Five featured projects lead with their description before the screenshot; thirteen more appear as interactive glass folders immediately below them on the same page. Older /archive links redirect to /#folders. All eighteen projects are ordered by implemented engineering scope and difficulty, with source links and case pages explaining the problem, an example, the data, the checks and the limitations.
 
 ## Try the projects
 
@@ -37,7 +37,9 @@ Next16 / React19, native CSS with existing Tailwind tooling, self-hosted Geist f
 
 ## Verification
 
-The complete phone flow is checked in actual Chrome at1440px,390px and320px: persistent framed scrolling, opening/closing/reversing, dock/deep links, appearance modes, hardware finishes, five description-first features, thirteen interactive folders, keyboard/Escape, filters, form validation, reduced-motion and no-JavaScript fallback. All18case routes preserve data, checks and limitations. Browser test from the parent My-Projects workspace: `node delivery/check-phone-fold.mjs` (Playwright runtime in the existing sibling supa1 workspace).
+The complete phone flow is checked in actual Chrome at1440px,390px and320px: persistent framed scrolling, a single-intro opening/closing/reversing reveal, dock/deep links, five description-first features, thirteen inline interactive folders, keyboard/Escape, filters, form validation, reduced-motion and no-JavaScript fallback. All18case routes preserve data, checks and limitations. Browser test from the parent My-Projects workspace: `node delivery/check-phone-fold.mjs` (Playwright runtime in the existing sibling supa1 workspace).
+
+The misleading appearance/finish controls, placeholder introduction, overlapping status text and redundant sections were removed. The dock now reserves its own space. Additional workflow audit: `node delivery/check-portfolio-integration.mjs` from the parent workspace.
 
 The contact form opens a draft in your email app; the website stores or sends nothing. Optional cloud AI remains disabled and deferred. Linked products retain their independent workflow checks. Historical research archives remain clearly labeled.
 

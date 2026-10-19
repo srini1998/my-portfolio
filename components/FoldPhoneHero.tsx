@@ -5,13 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { contact } from "@/lib/data";
 import { TechnicalArt } from "./TechnicalArt";
 
-const finishes = [
-  { name: "Silver", color: "#bcbdb8" },
-  { name: "Graphite", color: "#555653" },
-  { name: "Copper", color: "#ba8e80" },
-  { name: "Sage", color: "#9ca28f" },
-];
-const destinations = ["Home", "Work", "Archive", "About", "Contact"];
+const destinations = ["Home", "Work", "Folders", "About", "Contact"];
 
 export function FoldPhoneHero({
   children,
@@ -24,9 +18,7 @@ export function FoldPhoneHero({
 }) {
   const section = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
-  const [mode, setMode] = useState("Basic");
-  const [finish, setFinish] = useState(finishes[0]);
-  const [active, setActive] = useState(initiallyOpen ? "Archive" : "Home");
+  const [active, setActive] = useState(initiallyOpen ? "Work" : "Home");
 
   useEffect(() => {
     const root = section.current,
@@ -65,8 +57,7 @@ export function FoldPhoneHero({
         "--phone-shift",
         `${-panel * 0.5 * (1 - eased)}px`,
       );
-      root.style.setProperty("--closed-corner", `${42 * (1 - eased)}px`);
-      root.style.setProperty("--closed-edge", `${8 * (1 - eased)}px`);
+      root.style.setProperty("--reveal-left", `${50 * (1 - eased)}%`);
       root.style.setProperty("--name-opacity", `${1 - Math.min(1, eased * 3)}`);
       root.style.setProperty(
         "--content-scroll",
@@ -77,7 +68,7 @@ export function FoldPhoneHero({
       root.dataset.ending = String(end > 0);
       screen.inert = !open;
       cover.inert = amount > 0.45;
-      const ids = ["home", "work", "archive", "about", "contact"];
+      const ids = ["home", "work", "folders", "about", "contact"];
       const current = ids
         .filter((id) => {
           const target = page.querySelector<HTMLElement>(`#${id}`);
@@ -94,6 +85,7 @@ export function FoldPhoneHero({
       if (!frame) frame = requestAnimationFrame(draw);
     };
     const measure = () => {
+      root.dataset.ready = "true";
       viewport = root.querySelector<HTMLElement>(".fold-stage")!.clientHeight;
       opening = initiallyOpen || reduced.matches ? 0 : viewport * 0.95;
       closing = closeAtEnd && !reduced.matches ? viewport * 0.8 : 0;
@@ -101,8 +93,10 @@ export function FoldPhoneHero({
         "--open-width",
         `${Math.min(root.clientWidth * 0.9, 1240)}px`,
       );
-      root.dataset.ready = "true";
-      travel = Math.max(0, page.scrollHeight - viewport * 0.84 + 16);
+      const available =
+        root.querySelector<HTMLElement>(".phone-viewport")!.clientHeight;
+      root.style.setProperty("--screen-height", `${available}px`);
+      travel = Math.max(0, page.scrollHeight - available);
       root.style.setProperty(
         "height",
         `${viewport + opening + travel + closing}px`,
@@ -122,11 +116,12 @@ export function FoldPhoneHero({
         event.altKey
       )
         return;
-      const id = link.hash.slice(1);
+      const id =
+        link.hash.slice(1) === "archive" ? "folders" : link.hash.slice(1);
       const target =
         id === "top" || id === "fold-open"
           ? null
-          : page.querySelector<HTMLElement>(`[id="${id}"]`);
+          : page.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
       if (!target && !["top", "fold-open"].includes(id)) return;
       event.preventDefault();
       const top = root.getBoundingClientRect().top + scrollY;
@@ -166,17 +161,26 @@ export function FoldPhoneHero({
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", measure);
     reduced.addEventListener("change", measure);
-    // Deep links must reach the content's document-scroll position, not its transformed rectangle.
-    const hash = location.hash.slice(1);
-    const target = page.querySelector<HTMLElement>(
-      `[id="${CSS.escape(hash)}"]`,
-    );
-    if (target)
-      window.scrollTo({
-        top: root.offsetTop + opening + Math.min(travel, target.offsetTop),
-        behavior: "instant",
-      });
+    // Anchors also need translation when reached through history or same-page links.
+    const alignHash = () => {
+      const hash =
+        location.hash === "#archive" ? "folders" : location.hash.slice(1);
+      if (hash === "top") {
+        window.scrollTo({ top: root.offsetTop, behavior: "instant" });
+        return;
+      }
+      const target =
+        hash && page.querySelector<HTMLElement>(`#${CSS.escape(hash)}`);
+      if (target)
+        window.scrollTo({
+          top: root.offsetTop + opening + Math.min(travel, target.offsetTop),
+          behavior: "instant",
+        });
+    };
+    alignHash();
+    window.addEventListener("hashchange", alignHash);
     return () => {
+      window.removeEventListener("hashchange", alignHash);
       observer.disconnect();
       cancelAnimationFrame(frame);
       cancelAnimationFrame(focusFrame);
@@ -188,56 +192,17 @@ export function FoldPhoneHero({
     };
   }, [initiallyOpen, closeAtEnd]);
 
-  const pointer = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (
-      event.pointerType === "touch" ||
-      matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      return;
-    const box = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty(
-      "--pointer-x",
-      `${(event.clientX / box.width - 0.5) * 2}`,
-    );
-    event.currentTarget.style.setProperty(
-      "--pointer-y",
-      `${((event.clientY - box.top) / box.height - 0.5) * 2}`,
-    );
-  };
   return (
-    <div
-      className="portfolio"
-      ref={section}
-      data-mode={mode.toLowerCase()}
-      style={{ "--hardware": finish.color } as React.CSSProperties}
-    >
+    <div className="portfolio" id="top" ref={section}>
       <a className="skip-link" href="#work">
         Skip to projects
       </a>
       <header className="frame-header">
-        <Link className="wordmark" href="/">
+        <Link className="wordmark" href={initiallyOpen ? "/" : "#top"}>
           SV<span> / ENGINEER</span>
         </Link>
-        <div className="motion-modes" aria-label="Phone appearance">
-          {["Basic", "Glow", "Orbit"].map((value) => (
-            <button
-              key={value}
-              aria-pressed={mode === value}
-              onClick={() => setMode(value)}
-            >
-              {value}
-            </button>
-          ))}
-        </div>
       </header>
-      <div
-        className="fold-stage"
-        onPointerMove={pointer}
-        onPointerLeave={(event) => {
-          event.currentTarget.style.setProperty("--pointer-x", "0");
-          event.currentTarget.style.setProperty("--pointer-y", "0");
-        }}
-      >
+      <div className="fold-stage">
         <div className="fold-name" aria-hidden="true">
           <span>SRINIVAS</span>
           <span>VENIGALLA</span>
@@ -245,10 +210,6 @@ export function FoldPhoneHero({
         <div className="fold-perspective">
           <div className="fold-phone">
             <div className="phone-display">
-              <div className="phone-status" aria-hidden="true">
-                <span>SV / ENGINEER</span>
-                <span>◉ ▰</span>
-              </div>
               <div className="phone-viewport">
                 <main className="screen-content" ref={content}>
                   {children}
@@ -257,13 +218,7 @@ export function FoldPhoneHero({
               <nav className="phone-dock" aria-label="Portfolio navigation">
                 {destinations.map((name) => {
                   const id = name.toLowerCase();
-                  const local = name !== "Archive" && !initiallyOpen;
-                  const href =
-                    name === "Archive"
-                      ? "/archive"
-                      : local
-                        ? `#${id}`
-                        : `/#${id}`;
+                  const href = initiallyOpen ? `/#${id}` : `#${id}`;
                   return (
                     <Link
                       key={name}
@@ -277,24 +232,7 @@ export function FoldPhoneHero({
               </nav>
             </div>
             <div className="fold-visuals">
-              <div className="fold-right" aria-hidden="true">
-                <TechnicalArt kind="model" />
-              </div>
               <div className="fold-flap">
-                <div className="fold-inside" aria-hidden="true">
-                  <span>SOFTWARE ENGINEER / JERSEY CITY</span>
-                  <div>
-                    <h2>
-                      Curious mind.
-                      <br />
-                      Useful software.
-                    </h2>
-                    <p>
-                      I build tools that make complicated systems easier to use
-                      and trust.
-                    </p>
-                  </div>
-                </div>
                 <div className="fold-cover">
                   <div className="cover-home">
                     <div className="device-top">
@@ -347,17 +285,6 @@ export function FoldPhoneHero({
               </div>
             </div>
           </div>
-        </div>
-        <div className="finish-picker" aria-label="Phone finish">
-          {finishes.map((value) => (
-            <button
-              key={value.name}
-              aria-label={value.name + " finish"}
-              aria-pressed={finish.name === value.name}
-              onClick={() => setFinish(value)}
-              style={{ background: value.color }}
-            />
-          ))}
         </div>
       </div>
     </div>
