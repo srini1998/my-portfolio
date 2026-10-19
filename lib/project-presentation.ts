@@ -27,7 +27,7 @@ export const presentations: Record<
   "MLOps Pipeline": {
     name: "Current",
     summary:
-      "Train on real football seasons. See whether a new model earns its place in the starting lineup.",
+      "Train on real soccer seasons. See whether a new model earns its place in the starting lineup.",
     visual: "model",
     category: "Machine learning",
   },
@@ -41,7 +41,7 @@ export const presentations: Record<
   "Ad-Hoc OLAP Query Engine": {
     name: "Crosscut",
     summary:
-      "Compare football teams at home and away, then check every number with independent SQL.",
+      "Compare soccer teams at home and away, then check every number with independent SQL.",
     visual: "data",
     category: "Data engineering",
   },

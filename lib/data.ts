@@ -653,9 +653,9 @@ const phaseTwo: Record<string, Partial<Project>> = {
     demo: "https://current-ml.vercel.app",
     status: "live",
     access:
-      "Actual football model training \u00b7 validation and later test \u00b7 original electricity lab available",
+      "Actual soccer model training \u00b7 validation and later test \u00b7 original electricity lab available",
     description:
-      "Train models on earlier football seasons and decide which one earns the next release.",
+      "Train models on earlier soccer seasons and decide which one earns the next release.",
     problem:
       "More training data does not automatically justify replacing a model. Release decisions need a held-out comparison, an explicit threshold and a way back.",
     example:
@@ -703,7 +703,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     demo: "https://crosscut-data.vercel.app",
     status: "live",
     access:
-      "Real football stats \u00b7 instant bounded queries \u00b7 independent DuckDB SQL check",
+      "Real soccer stats \u00b7 instant bounded queries \u00b7 independent DuckDB SQL check",
     description:
       "Compare teams\u2019 goals and points at home and away, then independently check the numbers.",
     problem:

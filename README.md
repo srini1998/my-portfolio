@@ -11,9 +11,9 @@ An English-only, black-and-white portfolio inspired by Foldfolio: a persistent p
 | [Breakroom](https://breakroom-dusky.vercel.app) | Six Supabase use cases with searchable real source examples and separately recorded database evidence |
 | [Signalworks](https://signalworks-check.vercel.app) | Actual Steam player counts, metric checks and a deliberately broken-label scenario |
 | [Pair Bench](https://pairbench.vercel.app) | Recorded single/team AI drafts and real browser Python tests |
-| [Current](https://current-ml.vercel.app) | Train on real football seasons; compare, activate and roll back a small model |
+| [Current](https://current-ml.vercel.app) | Train on real soccer seasons; compare, activate and roll back a small model |
 | [Fieldbrief](https://fieldbrief-xi.vercel.app) | Destination search across official hazard reports and immediate source briefs |
-| [Crosscut](https://crosscut-data.vercel.app) | Football statistics with home/away splits and independent DuckDB SQL checks |
+| [Crosscut](https://crosscut-data.vercel.app) | Soccer statistics with home/away splits and independent DuckDB SQL checks |
 | [PocketOps](https://pocketops-lab.vercel.app) | Find a checkout bug, approve the exact repair and rerun its tests |
 | [Answer Key](https://answerkey-lab.vercel.app) | Travel reading questions and reproducible scoring of actual saved AI answers |
 | [Neon Expedition](https://neon-expedition-lab.vercel.app) | Train small game agents in the browser and evaluate their learned routes |

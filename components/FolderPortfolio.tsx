@@ -102,7 +102,7 @@ export function FolderPortfolio() {
           </p>
           <p>
             Outside code: sports, anime, travel, movies and gaming. You’ll find
-            that curiosity in the football models, travel tools and game agents
+            that curiosity in the soccer models, travel tools and game agents
             in this collection.
           </p>
         </div>
