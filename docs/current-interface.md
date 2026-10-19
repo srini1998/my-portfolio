@@ -11,3 +11,5 @@ Folder click/Enter/Space opens its real case/demo/source links; Tab navigates fi
 The contact form opens an email draft in the visitor’s configured email application. This site stores and sends nothing. The direct email, GitHub and LinkedIn links remain available. Optional cloud AI is disabled and remains deferred.
 
 Verification from parent My-Projects workspace: node delivery/check-phone-fold.mjs (desktop1440/mobile390/320, dock, inline folders, form validation, reduced motion, no-JS, all18cases) and node delivery/check-portfolio-integration.mjs (all13folders, actual case/back/history flows, /archive redirect, hash changes, text/IDs/links, reveal continuity). npm run lint, npm run type-check and npm run build check source. Historical documents describe earlier interfaces and experiments.
+
+October 19 hero identity update: the closed phone now leads with Srinivas Venigalla and the software engineer role. Both the cover and unfolded hero use a monochrome typographic SV monogram instead of the neural network illustration. Folding, navigation, project artwork and the final contact illustration keep their existing behavior.

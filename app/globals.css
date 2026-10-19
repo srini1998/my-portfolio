@@ -476,22 +476,53 @@ h3 {
     9px "Geist Mono Variable",
     monospace;
 }
-.device-intro {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(23px, 2.4vw, 34px);
-  font-weight: 550;
-  text-align: center;
-  margin-top: 42px;
-  letter-spacing: -0.05em;
-  line-height: 1.12;
+.cover-home {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 240px;
 }
-.cover-home .technical-art {
-  position: absolute;
-  left: -15%;
-  top: 17%;
-  width: 130%;
-  height: 60%;
+.device-intro {
+  font-size: clamp(30px, 4vw, 58px);
+  font-weight: 850;
+  text-align: center;
+  margin-top: 28px;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+.device-intro small {
+  display: block;
+  margin-top: 16px;
+  font:
+    9px "Geist Mono Variable",
+    monospace;
+  letter-spacing: 0.08em;
+}
+.identity-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex: 1;
+  min-height: 0;
+  padding: 24px 12px;
+}
+.identity-mark strong {
+  font-size: clamp(80px, 17vw, 220px);
+  font-weight: 900;
+  letter-spacing: -0.1em;
+  padding-right: 0.1em;
+  line-height: 0.8;
+}
+.identity-mark span {
+  font:
+    8px "Geist Mono Variable",
+    monospace;
+  letter-spacing: 0.07em;
+}
+.identity-mark span:last-child {
+  border-top: 1px solid #bcbdb8;
+  padding-top: 14px;
 }
 .fold-visuals .technical-art text {
   display: none;
@@ -649,16 +680,12 @@ h3 {
   position: relative;
   overflow: hidden;
 }
-.intro-art .technical-art {
-  position: absolute;
-  width: 130%;
-  height: 90%;
-  max-width: none;
-  left: -15%;
-  top: 0;
+.intro-art .identity-mark {
+  height: 100%;
+  padding-bottom: 80px;
 }
-.intro-art .technical-art text {
-  display: none;
+.intro-art .identity-mark strong {
+  font-size: clamp(100px, 23vw, 310px);
 }
 .intro-art > span {
   position: absolute;
@@ -986,9 +1013,25 @@ h3 {
   .cover-call {
     padding: 18px;
   }
+  .cover-home {
+    padding-bottom: 220px;
+  }
   .device-intro {
-    font-size: 23px;
-    margin-top: 36px;
+    font-size: 36px;
+    margin-top: 24px;
+  }
+  .identity-mark {
+    gap: 15px;
+    padding: 18px 0;
+  }
+  .cover-home .identity-mark strong {
+    font-size: 100px;
+  }
+  .identity-mark span {
+    font-size: 7px;
+  }
+  .intro-art .identity-mark {
+    padding: 32px 0 48px;
   }
   .device-top {
     font-size: 8px;

@@ -4,7 +4,6 @@ import { slugify } from "@/lib/project-language";
 import { ProjectFolders } from "./ProjectArchive";
 import { ContactForm } from "./ContactForm";
 import { FoldPhoneHero } from "./FoldPhoneHero";
-import { TechnicalArt } from "./TechnicalArt";
 import { ProjectPreview } from "./ProjectPreview";
 
 export function FolderPortfolio() {
@@ -30,7 +29,11 @@ export function FolderPortfolio() {
           </div>
         </div>
         <div className="intro-art" aria-hidden="true">
-          <TechnicalArt kind="model" />
+          <div className="identity-mark">
+            <span>{"<engineer />"}</span>
+            <strong>SV.</strong>
+            <span>IDEAS → WORKING SOFTWARE</span>
+          </div>
           <span>BACKEND · AI · DATA SYSTEMS</span>
         </div>
       </section>

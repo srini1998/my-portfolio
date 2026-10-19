@@ -239,11 +239,16 @@ export function FoldPhoneHero({
                       <span>01 / SV</span>
                     </div>
                     <div className="device-intro">
-                      Software engineer.
+                      Srinivas
                       <br />
-                      Curious about what’s next.
+                      Venigalla.
+                      <small>SOFTWARE ENGINEER</small>
                     </div>
-                    <TechnicalArt kind="model" />
+                    <div className="identity-mark" aria-hidden="true">
+                      <span>{"<engineer />"}</span>
+                      <strong>SV.</strong>
+                      <span>IDEAS → WORKING SOFTWARE</span>
+                    </div>
                     <div className="device-notices">
                       <a href="#work">
                         <b>{"{ }"}</b>
