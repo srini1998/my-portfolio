@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { rankedProjects, presentation } from "@/lib/project-presentation";
 import { slugify } from "@/lib/project-language";
@@ -103,15 +102,15 @@ export function ProjectFolders() {
                 <span>
                   {String(rank).padStart(2, "0")} / {v.category}
                 </span>
-                <Link href={`/projects/${slug}`}>Read the case ↗</Link>
+                <a href={`/projects/${slug}`}>Read the case ↗</a>
               </div>
             </article>
           );
         })}
       </div>
-      <Link className="archive-back" href="#work">
+      <a className="archive-back" href="#work">
         ← Back to the five featured projects
-      </Link>
+      </a>
     </section>
   );
 }

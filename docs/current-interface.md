@@ -2,7 +2,7 @@
 
 The phone opens over the actual introduction and stays pinned while the page scrolls inside it. There is one intro DOM tree throughout the reveal; no stand-in biography is exchanged at the end of the animation. Reduced motion skips the opening and closing. Without JavaScript the content is a readable ordinary document.
 
-Home contains five featured projects followed immediately by thirteen interactive project folders. Every feature has description before screenshot. The dock links to Home, Work, Folders, About and Contact on this page; /archive redirects to /#folders for older links. All eighteen case routes keep their data sources, examples, checks and limitations, with descriptions preceding images. Cases link back to the inline folders.
+Home contains five featured projects followed immediately by thirteen interactive project folders. Every feature has description before screenshot. The dock links to Home, Work, Folders, About and Contact on this page; /archive redirects to /#folders for older links. All eighteen case routes keep their data sources, examples, checks and limitations, with descriptions preceding images. Cases link back to the inline folders. Cross-page links use normal browser navigation so Back cannot leave a cached case visible under a home-page URL; same-page dock anchors retain the scroll animation.
 
 The work heading is “Featured projects.” Basic/Glow/Orbit and hardware-colour controls were removed because their implementation did not match the reference. Decorative status text and the redundant statistics/invitation sections were removed. The dock has its own reserved area instead of covering text or links. Source-only project illustrations use unique SVG pattern IDs.
 

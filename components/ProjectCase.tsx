@@ -1,4 +1,4 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages -- Native navigation prevents stale cached case content on browser Back. */
 import type { Project } from "@/lib/data";
 import { presentation, rankedProjects } from "@/lib/project-presentation";
 import { FoldPhoneHero } from "./FoldPhoneHero";
@@ -9,10 +9,10 @@ export function ProjectCase({ project: p }: { project: Project }) {
     <FoldPhoneHero initiallyOpen>
       <div className="case-page" id="work">
         <header className="site-header">
-          <Link className="wordmark" href="/">
+          <a className="wordmark" href="/">
             SV<span> / ENGINEER</span>
-          </Link>
-          <Link href="/#folders">More project folders ↗</Link>
+          </a>
+          <a href="/#folders">More project folders ↗</a>
         </header>
         <section className="case-hero">
           <div>
@@ -64,7 +64,7 @@ export function ProjectCase({ project: p }: { project: Project }) {
           </div>
         </section>
         <footer className="site-footer">
-          <Link href="/#work">← Back to projects</Link>
+          <a href="/#work">← Back to projects</a>
           <span>SV / 2026</span>
         </footer>
       </div>

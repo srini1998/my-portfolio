@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { contact, experiences } from "@/lib/data";
 import { rankedProjects, presentation } from "@/lib/project-presentation";
 import { slugify } from "@/lib/project-language";
@@ -51,9 +50,9 @@ export function FolderPortfolio() {
                   </span>
                   <div>
                     <p className="eyebrow">{v.category}</p>
-                    <Link href={`/projects/${slugify(p.title)}`}>
+                    <a href={`/projects/${slugify(p.title)}`}>
                       <h3>{v.name}</h3>
-                    </Link>
+                    </a>
                     <p>{v.summary}</p>
                     <div className="project-links">
                       {p.demo && (
@@ -61,9 +60,9 @@ export function FolderPortfolio() {
                           Try the project ↗
                         </a>
                       )}
-                      <Link href={`/projects/${slugify(p.title)}`}>
+                      <a href={`/projects/${slugify(p.title)}`}>
                         Read the case ↗
-                      </Link>
+                      </a>
                       {p.github && (
                         <a href={p.github} target="_blank" rel="noreferrer">
                           Source ↗
@@ -72,13 +71,13 @@ export function FolderPortfolio() {
                     </div>
                   </div>
                 </div>
-                <Link
+                <a
                   href={`/projects/${slugify(p.title)}`}
                   className="featured-image"
                   aria-label={`Explore ${v.name}`}
                 >
                   <ProjectPreview title={p.title} />
-                </Link>
+                </a>
               </article>
             );
           })}

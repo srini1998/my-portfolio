@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { contact } from "@/lib/data";
 import { TechnicalArt } from "./TechnicalArt";
@@ -198,9 +197,9 @@ export function FoldPhoneHero({
         Skip to projects
       </a>
       <header className="frame-header">
-        <Link className="wordmark" href={initiallyOpen ? "/" : "#top"}>
+        <a className="wordmark" href={initiallyOpen ? "/" : "#top"}>
           SV<span> / ENGINEER</span>
-        </Link>
+        </a>
       </header>
       <div className="fold-stage">
         <div className="fold-name" aria-hidden="true">
@@ -220,13 +219,13 @@ export function FoldPhoneHero({
                   const id = name.toLowerCase();
                   const href = initiallyOpen ? `/#${id}` : `#${id}`;
                   return (
-                    <Link
+                    <a
                       key={name}
                       href={href}
                       aria-current={active === name ? "location" : undefined}
                     >
                       {name}
-                    </Link>
+                    </a>
                   );
                 })}
               </nav>
