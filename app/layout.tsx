@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { PortfolioLanguage } from "@/components/PortfolioLanguage";
+import { RingCursor } from "@/components/RingCursor";
 export const metadata: Metadata = {
   title: "Srinivas Venigalla — AI & Systems Engineering",
   description:
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PortfolioLanguage>{children}</PortfolioLanguage>
+        <RingCursor />
       </body>
     </html>
   );

@@ -1368,3 +1368,18 @@ h3 {
     font-size: 40px;
   }
 }
+.ring-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  translate: -50% -50%;
+  border: 1.5px solid #fff;
+  border-radius: 9999px;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+html.ring-cursor,
+html.ring-cursor * {
+  cursor: none !important;
+}
