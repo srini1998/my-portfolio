@@ -1384,8 +1384,8 @@ h3 {
 }
 .ring-cursor-lens,
 .ring-cursor-ring {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 9999px;
 }
 /* Glass disc: a faint tint and rim light, never blurring or washing out text. */

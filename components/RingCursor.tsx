@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const RADIUS = 16; // matches the 32px ring in globals.css
+const RADIUS = 12; // matches the 24px ring in globals.css
 const HOVER_SCALE = 1.18;
 const PRESS_SCALE = 0.9;
 const LABEL_GAP = 10;
