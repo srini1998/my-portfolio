@@ -66,6 +66,33 @@ export const experiences: Experience[] = [
   },
 ];
 
+export type Education = {
+  degree: string;
+  school: string;
+  period: string;
+  location: string;
+  details: string;
+};
+
+export const education: Education[] = [
+  {
+    degree: "MS in Computer Science",
+    school: "Stevens Institute of Technology",
+    period: "Sep 2024 – Jan 2026",
+    location: "Hoboken, NJ, USA",
+    details:
+      "Coursework in AI, machine learning, deep learning, distributed systems and database systems.",
+  },
+  {
+    degree: "BTech in Computer Science",
+    school: "Gitam University",
+    period: "Jun 2016 – Jun 2020",
+    location: "Visakhapatnam, India",
+    details:
+      "Final-year project: a music recommendation system using RNNs on the KKBOX dataset.",
+  },
+];
+
 export const legacyProjects: Project[] = [
   {
     title: "Breakroom · Supabase reliability suite",

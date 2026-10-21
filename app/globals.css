@@ -831,6 +831,15 @@ h3 {
   margin: 0;
   font-size: 14px;
 }
+.experience-list > .eyebrow {
+  font-size: 10px;
+  margin-bottom: 18px;
+}
+.experience-list .experience-detail {
+  margin-top: 8px;
+  max-width: 60ch;
+  color: #55564f;
+}
 .screen-contact {
   background: #171716;
   color: var(--paper);

@@ -1,4 +1,4 @@
-import { contact, experiences } from "@/lib/data";
+import { contact, education, experiences } from "@/lib/data";
 import { rankedProjects, presentation } from "@/lib/project-presentation";
 import { slugify } from "@/lib/project-language";
 import { ProjectFolders } from "./ProjectArchive";
@@ -129,11 +129,25 @@ export function FolderPortfolio() {
           ))}
         </div>
         <div className="experience-list">
+          <p className="eyebrow">EXPERIENCE</p>
           {experiences.map((e) => (
             <div key={e.company}>
               <span>{e.period}</span>
               <h3>{e.role}</h3>
               <p>{e.company}</p>
+            </div>
+          ))}
+        </div>
+        <div className="experience-list" id="education">
+          <p className="eyebrow">EDUCATION</p>
+          {education.map((e) => (
+            <div key={e.school}>
+              <span>
+                {e.period} · {e.location}
+              </span>
+              <h3>{e.degree}</h3>
+              <p>{e.school}</p>
+              <p className="experience-detail">{e.details}</p>
             </div>
           ))}
         </div>
