@@ -78,6 +78,7 @@ export function FolderPortfolio() {
                   href={`/projects/${slugify(p.title)}`}
                   className="featured-image"
                   aria-label={`Explore ${v.name}`}
+                  data-cursor="View project"
                 >
                   <ProjectPreview title={p.title} />
                 </a>
