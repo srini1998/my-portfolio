@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const RADIUS = 34; // matches the 68px ring in globals.css
+const RADIUS = 16; // matches the 32px ring in globals.css
 const HOVER_SCALE = 1.18;
 const PRESS_SCALE = 0.9;
 const LABEL_GAP = 10;
@@ -12,6 +12,18 @@ const EASE = 0.22;
 const INTERACTIVE = "a, button, [role='button'], label, select, summary, [data-cursor]";
 const TEXT_FIELD =
   "input:not([type='button'], [type='submit'], [type='checkbox'], [type='radio'], [type='range']), textarea, [contenteditable='true']";
+
+/** Background luminance of the nearest painted ancestor, 0 (black) to 1 (white). */
+function surfaceLuminance(el: Element | null): number {
+  for (let node = el; node; node = node.parentElement) {
+    const m = getComputedStyle(node).backgroundColor.match(/[\d.]+/g);
+    if (!m) continue;
+    const [r, g, b, a = "1"] = m;
+    if (Number(a) < 0.5) continue; // mostly transparent, keep looking up
+    return (0.2126 * Number(r) + 0.7152 * Number(g) + 0.0722 * Number(b)) / 255;
+  }
+  return 1; // nothing painted: the light page background
+}
 
 /**
  * Glass lens ring that trails the pointer. Elements opt into a label with
@@ -106,6 +118,7 @@ export function RingCursor() {
     const onOver = (e: PointerEvent) => {
       const el = e.target instanceof Element ? e.target : null;
       root.toggleAttribute("data-cursor-text", !!el?.closest(TEXT_FIELD));
+      root.toggleAttribute("data-cursor-on-dark", surfaceLuminance(el) < 0.45);
       const hit = el?.closest(INTERACTIVE);
       hovering = !!hit;
       const text = hit?.getAttribute("data-cursor") ?? "";
@@ -140,6 +153,7 @@ export function RingCursor() {
       root.classList.remove("ring-cursor");
       root.removeAttribute("data-cursor-visible");
       root.removeAttribute("data-cursor-text");
+      root.removeAttribute("data-cursor-on-dark");
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerover", onOver);
       window.removeEventListener("pointerdown", onDown);
