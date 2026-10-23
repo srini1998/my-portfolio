@@ -12,6 +12,15 @@ const previews = new Set([
   "pocketops",
   "llm-evaluation-harness",
   "neon-expedition",
+  "distributed-api-gateway",
+  "real-time-olap-dashboard",
+  "redis-rate-limiter",
+  "rag-q-a-pipeline",
+  "ci-pipeline-optimizer",
+  "llm-code-review-assistant",
+  "music-recommender-engine",
+  "crisis-information-graph",
+  "securing-image-classifiers-from-adversarial-attacks",
 ]);
 export function ProjectPreview({ title }: { title: string }) {
   const slug = slugify(title),

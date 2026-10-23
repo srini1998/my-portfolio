@@ -644,7 +644,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     example:
       "Search for a place such as California. Select a report, read the published alert level and copy a brief with its source links. An empty search explicitly does not mean the destination is safe.",
     dataSource:
-      "Direct USGS, GDACS, NASA EONET and NWS feeds, each with its own date range. The current public brief uses structured fields and a deterministic template, not a generative model. The Python agent and historical model experiments remain in the source.",
+      "Direct USGS, GDACS, NASA EONET and NWS feeds, each with its own date range. The default brief uses structured fields and a deterministic template. An optional free Groq brief is built only from sanitized official feed text and is rejected unless its citations, numbers and alert level match the feed. The Python agent and historical model experiments remain in the source.",
     verification:
       "Actual browser retrieval showed 60 visible reports; destination search, no-match behavior, source summary, English-only and mobile checks passed. Six citation/number checks include a counterexample proving those checks do not establish semantic truth.",
     limitations:
@@ -655,7 +655,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     demo: "https://pairbench.vercel.app",
     status: "live",
     access:
-      "Instant recorded AI drafts \u00b7 real browser Python checks \u00b7 optional cloud generation not connected",
+      "Instant recorded AI drafts \u00b7 real browser Python checks \u00b7 optional free cloud draft that is run against the real tests",
     description:
       "Compare actual single-coder and team-generated Python solutions against the same real tests.",
     problem:
@@ -663,7 +663,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     example:
       "Choose a HumanEval exercise, load a real saved coder or team draft, edit it and run the Python tests. Deliberately break the function to see the checks fail. Nothing executes just because a model proposed it.",
     dataSource:
-      "164 MIT HumanEval tasks and actual frozen Qwen 2.5 3B drafts. Recorded single/team outputs load immediately. Fresh generation has a separate quota-limited free-cloud adapter, disabled until a provider account is connected; no key or billing is configured.",
+      '164 MIT HumanEval tasks and actual frozen Qwen 2.5 3B drafts. Recorded single/team outputs load immediately. The optional "fresh draft" button calls a free Groq model (openai/gpt-oss-20b) through a server function with per-visitor limits; its draft is then run automatically against the same real tests, so a draft counts only if it passes. The key stays on the server, and when the free quota is used up the site says so instead of paying.',
     verification:
       "Original offline 164-task regrade: single coder 107/164, feedback 106/164, team 90/164, with unequal call budgets disclosed. The current site passed actual Pyodide positive/negative tests, draft loading, edit invalidation and mobile checks. Hosted checks are distinct from the hardened local Docker harness.",
     limitations:
@@ -688,7 +688,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     example:
       "Train a challenger on three Premier League seasons and compare it with a model trained on one. The default gate rejects a tiny probability improvement. An exploratory zero-margin setting lets you activate it, reveal a later match result and roll back.",
     dataSource:
-      "1,520 CC0 OpenFootball Premier League matches, 2021/22\u20132024/25. Four logistic-regression weights use pre-match Elo and last-five-match form. Actual fitting happens in the browser; no LLM is needed. The original Elec2 browser lab remains at /electricity and Python/MLflow experiments remain in the source.",
+      "1,520 CC0 OpenFootball Premier League matches, 2021/22\u20132024/25. Four logistic-regression weights use pre-match Elo and last-five-match form. Actual fitting happens in the browser; no LLM is needed. An optional release note from a free Groq model is checked in code: its verdict must match the gate and every number it quotes must be a measured value. The original Elec2 browser lab remains at /electricity and Python/MLflow experiments remain in the source.",
     verification:
       "380 vs 1,140 training matches; 188 later validation and 192 subsequent test matches. Future-label independence, same-date feature isolation, overlap rejection and strict-gate checks pass. Later-test accuracy is 60.94% vs 63.54%; this is an exploratory historical result. Actual browser train/reject/activate/rollback flows pass.",
     limitations:
@@ -705,7 +705,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     demo: "https://answerkey-lab.vercel.app",
     status: "live",
     access:
-      "Immediate travel reading challenge \u00b7 recorded answers re-scored \u00b7 optional cloud generation not connected",
+      "Immediate travel reading challenge \u00b7 recorded answers re-scored \u00b7 optional free cloud run graded by code",
     description:
       "Check whether an assistant answers from a passage or guesses when the answer is missing.",
     problem:
@@ -713,11 +713,11 @@ const phaseTwo: Record<string, Partial<Project>> = {
     example:
       "Read a passage about a place, enter an answer or NO_ANSWER, and check the human reference. Then replay two real AI prompt variants on the same questions and inspect where they disagree.",
     dataSource:
-      "33 travel/place questions from the existing SQuAD v2 sample: 15 answerable and 18 unanswerable. All 150 original questions remain available. CC BY-SA 4.0 attribution is retained. Recorded Qwen answers are distinct from optional new cloud runs; no model weights are downloaded.",
+      "33 travel/place questions from the existing SQuAD v2 sample: 15 answerable and 18 unanswerable. All 150 original questions remain available. CC BY-SA 4.0 attribution is retained. Recorded Qwen answers are distinct from optional new cloud runs (a free Groq model, capped at 2 or 4 questions per run, graded by exact match/F1 and abstention against the human references); no model weights are downloaded.",
     verification:
       "All 300 saved answers reproduce backend exact match, token F1 and abstention values exactly. Eight original metric/gate checks pass. Actual browser quiz positive/negative, edit invalidation, paired replay, cohort invalidation and mobile checks pass. The recorded full-150 comparison fell from 0.715 to 0.380 F1.",
     limitations:
-      "Historical reading passages are not current travel advice. Token overlap is not general truth verification. Tiny fixed cohorts are exploratory. Replaying saved outputs does not evaluate an edited prompt; a new cloud run requires a free provider connection and sends task text to that provider.",
+      "Historical reading passages are not current travel advice. Token overlap is not general truth verification. Tiny fixed cohorts are exploratory. Replaying saved outputs does not evaluate an edited prompt; a new cloud run sends the question text to Groq\u2019s free plan, and is limited by a shared free quota with no paid fallback.",
   },
   "Ad-Hoc OLAP Query Engine": {
     tags: [
@@ -738,7 +738,7 @@ const phaseTwo: Record<string, Partial<Project>> = {
     example:
       "Ask for average points by team with a home/away split, review the query, then run the equivalent DuckDB SQL. Export the actual results as CSV. Count appearances across all teams and see why that is twice the match count.",
     dataSource:
-      "1,520 CC0 OpenFootball matches normalized into 3,040 team appearances. The bounded Phi-style engine keeps all/home/away accumulators. Short requests use a clearly labeled rule-based translator, not AI. The original CC0 penguin explorer remains at /penguins.",
+      "1,520 CC0 OpenFootball matches normalized into 3,040 team appearances. The bounded Phi-style engine keeps all/home/away accumulators. Short requests use a clearly labeled rule-based translator. An optional free Groq model can turn a plain-English question into DuckDB SQL; a guard allows only one read-only SELECT on the matches table, caps it at 200 rows and runs it in the browser. The original CC0 penguin explorer remains at /penguins.",
     verification:
       "Direct source totals for all 20 teams, home/away sums, counts, query validation and injection rejection pass. Two actual browser DuckDB checks agree for team and season queries. Independent checking caught an Arrow HUGEINT transport mismatch; explicit DOUBLE aggregate output fixed that numeric boundary.",
     limitations:
@@ -761,11 +761,11 @@ legacyProjects.unshift({
   example:
     "Refresh player counts for Counter-Strike 2, Dota 2 and Apex Legends. Check the expected game/appid fields, then load the deliberate broken-label example and see the checker reject it. Paste service metrics or try the retained PromLabs example.",
   dataSource:
-    "Actual public Valve Steam player counts from a fixed three-game allowlist, with recorded and refreshed timestamps and a five-minute cache. Offline players are excluded. Text parsing/checks are deterministic. Optional free-cloud prose is disabled until an account is connected. The local Grafana/Prometheus/Loki/Alloy lab uses controlled faults.",
+    "Actual public Valve Steam player counts from a fixed three-game allowlist, with recorded and refreshed timestamps and a five-minute cache. Offline players are excluded. Text parsing/checks are deterministic. An optional free-cloud summary (Groq, openai/gpt-oss-20b) is checked in code: every number must be a real sample value and every non-passing check must be named. The local Grafana/Prometheus/Loki/Alloy lab uses controlled faults.",
   verification:
     "12 parser/contract checks plus game schema/broken-label/API validation/cache fixtures pass. Actual browser Steam refresh through the real API handler, both metric examples, invalidation and mobile checks pass. Local lab evidence remains separate: 16 tests and 4/4 restart recovery; agent and baseline cohorts differ.",
   limitations:
-    "Player counts do not establish game/server health. Text alone does not establish ingestion, alert timing, delivery or units. Upstream failures are visible and are not replaced with zero. This site does not modify a customer Grafana instance. Cloud explanations are unverified and require a free provider connection.",
+    "Player counts do not establish game/server health. Text alone does not establish ingestion, alert timing, delivery or units. Upstream failures are visible and are not replaced with zero. This site does not modify a customer Grafana instance. The cloud summary is checked for number consistency, not for being a complete or correct diagnosis, and is limited by a shared free quota.",
 });
 const newestOrder = [
   "Signalworks",
@@ -798,3 +798,230 @@ for (const p of legacyProjects) {
       "Public browser sandbox and source · local runner required for real workspace actions";
   }
 }
+
+// Phase 3: live product sites for projects 10-18. Each states what is measured, what is recorded and what is simulated.
+const phaseThree: Record<string, Partial<Project>> = {
+  "Distributed API Gateway": {
+    tags: ["Python", "TypeScript", "Circuit Breaker", "Canary", "Vercel"],
+    demo: "https://gateway-traffic-lab.vercel.app",
+    status: "live",
+    access:
+      "Simulated traffic lab · TypeScript port checked against the Python reference · no real sockets",
+    description:
+      "Send traffic through a gateway, break a backend mid-run and watch weighted routing, retries and circuit breakers react.",
+    bullets: [
+      "Event-driven policy engine: weighted round-robin, sticky canary split, per-backend circuit breakers with one half-open probe, jittered retries and a retry budget.",
+      "The browser runs a TypeScript port; golden traces exported from Python must match it exactly before every build ships.",
+      "A cross-check button replays the visitor’s own run in a Python function and compares digests.",
+    ],
+    problem:
+      "A failing backend should stop taking normal traffic while one probe checks whether it recovered, and retries should not turn one failure into a storm.",
+    example:
+      "Dispatch rush-hour traffic, kill backend B mid-run and watch its breaker trip and requests reroute. Let one noisy client get rate limited, then press the cross-check button and see the Python reference give an identical digest.",
+    dataSource:
+      "Authored traffic patterns and simulated backends on a virtual millisecond clock. No AI is used.",
+    verification:
+      "56 passing Python tests (32 original, 21 traffic lab, 3 verify endpoint) and 8/8 TypeScript parity cases that also run inside the build. On the public site, killing a backend tripped its breaker and the Python cross-check reported an identical run of 354 requests.",
+    limitations:
+      "Backends, latency and failures are simulated, so this is not a throughput or multi-node benchmark. Runs are capped at 2,000 requests. The original FastAPI proxy is unchanged and not hosted.",
+  },
+  "Real-Time OLAP Dashboard": {
+    tags: ["Python", "SQLite", "sql.js", "OpenF1", "Streaming OLAP"],
+    demo: "https://pitwall-replay.vercel.app",
+    status: "live",
+    access:
+      "Real stored F1 race timing · SQL runs in your browser · replay, not live timing",
+    description:
+      "Replay a real Formula 1 race as a stream of events and watch timing, tyre and pit-stop answers stay correct when events arrive twice or late.",
+    bullets: [
+      "Event-time ingest into a SQLite star schema; exact replays are no-ops and a conflicting replay rolls back the batch.",
+      "Timing tower, driver/team/compound/stint rollups and rolling pace windows, all evaluated as of the replay clock.",
+      "The same SQL files run in Python and in the browser (SQLite WASM), with matching golden outputs.",
+    ],
+    problem:
+      "A dashboard that counts events must give the same answer when the same event is delivered twice, or when events arrive out of order.",
+    example:
+      "Play the 2024 Italian Grand Prix, scrub back to lap 6, then inject duplicate and late deliveries and send a conflicting correction. The duplicate is absorbed, the conflict is rejected and the tower stays right.",
+    dataSource:
+      "Stored snapshot of OpenF1 timing for the 2024 Italian Grand Prix (20 drivers, 1,008 timed laps), licensed CC BY-NC-SA 4.0 for non-commercial use. The site never calls OpenF1 at runtime. The original synthetic sales pipeline is kept and labeled synthetic.",
+    verification:
+      "27 passing Python tests, including lap counts for all 20 drivers matching the official classification, and 5/5 browser SQL parity cases. At the flag, 4 rows differ from the official result (likely penalties, which lap timing does not contain; not independently verified).",
+    limitations:
+      "One stored race, not live timing. Positions come from lap-completion times and can differ by tenths from broadcast. Tyre trends are not fuel-corrected. The non-commercial data license would need revisiting if the portfolio were used commercially.",
+  },
+  "Redis Rate Limiter": {
+    tags: ["Python", "TypeScript", "Redis", "Lua", "GCRA"],
+    demo: "https://small-allowances.vercel.app",
+    status: "live",
+    access:
+      "Synthetic traffic · six real algorithms run in your browser · Redis library GCRA tested with fakeredis",
+    description:
+      "Fire the same burst of requests at six rate-limiting algorithms and see who each one lets through, then spread the allowance across gateways with skewed clocks.",
+    bullets: [
+      "Fixed window, exact sliding log, sliding counter, token bucket, leaky queue and GCRA evaluate the same trace.",
+      "Cluster experiment: 1–16 gateways, up to ±60 s clock offsets, three routing policies, local or shared state, per-client fairness.",
+      "The Redis library gains an atomic GCRA that reads the store’s own clock inside the Lua script.",
+    ],
+    problem:
+      "Different limiters disagree about the same burst, and a cluster of gateways with drifting clocks can admit more traffic than the allowance.",
+    example:
+      "Send a boundary burst: the fixed window admits 100 while the sliding log admits 50. Import a 500-request trace with skewed shared clocks, see 12 requests over-admitted, then switch to store time and match the reference.",
+    dataSource:
+      "Authored and visitor-imported synthetic request traces (up to 5,000 requests). No AI is used.",
+    verification:
+      "59 passing Python tests and 12 Node tests, including 9 Python golden traces that must match the TypeScript port before every build. Public Chrome checks at 1440, 390 and 320 passed with no page errors or overflow.",
+    limitations:
+      "Simulated and serialized: no real Redis server, network latency, replication or failover, and no throughput benchmark. Token bucket and GCRA allow bursts. Safari and Firefox were not tested.",
+  },
+  "RAG Q&A Pipeline": {
+    tags: ["TypeScript", "BM25", "transformers.js", "Reranking", "Groq"],
+    demo: "https://call-number-rag.vercel.app",
+    status: "live",
+    access:
+      "Document reading room · optional in-browser embedding models (~23 MB each) · optional free cloud answer, checked",
+    description:
+      "Ask a question about a document, see the retrieved passages and open the exact source span behind each answer sentence, or get an honest refusal.",
+    bullets: [
+      "Hybrid retrieval: keyword search plus optional in-browser embeddings, with a cross-encoder reranker.",
+      "Answer sentences link to exact source spans; questions the text cannot answer abstain.",
+      "A 36-question authored set can be re-run in the browser, with held-out results reported separately.",
+    ],
+    problem:
+      "A fluent answer from a document can sound right without showing where it came from.",
+    example:
+      "Ask who has the power to declare war in the included U.S. Constitution and open the cited span. Ask about the federal minimum wage and watch it abstain.",
+    dataSource:
+      "Public-domain texts (Constitution original text and first ten amendments) or text you paste or upload (400,000 characters max). Models run in your browser; the optional cloud answer uses a free Groq model.",
+    verification:
+      "On the 23 held-out questions: Recall@1 77.8% and Recall@5 88.9% (18 answerable), end-to-end extractive accuracy 60.9%, abstention accuracy 82.6%, and 100% of answered sentences pass the source-support check. 16 engine tests and 13 public Chrome checks passed.",
+    limitations:
+      "Small single-corpus benchmark written by the author. The faithfulness check shows an answer is supported by the cited text, not that it is correct. Cloud text is checked with quote/number/term heuristics, not semantic proof, and shares a free quota with other sites.",
+  },
+  "CI Pipeline Optimizer": {
+    tags: ["TypeScript", "GitHub Actions", "Critical path", "YAML", "Python"],
+    demo: "https://build-sheet-ci.vercel.app",
+    status: "live",
+    access:
+      "Recorded public GitHub Actions runs · live public-repo fetch from your browser · savings are simulated",
+    description:
+      "Find which build jobs actually set a pipeline’s length, then compare caching and test sharding on the same timings.",
+    bullets: [
+      "Critical-path analysis over job dependencies from real recorded GitHub Actions timings.",
+      "Simulation of caching and balanced test sharding, including repeated setup and per-shard overhead.",
+      "Paste workflow YAML or a public repository; YAML is parsed, never run.",
+    ],
+    problem:
+      "A slow CI run may be waiting on one dependency chain, so speeding up an unrelated job saves nothing.",
+    example:
+      "Open the recorded Express run and follow its test-to-coverage chain, or load the labeled synthetic fork/join study and compare four test shards plus caching against the same baseline.",
+    dataSource:
+      "Cached real run timings and workflow files for three public repositories (p-limit, click, express), pinned to run SHAs with original run links. An optional live fetch of a public repository uses the unauthenticated GitHub API from the browser (four calls, one fetch per 30 seconds). No AI is used.",
+    verification:
+      "43 original Python tests, 11 browser engine tests, and 8/8 public Chrome checks, including cycle rejection, invalid-repository rejection and a real live GitHub fetch.",
+    limitations:
+      "One run per sample, so no flakiness claims. Savings are simulations, not measured speedups. The critical path assumes unlimited runners; matrix jobs are collapsed and conditions or reusable-workflow internals are not executed. Jobs without timings use editable estimates.",
+  },
+  "LLM Code Review Assistant": {
+    tags: ["TypeScript", "Static analysis", "Acorn AST", "Groq", "Python"],
+    demo: "https://galley-proof.vercel.app",
+    status: "live",
+    access:
+      "Paste a diff or a public PR · offline static passes · optional free cloud model pass, anchored to diff lines",
+    description:
+      "Paste a diff or a public pull request and get findings marked in the margin beside the exact added lines, from three kinds of reader.",
+    bullets: [
+      "Three passes: 23 pattern rules, a JavaScript syntax-tree pass, and an optional free Groq model pass.",
+      "A model finding is discarded unless its line and quoted text are really on an added line.",
+      "A seeded-bug benchmark reports precision and recall for each pass.",
+    ],
+    problem:
+      "A review comment that points at the wrong line, or at code that is not in the change, wastes a reviewer’s time.",
+    example:
+      "Load the missing-await specimen and see the pattern, syntax-tree and model readers mark the same line. Review a real public pull request, or paste your own diff and review it with the model off.",
+    dataSource:
+      "Visitor diffs and public GitHub PRs (one unauthenticated browser call). The benchmark is 24 hand-written synthetic diffs with 25 planted bugs and 4 clean diffs.",
+    verification:
+      "On the 14 held-out benchmark diffs: pattern and syntax-tree passes 100% precision and 84.6% recall; the model alone 70.6% and 92.3%; all passes together 72.2% and 100%. 21 site tests and 16 original Python tests pass; 10/10 public Chrome checks passed.",
+    limitations:
+      "The benchmark rules and cases share one author, so treat the scores as an upper bound for real code. Pattern rules read one line at a time, the syntax-tree pass is JavaScript only, and the model sees only added lines and is checked for location, not correctness. Limits are per warm server instance and the Groq free quota is shared.",
+  },
+  "Music Recommender Engine": {
+    tags: [
+      "JavaScript",
+      "ListenBrainz",
+      "MusicBrainz",
+      "Collaborative filtering",
+      "MMR",
+    ],
+    demo: "https://side-b-recommender.vercel.app",
+    status: "live",
+    access:
+      "Real one-day listening data (CC0) · recommendations computed in your browser · artist level, no playback",
+    description:
+      "Pick artists you like and get ten recommendations that you can tune between familiar and adventurous, each with a reason.",
+    bullets: [
+      "Hybrid score: co-listening graph plus MusicBrainz genre profiles, with a novelty discount and MMR diversity re-ranking.",
+      "Every pick explains itself from real co-listener counts and shared genres.",
+      "Offline recall@k, coverage and diversity were measured on 2,143 held-out listeners.",
+    ],
+    problem:
+      "A recommender that only repeats the most popular music is accurate but boring, and one that chases novelty gets less right.",
+    example:
+      "Add Slowdive to a seed list, then slide diversity up: list diversity goes from 0.75 to 1.00 while the page shows the recall it costs.",
+    dataSource:
+      "One day of ListenBrainz listens (5.5M, CC0) with MusicBrainz artist data (CC0) and genre tags (CC BY-NC-SA 3.0, used non-commercially with attribution). User names are dropped and only per-artist aggregates ship. The original matrix-factorization v1 on a toy catalog is preserved and labeled as not what runs.",
+    verification:
+      "Recall@10 on held-out listeners: most-popular 0.056, genre-only 0.079, co-listening only 0.181, hybrid 0.185; adding diversity 0.3 gives 0.181 recall with higher diversity. 8 site tests pass, and the public Chrome flow at 1440 and 390 had no page errors.",
+    limitations:
+      "One day of self-selected, rock/indie-heavy listeners. Artist level only, with no audio. Offline metrics are precomputed on a grid, not a user study. The catalog is the 1,500 most-listened artists that have an MBID.",
+  },
+  "Crisis Information Graph": {
+    tags: ["JavaScript", "Knowledge graph", "Louvain", "NOAA", "d3"],
+    demo: "https://crisis-information-graph.vercel.app",
+    status: "archive",
+    access:
+      "Rebuilt on public-domain NOAA records · queries and community detection run in your browser · original research kept separate",
+    description:
+      "Explore a knowledge graph of hurricane impacts where every relation cites the report sentence it came from.",
+    bullets: [
+      "1,051 NOAA reports, 1,829 entities and about 6.6k relations for Harvey, Irma and Maria, each with its rule, source sentence and event id.",
+      "Impact queries, shortest cited path between entities, and live Louvain community detection.",
+      "The original BERT/BiLSTM tweet research stays historical, with its inconsistent reported scores shown side by side.",
+    ],
+    problem:
+      "Entities extracted from crisis text are only useful if you can trace each relation back to the evidence behind it.",
+    example:
+      "Query Irma, downed, power lines, Georgia and open the cited reports, trace a path from Maria to dams and levees, or run community detection and read a dispatch card for any entity.",
+    dataSource:
+      "NOAA NCEI Storm Events 2017 (details and fatalities), a public-domain U.S. Government work. The original CrisisMMD tweets cannot be republished, so this is a reproducible rebuild on different data, not the original dataset.",
+    verification:
+      "8 site tests pass (including every edge resolving to a real NOAA event). Louvain found 11 communities with modularity 0.473 in about 18 ms. A self-checked sample of 40 relations: 34 fully correct and 38 with the right affected asset (my own judgment, not independent annotation).",
+    limitations:
+      "Rule-based extraction with no coreference (“tree fell onto a car” is read as the car being downed). U.S. records only, with uneven narrative detail. The layout is precomputed and the whole-graph view is small on phones. The original research results were not re-run.",
+  },
+  "Securing Image Classifiers from Adversarial Attacks": {
+    tags: ["TensorFlow.js", "PyTorch", "TRADES", "FGSM", "PGD"],
+    demo: "https://adversarial-specimen-lab.vercel.app",
+    status: "archive",
+    access:
+      "Real attacks run in your browser · small Quick, Draw! classifiers · original CIFAR-100 research labeled historical",
+    description:
+      "Attack two small drawing classifiers in your browser, a standard one and an adversarially trained one, and watch how much change it takes to fool each.",
+    bullets: [
+      "Real FGSM and 20-step PGD attacks with an epsilon slider, each model attacked on its own gradients, in TensorFlow.js.",
+      "Recorded robustness curves over 10,000 held-out drawings plus a separate live 20-drawing test.",
+      "The browser model matches PyTorch on logits and gradients (within stated tolerances).",
+    ],
+    problem:
+      "Clean accuracy says nothing about behavior when an input is nudged slightly on purpose.",
+    example:
+      "Pick a butterfly drawing, set epsilon to 0.1 and run PGD: the standard model flips to frog, while the adversarially trained model usually keeps its answer.",
+    dataSource:
+      "Held-out drawings from Google Quick, Draw! (10 classes, CC BY 4.0) with models trained locally on CPU. The original CIFAR-100 ResNet-18 research is in the repository and is historical, not re-run here.",
+    verification:
+      "Clean accuracy 88.10% (standard) vs 77.94% (TRADES). PGD at eps 0.1: 20.1% vs 71.0%; at eps 0.2: 0.0% vs 43.7%. 3 Python and 12 site tests pass. The live 20-drawing test gave 1/20 vs 13/20.",
+    limitations:
+      "Small 28x28 sketch classifiers, not CIFAR. Only white-box L-infinity FGSM and single-start PGD (no AutoAttack), so the adversarially trained numbers may overstate robustness. The live test is only 20 drawings, and there is no robustness certificate.",
+  },
+};
+for (const p of legacyProjects) Object.assign(p, phaseThree[p.title] || {});

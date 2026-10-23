@@ -55,8 +55,7 @@ export function ProjectFolders() {
           const v = presentation(p.title),
             slug = slugify(p.title),
             rank = rankedProjects.indexOf(p) + 1;
-          const image =
-            rank <= 9 ? `/previews/${slug}.png` : "/folder-circuit.svg";
+          const image = `/previews/${slug}.png`;
           return (
             <article className="project-folder" key={p.title}>
               <GlassFolder

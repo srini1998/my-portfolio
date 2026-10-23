@@ -68,60 +68,66 @@ export const presentations: Record<
   },
   "Distributed API Gateway": {
     name: "API Gateway",
-    summary: "Keep a failing service from taking every request down with it.",
+    summary:
+      "Break a backend mid-run and watch the gateway reroute, retry and protect the rest.",
     visual: "signal",
     category: "Backend systems",
   },
   "Real-Time OLAP Dashboard": {
     name: "Sales Stream",
-    summary: "Count sales once, even when the same event arrives twice.",
+    summary:
+      "Replay a real Formula 1 race and keep the timing answers right when events arrive twice or late.",
     visual: "data",
     category: "Data engineering",
   },
   "Redis Rate Limiter": {
     name: "Rate Limiter",
-    summary: "Give each request a fair turn when too many arrive at once.",
+    summary:
+      "Send one burst to six rate limiters and see who each lets through, even with skewed clocks.",
     visual: "signal",
     category: "Backend systems",
   },
   "RAG Q&A Pipeline": {
     name: "Document Q&A",
     summary:
-      "Find the passages that answer a question, with sources you can inspect.",
+      "Ask a question, read the retrieved passages and open the exact source behind each answer.",
     visual: "data",
     category: "Information retrieval",
   },
   "CI Pipeline Optimizer": {
     name: "CI Optimizer",
     summary:
-      "See which build jobs make a release slow and what depends on them.",
+      "Find the build jobs that really set a pipeline\u2019s length, then test caching and sharding.",
     visual: "code",
     category: "Developer tools",
   },
   "LLM Code Review Assistant": {
     name: "Code Review Assistant",
-    summary: "Get a first pass on a code change before a human reviews it.",
+    summary:
+      "Paste a diff and see findings marked beside the exact lines, with measured precision and recall.",
     visual: "code",
     category: "Developer tools",
   },
   "Music Recommender Engine": {
     name: "Music Recommender",
-    summary: "Use song ratings to suggest tracks a listener has not tried yet.",
+    summary:
+      "Pick artists you like, then tune ten recommendations from familiar to adventurous.",
     visual: "model",
     category: "Recommendation systems",
   },
   "Crisis Information Graph": {
     name: "Crisis Information Graph",
     summary:
-      "Research into sorting disaster posts and finding the people and places they mention.",
+      "Explore hurricane impacts as a graph where every relation cites its source report.",
     visual: "globe",
-    category: "Research archive",
+    category: "Graph analytics",
   },
   "Securing Image Classifiers from Adversarial Attacks": {
     name: "Adversarial Vision",
-    summary: "Research into how tiny image changes can fool a classifier.",
+    summary:
+      "Attack two small image classifiers in your browser and see how little it takes to fool them.",
     visual: "model",
-    category: "Research archive",
+    category: "Adversarial ML",
   },
 };
 const order = Object.keys(presentations);
