@@ -27,7 +27,7 @@ export function ProjectFolders() {
     );
   return (
     <section className="project-archive" id="folders">
-      <p className="eyebrow">06—18 / THE REST OF THE COLLECTION</p>
+      <p className="eyebrow">06—{rankedProjects.length} / THE REST OF THE COLLECTION</p>
       <h2>More projects.</h2>
       <p className="archive-deck">
         More systems to explore. Open a folder for the case study, a working

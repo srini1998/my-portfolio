@@ -95,6 +95,31 @@ export const education: Education[] = [
 
 export const legacyProjects: Project[] = [
   {
+    title: "Race Control",
+    description:
+      "A Formula 1 phone agent built for the Take2 AI voice hackathon. It explains race moments, rules and history from a searchable knowledge base, with a female voice and language switching during a call.",
+    bullets: [
+      "LiveKit Cloud hosts the phone agent; structured English answers are spoken directly from backend results.",
+      "SQLite full-text search separates race evidence, regulations, reference material, news and fan culture.",
+      "Independent tester agents exercise race facts, history, rules, interruptions, recall and language switching.",
+    ],
+    tags: ["Python", "LiveKit", "SQLite FTS5", "Gemini", "Speech-to-text", "Agent evaluation"],
+    demo: "tel:+16463575044",
+    status: "live",
+    access:
+      "Phone demo: +1 646 357 5044 · hosted on LiveKit Cloud · private GitHub source available on request. Availability depends on remaining service credits.",
+    problem:
+      "F1 fans need a clear explanation of a penalty or race moment without having to search timing feeds, regulations and news separately.",
+    example:
+      "Call +1 646 357 5044 and ask who won the 1994 title, then switch languages or ask why George Russell received a penalty in the recorded Mexico City race. Historical race data is identified as a replay.",
+    dataSource:
+      "OpenF1 race recordings; Jolpica winners and champions from 1950 onward; FIA regulation excerpts; Wikipedia reference material; attributed news feeds and fan content. Speech recognition, Gemini and Cartesia run through LiveKit Inference. Sixteen languages are configured; coverage is still being evaluated.",
+    verification:
+      "Recorded text exams passed 45/45 race questions, 48/48 difficult-caller cases and 6/6 language-switching conversations. Rules and general knowledge scored 26/43 in an earlier complete run. A hosted smoke test checked a historical champion, a penalty and a switch to Spanish. These are bounded test results, not a guarantee of accuracy on arbitrary calls.",
+    limitations:
+      "General knowledge and voice interruptions still need improvement. Hosted knowledge is a deployment snapshot, rather than a continuously refreshed live feed. Service quotas can interrupt calls; the free hosting plan may cold-start. The source is private, and the hosted model services are proprietary.",
+  },
+  {
     title: "Breakroom · Supabase reliability suite",
     description:
       "Six separate practical applications: tenant permissions, retry-safe rentals, owned-data cleanup, reviewed CSV imports, crafting races and Realtime transport checks. Each explains the real-world job and separates saved evidence from fresh experiments.",

@@ -40,7 +40,7 @@ export function FolderPortfolio() {
       <section className="selected-work" id="work">
         <div className="screen-section-heading">
           <h2>Featured projects.</h2>
-          <a href="#folders">13 more projects ↓</a>
+          <a href="#folders">{rankedProjects.length - 5} more projects ↓</a>
         </div>
         <div className="featured-list">
           {rankedProjects.slice(0, 5).map((p, index) => {

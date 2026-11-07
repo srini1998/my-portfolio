@@ -3,6 +3,13 @@ export const presentations: Record<
   string,
   { name: string; summary: string; visual: string; category: string }
 > = {
+  "Race Control": {
+    name: "Race Control",
+    summary:
+      "Call an F1 explainer. Ask about a penalty, revisit racing history, or switch languages mid-conversation.",
+    visual: "signal",
+    category: "Voice AI",
+  },
   "Breakroom · Supabase reliability suite": {
     name: "Breakroom",
     summary:
