@@ -104,10 +104,10 @@ export const legacyProjects: Project[] = [
       "Independent tester agents exercise race facts, history, rules, interruptions, recall and language switching.",
     ],
     tags: ["Python", "LiveKit", "SQLite FTS5", "Gemini", "Speech-to-text", "Agent evaluation"],
-    demo: "tel:+16463575044",
+    demo: "https://race-control-f1.vercel.app",
     status: "live",
     access:
-      "Phone demo: +1 646 357 5044 · hosted on LiveKit Cloud · private GitHub source available on request. Availability depends on remaining service credits.",
+      "Public website with recorded examples and phone demo: +1 646 357 5044 · hosted on Vercel and LiveKit Cloud · private GitHub source available on request. Voice availability depends on remaining service credits.",
     problem:
       "F1 fans need a clear explanation of a penalty or race moment without having to search timing feeds, regulations and news separately.",
     example:
