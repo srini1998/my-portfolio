@@ -6,6 +6,11 @@ import { TechnicalArt } from "./TechnicalArt";
 
 const destinations = ["Home", "Work", "Folders", "About", "Contact"];
 
+// On phones the open screen fills the width (a slim bezel each side) so the
+// content isn't squeezed; larger screens keep the framed 90% device.
+const openWidthFor = (width: number) =>
+  width <= 650 ? width - 14 : Math.min(width * 0.9, 1240);
+
 export function FoldPhoneHero({
   children,
   initiallyOpen = false,
@@ -48,7 +53,7 @@ export function FoldPhoneHero({
         viewport * 0.84 * 0.72,
         600,
       );
-      const openWidth = Math.min(root.clientWidth * 0.9, 1240);
+      const openWidth = openWidthFor(root.clientWidth);
       const panel = closedWidth + (openWidth / 2 - closedWidth) * eased;
       root.style.setProperty("--panel-width", `${panel}px`);
       root.style.setProperty("--fold-angle", `${180 * (1 - eased)}deg`);
@@ -90,7 +95,7 @@ export function FoldPhoneHero({
       closing = closeAtEnd && !reduced.matches ? viewport * 0.8 : 0;
       root.style.setProperty(
         "--open-width",
-        `${Math.min(root.clientWidth * 0.9, 1240)}px`,
+        `${openWidthFor(root.clientWidth)}px`,
       );
       const available =
         root.querySelector<HTMLElement>(".phone-viewport")!.clientHeight;

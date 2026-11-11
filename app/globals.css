@@ -995,8 +995,8 @@ h3 {
     display: none;
   }
   .portfolio[data-ready] .fold-phone {
-    top: 9%;
-    height: 82%;
+    top: 58px;
+    height: calc(100% - 68px);
   }
   .portfolio[data-ready] .fold-name {
     top: 33%;
@@ -1084,7 +1084,7 @@ h3 {
     grid-template-rows: auto minmax(180px, 1fr);
   }
   .intro-copy {
-    padding: 65px 7% 35px;
+    padding: 65px 5% 35px;
   }
   .intro-copy h1 {
     font-size: 49px;
@@ -1106,7 +1106,7 @@ h3 {
   }
   .screen-section-heading {
     display: block;
-    padding: 40px 7%;
+    padding: 40px 5%;
   }
   .screen-section-heading h2 {
     font-size: 44px;
@@ -1119,7 +1119,7 @@ h3 {
   }
   .featured-copy {
     grid-template-columns: 1fr;
-    padding: 40px 7%;
+    padding: 40px 5%;
     gap: 25px;
   }
   .project-number {
@@ -1148,7 +1148,7 @@ h3 {
     font-size: 6px;
   }
   .screen-about {
-    padding: 60px 7%;
+    padding: 60px 5%;
   }
   .screen-about > h2 {
     font-size: 44px;
@@ -1168,7 +1168,7 @@ h3 {
     font-size: 25px;
   }
   .screen-contact {
-    padding: 60px 7% 100px;
+    padding: 60px 5% 100px;
   }
   .screen-contact h2 {
     font-size: 53px;
@@ -1195,7 +1195,7 @@ h3 {
     font-size: 13px;
   }
   .project-archive {
-    padding: 65px 7% 110px;
+    padding: 65px 5% 110px;
   }
   .project-archive > h1 {
     font-size: 45px;
@@ -1214,7 +1214,7 @@ h3 {
     font-size: 13px;
   }
   .case-hero {
-    padding: 20px 7% 30px;
+    padding: 20px 5% 30px;
   }
   .case-hero h1 {
     font-size: 45px;
@@ -1231,7 +1231,7 @@ h3 {
     font-size: 14px;
   }
   .case-components {
-    padding: 40px 7% 90px;
+    padding: 40px 5% 90px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
